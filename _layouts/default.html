@@ -107,14 +107,17 @@
                     <img src="/logo.svg" alt="CloudBreak Logo">
                     <span class="logo-text">CloudBreak</span>
                 </a>
-                
+
+                <!--
                 <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
+                -->
             </div>
-            
+
+            <!--
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
                     <a class="navbar-item" href="/support/">
@@ -122,6 +125,7 @@
                     </a>
                 </div>
             </div>
+            -->
         </div>
     </nav>
 
@@ -153,7 +157,7 @@
         if (!localStorage.getItem('analytics_consent')) {
           document.getElementById('consent-banner').style.display = 'block';
         }
-        
+
         // Mobile menu burger functionality
         const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
         if ($navbarBurgers.length > 0) {
