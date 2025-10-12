@@ -35,7 +35,7 @@
   legal: Instapaper is a trademark of Instant Paper, Inc. Pocket is a trademark of
     Mozilla Corporation.
   category: read-it-later
-  action: subscribe
+  action: pre-order
   normal_price: 40
   sale_price: 20
   preorder_url:
@@ -117,7 +117,7 @@
   description: A simple and fast bookmark manager designed for self-hosting. Privacy-focused
     alternative to commercial bookmark services.
   category: read-it-later
-  action: subscribe
+  action: pre-order
   normal_price: 24
   sale_price: 12
   subscribe_url: https://buy.stripe.com/5kQ4gzc0p3Fo7fReAw0Ba0p
