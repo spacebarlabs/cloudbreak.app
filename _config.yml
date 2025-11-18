@@ -36,3 +36,6 @@ collections:
   redirects:
     output: true
     permalink: /:path
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
