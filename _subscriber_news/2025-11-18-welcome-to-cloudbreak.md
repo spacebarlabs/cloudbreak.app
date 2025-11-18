@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: subscriber_news
 title: "Welcome to Your CloudBreak RSS Reader"
 date: 2025-11-18
 ---
