@@ -33,7 +33,9 @@ keywords: "CloudBreak blog, RSS news, privacy RSS, open source RSS"
           </div>
         {% else %}
           <div class="notification is-info">
-            <p class="has-text-centered">No blog posts yet. Check back soon!</p>
+            <p class="has-text-centered">No blog posts yet. Check back soon or subscribe to the feed!</p>
+            <p class="has-text-centered"><input class="mt-5" type="text" readonly value="{{ site.url }}/blog/feed.xml" size="40" onclick="this.select();"></p>
+            <p class="has-text-centered"><a class="button is-primary is-small mt-5" href="https://freshrss.cloudbreak.app/i/?c=feed&a=add&url_rss={{ site.url }}/blog/feed.xml">Subscribe in FreshRSS</a></p>
           </div>
         {% endif %}
       </div>
