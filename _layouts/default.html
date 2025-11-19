@@ -79,6 +79,13 @@
     {% endif %}
     {{ page.head_content }}
 
+    {% if page.url contains '/blog/' %}
+      <link rel="alternate" type="application/atom+xml" title="CloudBreak Blog Feed" href="{{ site.url }}/blog/feed.xml">
+    {% endif %}
+    {% if page.url contains '/subscriber_news/' %}
+      <link rel="alternate" type="application/atom+xml" title="CloudBreak Subscriber News Feed" href="{{ site.url }}/subscriber_news/feed.xml">
+    {% endif %}
+
     {% if page.has_breadcrumb %}
       {% include open-graph.html %}
       {% include breadcrumb-list.html %}
@@ -117,15 +124,16 @@
                 -->
             </div>
 
-            <!--
             <div id="navbarMenu" class="navbar-menu">
                 <div class="navbar-end">
+                    <a class="navbar-item" href="/blog/">
+                        Blog
+                    </a>
                     <a class="navbar-item" href="/support/">
                         Support
                     </a>
                 </div>
             </div>
-            -->
         </div>
     </nav>
 
