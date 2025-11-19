@@ -7,13 +7,13 @@ layout: default
     <div class="columns is-centered">
       <div class="column is-8">
         <article class="content">
-          <h1 class="title is-2">{{ page.title }}</h1>
+          <h1 class="title is-2 mb-5">{{ page.title }}</h1>
           <p class="subtitle is-6 has-text-grey">
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
           </p>
-          
+
           {{ content }}
-          
+
           <hr>
           <p class="has-text-centered mt-6">
             <a href="/subscriber_news/" class="button is-link">← Back to Subscriber News</a>

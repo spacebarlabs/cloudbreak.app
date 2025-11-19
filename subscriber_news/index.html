@@ -19,7 +19,7 @@ keywords: "CloudBreak subscriber news, RSS updates"
             {% assign sorted_news = site.subscriber_news | sort: 'date' | reverse %}
             {% for post in sorted_news %}
               <div class="box">
-                <h2 class="title is-4">
+                <h2 class="title is-4 mb-5">
                   <a href="{{ post.url }}">{{ post.title }}</a>
                 </h2>
                 <p class="subtitle is-6 has-text-grey">
