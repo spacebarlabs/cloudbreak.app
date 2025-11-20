@@ -7,6 +7,7 @@ layout: null
     <title>Subscriber News Feeds</title>
   </head>
   <body>
+    <outline text="CloudBreak Subscriber News" type="rss" xmlUrl="{{ site.url }}/blog/feed.xml" />
     <outline text="CloudBreak Subscriber News" type="rss" xmlUrl="{{ site.url }}/subscriber_news/feed.xml" />
   </body>
 </opml>
