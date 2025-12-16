@@ -15,6 +15,16 @@ layout: default
             <h2 class="subtitle mt-4">a feed reader app</h2>
           {% elsif product.category == "read-it-later" %}
              <h2 class="subtitle mt-4">a read-it-later app</h2>
+             {% if product_key == "readeck" %}
+             <div id="shiori-callout" class="notification is-warning" style="display: none;">
+               <p>We are unable to provide Shiori at this time. We hope you'll consider Readeck, a very similar offering.</p>
+             </div>
+             <script>
+               if (new URLSearchParams(window.location.search).get('from') === 'shiori') {
+                 document.getElementById('shiori-callout').style.display = 'block';
+               }
+             </script>
+             {% endif %}
           {% elsif product.category == "url-shortener" %}
              <h2 class="subtitle mt-4">a URL shortener</h2>
           {% elsif product.category == "analytics" %}
