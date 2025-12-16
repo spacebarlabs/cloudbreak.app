@@ -6,9 +6,9 @@ source "https://rubygems.org"
 
 gem "github-pages", "~> 232"
 gem 'foreman'
+gem 'rake'
 
 group :development do
   gem 'html-proofer'
   gem 'nokogiri'
-  gem 'rake'
 end
