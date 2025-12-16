@@ -1,4 +1,8 @@
-require 'html-proofer'
+begin
+  require 'html-proofer'
+rescue LoadError
+  # html-proofer is only available in development
+end
 
 desc "Build the site and check for broken links"
 task :test do
