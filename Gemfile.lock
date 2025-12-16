@@ -70,6 +70,8 @@ GEM
     fiber-local (1.1.0)
       fiber-storage
     fiber-storage (1.0.1)
+    foreman (0.90.0)
+      thor (~> 1.4)
     forwardable-extended (2.6.0)
     gemoji (4.1.0)
     github-pages (232)
@@ -321,6 +323,7 @@ GEM
     simpleidn (0.2.3)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    thor (1.4.0)
     traces (0.15.2)
     ttfunk (1.8.0)
       bigdecimal (~> 3.1)
@@ -345,6 +348,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  foreman
   github-pages (~> 232)
   html-proofer
   nokogiri
