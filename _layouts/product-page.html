@@ -1,0 +1,136 @@
+---
+layout: default
+---
+{%- assign path_parts = page.url | split: '/' -%}
+{%- assign product_key = path_parts[2] -%}
+{%- assign product = site.data.products | where: "key", product_key | first -%}
+
+<section class="hero is-medium is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <h1 class="title">{{ product.name }}</h1>
+          <h2 class="subtitle mt-4">{{ product.tagline }}</h2>
+          {% if product_key == "readeck" %}
+          <div id="shiori-callout" class="notification is-warning" style="display: none;">
+            <p>We are unable to provide Shiori at this time. We hope you'll consider Readeck, a very similar offering.</p>
+          </div>
+          <script>
+            if (new URLSearchParams(window.location.search).get('from') === 'shiori') {
+              document.getElementById('shiori-callout').style.display = 'block';
+            }
+          </script>
+          {% endif %}
+
+          {% if product.scm_url %}
+            <p class="my-3">
+              <a href="{{ product.scm_url }}" class="is-size-7" target="_blank">
+                <span class="icon">
+                  <i class="fas fa-code-branch"></i>
+                </span>
+                <span>Source Code</span>
+              </a>
+            </p>
+          {% endif %}
+
+          <p class="mb-3">{{ product.description }}</p>
+          {% if product.legal %}
+            <p class="help mb-3">{{ product.legal }}</p>
+          {% endif %}
+
+          {% assign action_url = product.subscribe_url | default: product.preorder_url %}
+          {% assign expiry_timestamp = site.coupon_expiry_date | date: "%s" %}
+          {% assign current_timestamp = site.time | date: "%s" %}
+          {% assign coupon_active = false %}
+          {% if site.coupon_code and site.coupon_code != "" and expiry_timestamp > current_timestamp %}
+            {% assign coupon_active = true %}
+          {% endif %}
+
+          {% if product.action == 'subscribe' and product.normal_price and coupon_active %}
+            {% assign discount_amount = product.normal_price | times: site.coupon_discount_percent | divided_by: 100 %}
+            {% assign discounted_price = product.normal_price | minus: discount_amount %}
+            <div class="box has-background-white-ter mt-5" id="subscribe-box" data-expiry="{{ site.coupon_expiry_date }}">
+              <div class="notification is-success is-light mt-3" id="coupon-banner">
+                <p class="has-text-weight-bold">Holiday Special!</p>
+                <p>Use coupon code <strong>{{ site.coupon_code }}</strong> for {{ site.coupon_discount_percent }}% off your first year</p>
+                <p class="is-size-7 mt-2">Offer expires {{ site.coupon_expiry_date | date: "%B %-d, %Y" }}</p>
+              </div>
+              <div class="columns is-mobile is-vcentered">
+                <div class="column">
+                  <span class="is-size-3 has-text-weight-bold has-text-success">${{ discounted_price }}/year</span>
+                  <span class="ml-2 has-text-grey"><del>${{ product.normal_price }}</del></span>
+                </div>
+              </div>
+              <a href="{{ action_url }}?prefilled_promo_code={{ site.coupon_code }}" class="button is-primary is-large is-fullwidth has-text-weight-bold mt-3">Subscribe Now</a>
+              {% if product.donation_url %}
+                <p class="help has-text-centered mt-2">10% of profits for this service are paid to <a href="{{ product.donation_url }}">{{ product.name }}</a></p>
+              {% endif %}
+              <p class="help has-text-centered mt-2">30-Day Money Back Guarantee • 🇺🇸 US & 🇨🇦 CA Only</p>
+            </div>
+            <script>
+              (function() {
+                var box = document.getElementById('subscribe-box');
+                if (box) {
+                  var expiryDate = new Date(box.getAttribute('data-expiry') + 'T23:59:59');
+                  var now = new Date();
+                  if (now > expiryDate) {
+                    document.getElementById('coupon-banner').style.display = 'none';
+                  }
+                }
+              })();
+            </script>
+          {% elsif product.sale_price and product.normal_price %}
+            <p class="has-text-weight-bold has-text-danger">Launch Special!<br>Get {{ product.normal_price | minus: product.sale_price | times: 100.0 | divided_by: product.normal_price | round }}% OFF</p>
+            <p><del>${{ product.normal_price }}</del> ${{ product.sale_price }} / year</p>
+            {% if action_url %}
+              <p><a href="{{ action_url }}" class="m-3 button is-primary">{{ product.action | capitalize }}</a></p>
+              <p class="help">{{ site.cancel_policy }}</p>
+              <p class="help mb-3">{{ site.customer_location_restriction }}</p>
+            {% endif %}
+          {% elsif product.normal_price %}
+            <p class="is-size-4 has-text-weight-bold">${{ product.normal_price }} / year</p>
+            {% if action_url %}
+              <p><a href="{{ action_url }}" class="m-3 button is-primary">{{ product.action | capitalize }}</a></p>
+              {% if product.donation_url %}
+                <p class="help">10% of profits for this service are paid to <a href="{{ product.donation_url }}">{{ product.name }}</a></p>
+              {% endif %}
+              <p class="help">{{ site.cancel_policy }}</p>
+              <p class="help mb-3">{{ site.customer_location_restriction }}</p>
+            {% endif %}
+          {% elsif product.sale_price %}
+            <p>${{ product.sale_price }} / year</p>
+            {% if action_url %}
+              <p><a href="{{ action_url }}" class="m-3 button is-primary">{{ product.action | capitalize }}</a></p>
+              <p class="help">{{ site.cancel_policy }}</p>
+              <p class="help mb-3">{{ site.customer_location_restriction }}</p>
+            {% endif %}
+          {% endif %}
+
+          {% if product.waitlist_url %}
+            <p>Get notified when we launch:</p>
+            <p><a href="{{ product.waitlist_url }}" class="m-3 button is-link">Join the Waitlist</a></p>
+          {% endif %}
+
+          {% if product.faq_path %}
+            <p class="my-3">Please also see our <a href="{{ product.faq_path }}">{{ product.name }} FAQ</a>.</p>
+          {% endif %}
+
+          <p class="my-3">And consider our other services:</p>
+          <p><a class="m-3 button is-info" href="/">All Products</a></p>
+        </div>
+        <div class="column">
+          {% if product.screenshot_url %}
+          <a href="{{ product.screenshot_url }}" target="_blank" class="screenshot-link">
+            <img src="{{ product.screenshot_url }}"
+                 alt="{{ product.name }} screenshot"
+                 class="image m-6"
+                 loading="lazy"
+                 decoding="async">
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

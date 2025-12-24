@@ -1,0 +1,14 @@
+inbox.md
+.aider*
+private
+vendor
+.bundle
+
+# Dev config - only add if you want to keep it out of the repo
+# _config_development.yml
+
+# Jekyll build
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata

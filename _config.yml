@@ -1,0 +1,56 @@
+# # <development-specific-settings>
+# url: http://pairing.spacebarlabs.com:4000
+#
+# # Development Google Analytics ID (replace with your development GA ID when created)
+# google_analytics: G-2D9RYE1FZJ
+# # </development-specific-settings>
+
+# Site settings
+title: CloudBreak - Privacy-Focused Hosting
+description: Take control of your news with CloudBreak's ethical RSS hosting
+url: https://cloudbreak.app
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+
+# Include .well-known directory for security.txt
+include:
+  - .well-known
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap # keep this last
+
+# Google Analytics
+google_analytics: G-C1RRDV39YN
+
+exclude:
+  - CNAME
+  - Gemfile
+  - Gemfile.lock
+  - scripts
+  - private
+  - vendor
+
+cancel_policy: "Cancel within 30 days and get your money back, no questions asked"
+customer_location_restriction: "Please note that we are currently only accepting customers in the 🇺🇸&nbsp;US and 🇨🇦&nbsp;Canada"
+
+# Coupon configuration
+# To disable the coupon, set coupon_code to empty string or remove it
+# Remember to update coupon_expiry_date when running future promotions
+coupon_code: "HOLIDAY50"
+coupon_expiry_date: "2025-12-31"
+coupon_discount_percent: 50
+
+# Added by organize_redirects.sh to handle redirects
+collections:
+  redirects:
+    output: true
+    permalink: /:path
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+  subscriber_news:
+    output: true
+    permalink: /subscriber_news/:year/:month/:day/:title/
