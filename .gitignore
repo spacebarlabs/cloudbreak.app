@@ -3,6 +3,7 @@ inbox.md
 private
 vendor
 .bundle
+.last-rebuild
 
 # Dev config - only add if you want to keep it out of the repo
 # _config_development.yml
