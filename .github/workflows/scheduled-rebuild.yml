@@ -1,0 +1,34 @@
+---
+name: Scheduled Daily Rebuild
+
+on:
+  schedule:
+    # Runs daily at 5:05 AM UTC (cron format: minute hour day month day-of-week)
+    - cron: '5 5 * * *'
+  workflow_dispatch:  # Allows manual triggering for testing
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger rebuild
+        run: |
+          # Create a timestamp file to trigger a rebuild
+          echo "Last rebuild: $(date -u)" > .last-rebuild
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .last-rebuild
+          git commit -m "Site Update: $(date -u +'%Y-%m-%d %H:%M:%S')" \
+            || echo "No changes to commit"
+          git push || echo "Nothing to push"
