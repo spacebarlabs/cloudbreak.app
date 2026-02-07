@@ -1,0 +1,4 @@
+Contact: mailto:security@spacebarlabs.com
+Expires: 2026-12-31T23:59:00.000Z
+Preferred-Languages: en
+Policy: https://spacebarlabs.com/security

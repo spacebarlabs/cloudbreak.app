@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }}</title>
+    <meta name="description" content="{{ page.description | escape }}">
+    <meta name="keywords" content="{{ page.keywords | escape }}">
+    <meta name="author" content="Space Bar Labs">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulmaswatch/lux/bulmaswatch.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+        background-color: #f7f7f7;
+      }
+      .navbar {
+        border-bottom: 1px solid #dbdbdb;
+      }
+      .navbar-brand .navbar-item img {
+        position: relative;
+        top: -2px;
+      }
+      .footer {
+        /* UPDATED: Changed background to white and text to dark gray */
+        background-color: #ffffff;
+        color: #363636;
+      }
+      .footer a {
+        color: #3273dc;
+      }
+      .footer a:hover {
+        text-decoration: underline;
+      }
+      .logo-text {
+        font-weight: bold;
+        margin-left: 0.5rem;
+      }
+      /* Ensure cards in a row are the same height */
+      .product-card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .product-card .card-footer {
+        margin-top: auto; /* Pushes footer to the bottom */
+      }
+      /* Mobile hamburger menu styling */
+      .navbar-burger {
+        background-color: white;
+        color: #363636;
+      }
+      .navbar-burger:hover {
+        background-color: #fafafa;
+      }
+      /* Mobile menu dropdown styling */
+      .navbar-menu {
+        background-color: white !important;
+      }
+      .navbar-menu .navbar-item {
+        color: #363636 !important;
+      }
+      .navbar-menu .navbar-item:hover {
+        background-color: #fafafa !important;
+        color: #363636 !important;
+      }
+      /* Banner asterisk link styling */
+      .banner-asterisk {
+        text-decoration: none;
+      }
+    </style>
+
+    {% if site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+    {{ page.head_content }}
+
+    {% if page.url contains '/blog/' %}
+      <link rel="alternate" type="application/atom+xml" title="CloudBreak Blog Feed" href="{{ site.url }}/blog/feed.xml">
+    {% endif %}
+    {% if page.url contains '/subscriber_news/' %}
+      <link rel="alternate" type="application/atom+xml" title="CloudBreak Subscriber News Feed" href="{{ site.url }}/subscriber_news/feed.xml">
+    {% endif %}
+
+    {% if page.has_breadcrumb %}
+      {% include open-graph.html %}
+      {% include breadcrumb-list.html %}
+      {% include product.html %}
+    {% endif %}
+</head>
+<body>
+
+    <div id="consent-banner" class="notification is-info is-light" style="display: none; position: fixed; bottom: 0; width: 100%; z-index: 100; margin: 0; border-radius: 0;">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div class="column">
+            <p>We use analytics to improve our services. This data is anonymous and helps us understand how visitors use our site.</p>
+          </div>
+          <div class="column is-narrow">
+            <button class="button is-small is-link" onclick="acceptConsent()">Accept</button>
+            <button class="button is-small" onclick="rejectConsent()">Reject</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% if site.coupon_code %}
+      {% assign expiry_timestamp = site.coupon_expiry | date: "%s" %}
+      {% assign current_timestamp = site.time | date: "%s" %}
+      {% if expiry_timestamp > current_timestamp %}
+    <div class="notification is-success is-light mb-0" id="holiday-banner" data-expiry="{{ site.coupon_expiry }}" style="border-radius: 0;">
+      <div class="container">
+        <p class="has-text-centered">
+          <strong>Holiday Special!</strong> Use coupon code <strong>{{ site.coupon_code }}</strong> for {{ site.coupon_discount_percent }}% off your first year on <a href="/promos/holiday-eligible-products/" class="banner-asterisk">select products*</a>. Offer expires {{ site.coupon_expiry | date: "%B %-d, %Y" }}.
+        </p>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var banner = document.getElementById('holiday-banner');
+        if (banner) {
+          var expiryDate = new Date(banner.getAttribute('data-expiry'));
+          var now = new Date();
+          if (now >= expiryDate) {
+            banner.style.display = 'none';
+          }
+        }
+      })();
+    </script>
+      {% endif %}
+    {% endif %}
+
+    <nav class="navbar is-white" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="/">
+                    <img src="/logo.svg" alt="CloudBreak Logo">
+                    <span class="logo-text">CloudBreak</span>
+                </a>
+
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item" href="/blog/">
+                        Blog
+                    </a>
+                    <a class="navbar-item" href="/support/">
+                        Support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <a href="https://spacebarlabs.com/?utm_medium=referral&utm_source=cloudbreak.app&rby=cloudbreak.app">
+            <img src="/images/space-bar-labs-logo.svg" alt="Space Bar Labs Logo" style="height: 40px;">
+          </a>
+        </p>
+        <p class="is-size-7">
+          &copy; {{ site.time | date: '%Y' }} Space Bar Labs, LLC
+        </p>
+        <p class="is-size-7">
+          <a href="/forum">Community Forum</a> | <a href="https://buy.stripe.com/00w5kDfcB0tcbw7bok0Ba0q">Tip Jar</a>
+        </p>
+        <p class="is-size-7">
+          <a href="https://spacebarlabs.com/privacy-policy/">Privacy Policy</a> | <a href="https://spacebarlabs.com/terms-of-service/">Terms of Service</a> | <a href="https://spacebarlabs.com/security/">Security Policy</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (!localStorage.getItem('analytics_consent')) {
+          document.getElementById('consent-banner').style.display = 'block';
+        }
+
+        // Mobile menu burger functionality
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        if ($navbarBurgers.length > 0) {
+          $navbarBurgers.forEach(el => {
+            el.addEventListener('click', () => {
+              const target = el.dataset.target;
+              const $target = document.getElementById(target);
+              el.classList.toggle('is-active');
+              $target.classList.toggle('is-active');
+            });
+          });
+        }
+      });
+      function acceptConsent() {
+        localStorage.setItem('analytics_consent', 'granted');
+        updateConsent({ 'analytics_storage': 'granted' });
+        document.getElementById('consent-banner').style.display = 'none';
+      }
+      function rejectConsent() {
+        localStorage.setItem('analytics_consent', 'denied');
+        document.getElementById('consent-banner').style.display = 'none';
+      }
+    </script>
+
+    {% if page.url contains '/products/' %}
+      {% include product-page-analytics.html %}
+    {% endif %}
+
+    {{ page.body_scripts }}
+</body>
+</html>
