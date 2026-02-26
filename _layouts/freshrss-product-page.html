@@ -1,0 +1,375 @@
+---
+layout: default
+---
+{% assign product = site.data.products | where: "key", "freshrss" | first %}
+{% assign monthly_price = product.normal_price | divided_by: 12 %}
+{% assign expiry_timestamp = site.coupon_expiry | date: "%s" %}
+{% assign current_timestamp = site.time | date: "%s" %}
+{% if site.coupon_code and site.coupon_code != "" and expiry_timestamp > current_timestamp %}
+  {% assign subscribe_url = product.subscribe_url | append: "?prefilled_promo_code=" | append: site.coupon_code %}
+  {% assign discount_multiplier = 100 | minus: site.coupon_discount_percent %}
+  {% assign discounted_yearly_price = product.normal_price | times: discount_multiplier | divided_by: 100 %}
+  {% assign discounted_monthly_price = discounted_yearly_price | divided_by: 12 %}
+  {% assign has_coupon = true %}
+{% else %}
+  {% assign subscribe_url = product.subscribe_url %}
+  {% assign has_coupon = false %}
+{% endif %}
+
+<style>
+  .freshrss-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  }
+  .freshrss-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .freshrss-icon svg {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+  .freshrss-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .freshrss-branding .title {
+    font-size: 4.5rem;
+  }
+  .freshrss-branding .managed-by {
+    font-size: 1.25rem;
+  }
+
+  /* Mobile styles */
+  @media screen and (max-width: 768px) {
+    .freshrss-icon {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .freshrss-icon svg {
+      width: 64px;
+      height: 64px;
+    }
+    .freshrss-branding .title {
+      font-size: 3rem;
+    }
+    .freshrss-branding .managed-by {
+      margin-left: 0 !important;
+      margin-top: 0.5rem !important;
+    }
+  }
+</style>
+
+<section class="hero freshrss-hero is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <div class="freshrss-branding">
+          <div class="freshrss-icon">
+            <svg width="80" height="80" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#ffffff" d="M128,128m-33,0a33,33 0,1 1,66 0a33,33 0,1 1,-66 0"/>
+              <path fill="none" stroke="#ffffff" stroke-width="24" opacity="0.3" d="M12,128A116,116 0,1 1,128 244"/>
+              <path fill="none" stroke="#ffffff" stroke-width="24" opacity="0.3" d="M54,128A74,74 0,1 1,128 202"/>
+              <path fill="none" stroke="#ffffff" stroke-width="24" d="M128,12A116,116 0,0 1,244 128"/>
+              <path fill="none" stroke="#ffffff" stroke-width="24" d="M128,54A74,74 0,0 1,202 128"/>
+            </svg>
+            <span class="title has-text-white">FreshRSS</span>
+          </div>
+          <p class="managed-by has-text-grey-lighter" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-left: 95px; margin-top: -0.75rem;">
+            managed by <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 2em; width: auto; position: relative; top: -2px;" aria-label="CloudBreak"><circle cx="9.00031" cy="16" r="7.03238" transform="rotate(12.6592 9.00031 16)" stroke="#ffffff"/><path d="M9.6429 16.4544C8.47803 18.068 7.19626 19.3377 6.08111 20.0919C5.52177 20.4702 5.0275 20.703 4.6282 20.7974C4.22712 20.8923 3.987 20.8349 3.84689 20.7338C3.70679 20.6327 3.57679 20.4228 3.54056 20.0122C3.5045 19.6035 3.56989 19.0611 3.75289 18.4111C4.11773 17.1152 4.91943 15.4989 6.0843 13.8853C7.24918 12.2718 8.53095 11.002 9.64609 10.2478C10.2054 9.86954 10.6997 9.63672 11.099 9.5423C11.5001 9.44745 11.7402 9.50478 11.8803 9.60592C12.0204 9.70707 12.1504 9.91694 12.1866 10.3275C12.2227 10.7362 12.1573 11.2786 11.9743 11.9286C11.6095 13.2245 10.8078 14.8408 9.6429 16.4544Z" stroke="#ffffff"/><path d="M7.97388 17.0813C6.46834 15.6895 5.26494 14.2824 4.53324 13.1421C4.16531 12.5687 3.93254 12.0871 3.83064 11.7244C3.77986 11.5436 3.76815 11.415 3.77477 11.3314C3.77793 11.2914 3.78487 11.2671 3.78993 11.2542C3.79458 11.2423 3.79813 11.2386 3.79881 11.2379L3.79884 11.2378C3.79959 11.237 3.8031 11.2332 3.81441 11.2277C3.82687 11.2217 3.85051 11.2128 3.89015 11.2066C3.97296 11.1934 4.1021 11.195 4.28632 11.2314C4.65592 11.3046 5.15427 11.4988 5.75477 11.8207C6.94898 12.4607 8.44617 13.55 9.95172 14.9417C11.4573 16.3334 12.6607 17.7406 13.3924 18.8809C13.7603 19.4543 13.9931 19.9359 14.095 20.2986C14.1457 20.4794 14.1574 20.608 14.1508 20.6916C14.1477 20.7316 14.1407 20.7559 14.1357 20.7688C14.1311 20.7805 14.1276 20.7843 14.1268 20.7851L14.1268 20.7851L14.1268 20.7852C14.126 20.786 14.1225 20.7898 14.1112 20.7953C14.0987 20.8013 14.0751 20.8101 14.0355 20.8164C13.9526 20.8296 13.8235 20.828 13.6393 20.7916C13.2697 20.7184 12.7713 20.5241 12.1708 20.2023C10.9766 19.5623 9.47942 18.473 7.97388 17.0813Z" stroke="#ffffff"/></svg> CloudBreak
+          </p>
+        </div>
+
+        <hr style="background-color: rgba(255, 255, 255, 0.3); height: 1px; border: none; margin: 0 auto 2rem auto; width: 80%;">
+
+        <div class="columns is-vcentered">
+        <div class="column is-7">
+          <h1 class="title is-1 has-text-white mt-5">
+            Rediscover the Open Web, Without the Server Headache.
+          </h1>
+          <h2 class="subtitle is-4 has-text-grey-lighter mt-4">
+            All the power of FreshRSS. None of the maintenance.
+          </h2>
+          {% if has_coupon %}
+          <p class="mt-5 coupon-element">
+            <span class="tag is-success is-light">{{ site.coupon_discount_percent }}% off with code {{ site.coupon_code }}</span>
+          </p>
+          <p class="is-size-5 has-text-white mt-3 coupon-element">
+            <strong class="has-text-white">Sync your feeds across all your devices for just <s>${{ monthly_price }}</s> <span class="has-text-success">${{ discounted_monthly_price }}/month</span>.</strong>
+          </p>
+          <p class="is-size-5 has-text-white mt-5 no-coupon-element" style="display: none;">
+            <strong class="has-text-white">Sync your feeds across all your devices for just ${{ monthly_price }}/month.</strong>
+          </p>
+          {% else %}
+          <p class="is-size-5 has-text-white mt-5">
+            <strong class="has-text-white">Sync your feeds across all your devices for just ${{ monthly_price }}/month.</strong>
+          </p>
+          {% endif %}
+
+
+          <div class="buttons mt-5 is-centered">
+            <a href="{{ subscribe_url }}" class="button is-success is-large is-rounded">
+              <strong>Subscribe Now</strong>
+              <span class="icon is-small ml-2"><i class="fas fa-arrow-right"></i></span>
+            </a>
+          </div>
+
+          <div class="has-text-centered mt-4">
+            <p class="is-size-7 has-text-grey-lighter" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="icon" style="color: #f5a623;"><i class="fas fa-lock"></i></span>
+              <span>Secure payment via Stripe</span>
+            </p>
+            <p class="is-size-7 mt-2" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+              <i class="fab fa-cc-visa fa-lg" style="color: #ffffff;" title="Visa"></i>
+              <i class="fab fa-cc-mastercard fa-lg" style="color: #ffffff;" title="Mastercard"></i>
+              <i class="fab fa-cc-amex fa-lg" style="color: #ffffff;" title="American Express"></i>
+              <i class="fas fa-credit-card fa-lg" style="color: #ffffff;" title="Credit Card"></i>
+              <i class="fab fa-apple-pay fa-lg" style="color: #ffffff;" title="Apple Pay"></i>
+              <i class="fab fa-google-pay fa-lg" style="color: #ffffff;" title="Google Pay"></i>
+              <i class="fab fa-amazon-pay fa-lg" style="color: #ffffff;" title="Amazon Pay"></i>
+              <img src="https://cash.app/favicon.ico" alt="Cash App" title="Cash App" style="height: 20px; vertical-align: middle;">
+              <img src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg" alt="Klarna" title="Klarna" style="height: 20px; vertical-align: middle;">
+            </p>
+            <p class="is-size-6 has-text-grey-lighter mt-2">
+              <a href="https://www.paypal.com/ncp/payment/2JERNYZASLKJQ" style="color: #179BD7;">
+                <span class="icon"><i class="fab fa-paypal"></i></span>
+                Pay with PayPal
+              </a>
+            </p>
+          </div>
+
+          <p class="is-size-6 has-text-white mt-5" style="display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;">
+            <strong class="has-text-white">FreshRSS is an open, independent platform</strong>
+            <a href="https://github.com/freshrss/freshrss" class="is-size-7 has-text-white button is-rounded is-primary" target="_blank"> <span class="icon"><i class="fas fa-code-branch"></i></span>
+              <span>View Source Code</span>
+            </a>
+          </p>
+
+          <p class="is-size-7 has-text-grey-lighter mt-4">
+            {{ site.cancel_policy }}
+          </p>
+          <p class="is-size-7 has-text-grey-lighter mt-4">
+            🇺🇸 US and 🇨🇦 CA Only (for now)
+            &bull;
+            10% of profits for this service are paid to FreshRSS
+          </p>
+        </div>
+        <div class="column is-5">
+          <a href="/products/freshrss/screenshot.webp" target="_blank">
+            <img src="/products/freshrss/screenshot.webp" alt="FreshRSS screenshot" class="image" style="border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Client-side coupon expiration check
+  (function() {
+    var couponExpiry = '{{ site.coupon_expiry }}';
+    if (couponExpiry) {
+      var expiryDate = new Date(couponExpiry);
+      var now = new Date();
+      if (now >= expiryDate) {
+        // Hide all coupon-related elements
+        document.querySelectorAll('.coupon-element').forEach(function(el) {
+          el.style.display = 'none';
+        });
+        // Show non-coupon elements
+        document.querySelectorAll('.no-coupon-element').forEach(function(el) {
+          el.style.display = '';
+        });
+        // Update subscribe URLs to remove promo code
+        document.querySelectorAll('a[href*="prefilled_promo_code"]').forEach(function(el) {
+          el.href = el.href.replace(/\?prefilled_promo_code=[^&]+/, '');
+        });
+      }
+    }
+  })();
+</script>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <h2 class="title is-3">Why CloudBreak FreshRSS?</h2>
+        <p class="is-size-5 mb-4">
+          You love RSS because it puts you in control of your news. But you don't love maintaining a Docker container, managing SSL certificates, or debugging server updates on a Friday night.
+        </p>
+        <p class="is-size-5">
+          We give you a blazing fast, private, and fully managed FreshRSS instance so you can focus on reading, not sysadmin work.
+        </p>
+      </div>
+    </div>
+  </div>
+
+    <div class="columns is-multiline mt-6">
+      <div class="column is-one-third">
+        <div class="box has-text-centered" style="height: 100%;">
+          <span class="icon is-large has-text-primary">
+            <i class="fas fa-rocket fa-3x"></i>
+          </span>
+          <h3 class="title is-4 mt-4">Instant Setup, Zero Maintenance</h3>
+          <p>Forget opening a Linux terminal. Get your own instance running in seconds. We handle the backups, the security patches, and the software updates.</p>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="box has-text-centered" style="height: 100%;">
+          <span class="icon is-large has-text-primary">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+          </span>
+          <h3 class="title is-4 mt-4">Sync With Your Favorite Apps</h3>
+          <p>Because FreshRSS supports the G Reader API, our service works natively with the best third-party apps on Mac, iOS, Android, Linux, and Windows.</p>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="box has-text-centered" style="height: 100%;">
+          <span class="icon is-large has-text-primary">
+            <i class="fas fa-shield-alt fa-3x"></i>
+          </span>
+          <h3 class="title is-4 mt-4">Your Data, Your Rules</h3>
+          <p>We are privacy-first. We don't track your reading habits, we don't sell your data, and we don't insert ads. You can export your OPML file and leave at any time, even to your own FreshRSS instance.  We believe in earning your loyalty through quality, not locking you in.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section mb-5">
+  <div class="container">
+    <h2 class="title is-3 has-text-centered mb-6">Frequently Asked Questions</h2>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <h4 class="title is-5">Can I import my feeds from Feedly or Inoreader?</h4>
+          <p>Absolutely. Just export your OPML file from your current reader and import it into your new FreshRSS account. It takes about 30 seconds.</p>
+
+          <h4 class="title is-5 mt-5">Is there a limit on how many feeds I can add?</h4>
+          <p>Reasonable usage applies, but for 99% of users, it's effectively unlimited. Whether you follow 50 sites or 500, we've got you covered.</p>
+
+          <h4 class="title is-5 mt-5">What happens if I want to cancel?</h4>
+          <p>For now, please drop us a line at <a href="mailto:support@spacebarlabs.com">support@spacebarlabs.com</a></p>
+
+          <h4 class="title is-5 mt-5">Why is it so cheap?</h4>
+          <p>FreshRSS is lightweight and efficient software. We pass the savings on server costs directly to you. No bloated venture capital demands—just a sustainable business.</p>
+
+          <hr>
+
+          <p class="has-text-centered" style="display: flex; align-items: baseline; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+            <span>For more questions, visit our</span>
+            <a href="/products/freshrss/faq/" class="button is-link is-outlined">complete FAQ page</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="background-color: rgba(0, 0, 0, 0.3); height: 1px; border: none; margin: 0 auto 2rem auto; width: 80%;">
+
+<section class="section has-background-light" id="pricing">
+  <div class="container">
+    <h2 class="title is-3 has-text-centered mb-4">No-Nonsense Pricing</h2>
+    <p class="has-text-centered is-size-5 mb-6">Most RSS services charge $6–$10/mo for "Pro" features. We believe RSS should be affordable and accessible.</p>
+    <div class="columns is-centered">
+      <div class="column is-8-tablet is-6-desktop">
+        <div class="box has-text-centered p-6">
+          <div class="is-flex is-justify-content-center is-align-items-baseline mb-5">
+            {% if has_coupon %}
+            <span class="title is-3 has-text-grey-light coupon-element" style="text-decoration: line-through;">${{ product.normal_price }}</span>
+            <span class="title is-1 has-text-success ml-3 coupon-element">${{ discounted_yearly_price }}</span>
+            <span class="title is-1 no-coupon-element" style="display: none;">${{ product.normal_price }}</span>
+            {% else %}
+            <span class="title is-1">${{ product.normal_price }}</span>
+            {% endif %}
+            <span class="subtitle is-4 has-text-grey">/ year</span>
+          </div>
+          {% if has_coupon %}
+          <p class="has-text-success has-text-weight-bold mb-3 coupon-element">
+            <span class="tag is-success is-medium">{{ site.coupon_discount_percent }}% off with code {{ site.coupon_code }}</span>
+          </p>
+          <p class="has-text-info has-text-weight-bold mb-5 coupon-element">(That's just ${{ discounted_monthly_price }} a month)</p>
+          <p class="has-text-info has-text-weight-bold mb-5 no-coupon-element" style="display: none;">(That's just ${{ monthly_price }} a month)</p>
+          {% else %}
+          <p class="has-text-info has-text-weight-bold mb-5">(That's just ${{ monthly_price }} a month)</p>
+          {% endif %}
+
+          <ul class="content is-medium has-text-left" style="display: inline-block;">
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Unlimited Feeds</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Unlimited Articles</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> API Access (Mobile Sync)</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Daily Backups</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> 30-Day Money-Back Guarantee</li>
+          </ul>
+
+          <div class="mt-5">
+            <a href="{{ subscribe_url }}" class="button is-primary is-fullwidth is-large">
+              Get Started Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section has-text-white" style="background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 50%, #2d2d2d 100%);">
+  <div class="container has-text-centered">
+    <h2 class="title is-2 has-text-white mb-5">Stop letting algorithms decide what you read.</h2>
+    <p class="subtitle is-4 has-text-white mt-4 mb-6">Take back control of your news feed today.</p>
+    {% if has_coupon %}
+    <p class="is-size-5 has-text-white mb-4 coupon-element"><s>${{ product.normal_price }}</s> <span class="has-text-success has-text-weight-bold">${{ discounted_yearly_price }}/year</span></p>
+    <p class="is-size-5 has-text-white mb-4 no-coupon-element" style="display: none;">${{ product.normal_price }}/year</p>
+    {% else %}
+    <p class="is-size-5 has-text-white mb-4">${{ product.normal_price }}/year</p>
+    {% endif %}
+    <a href="{{ subscribe_url }}" class="button is-white is-large">
+      <strong>Create My Account</strong>
+    </a>
+    <p class="is-size-6 mt-4" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+      <span class="icon" style="color: #f5a623;"><i class="fas fa-lock"></i></span>
+      <span>Secure payment via Stripe</span>
+    </p>
+    <p class="is-size-7 mt-2" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+      <span style="display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <i class="fab fa-cc-visa fa-lg" style="color: #ffffff;" title="Visa"></i>
+        <i class="fab fa-cc-mastercard fa-lg" style="color: #ffffff;" title="Mastercard"></i>
+        <i class="fab fa-cc-amex fa-lg" style="color: #ffffff;" title="American Express"></i>
+        <i class="fas fa-credit-card fa-lg" style="color: #ffffff;" title="Credit Card"></i>
+        <i class="fab fa-apple-pay fa-lg" style="color: #ffffff;" title="Apple Pay"></i>
+        <i class="fab fa-google-pay fa-lg" style="color: #ffffff;" title="Google Pay"></i>
+        <i class="fab fa-amazon-pay fa-lg" style="color: #ffffff;" title="Amazon Pay"></i>
+        <img src="https://cash.app/favicon.ico" alt="Cash App" title="Cash App" style="height: 20px; vertical-align: middle;">
+        <img src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg" alt="Klarna" title="Klarna" style="height: 20px; vertical-align: middle;">
+      </span>
+    </p>
+    <p class="is-size-6 mt-4 has-text-centered" style="display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+      <span class="icon" style="color: #179BD7;"><i class="is-size-5 fab fa-paypal"></i></span>
+      <em><a href="https://www.paypal.com/ncp/payment/2JERNYZASLKJQ" style="color: #179BD7;">Pay with PayPal</a></em>
+    </p>
+    <p class="is-size-7 mt-4">
+      <em>{{ site.cancel_policy }}</em>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p class="is-size-5 has-text-grey">
+      <span class="icon"><i class="fas fa-th-large"></i></span>
+      Love open source? We host other privacy-focused tools too.
+    </p>
+    <a href="/" class="button is-link is-outlined mt-4">
+      <span class="icon"><i class="fas fa-server"></i></span>
+      <span>Explore</span>
+    </a>
+  </div>
+</section>
