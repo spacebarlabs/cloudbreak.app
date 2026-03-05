@@ -1,0 +1,175 @@
+---
+layout: default
+title: "Choose Small Tech Over Big Tech | CloudBreak"
+description: "Take control of your digital life with CloudBreak's ethical, privacy-focused alternatives to big tech services. We offer reliable hosting for open-source apps."
+keywords: "RSS hosting, read-it-later, analytics, privacy-focused hosting, open source alternatives, small tech, ethical tech"
+head_content: |
+  <meta property="og:title" content="Choose Small Tech Over Big Tech | CloudBreak">
+  <meta property="og:description" content="Take control of your news with CloudBreak's ethical RSS hosting. Privacy-first features, full data ownership, and reliable alternatives to Google Reader and Feedly. Start today!">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ site.url }}/">
+  <meta property="og:image" content="{{ site.url }}/screenshot.webp">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CloudBreak - Privacy-Focused Hosting & Open Source Alternatives",
+    "url": "{{ site.url }}/",
+    "description": "CloudBreak offers ethical, open-source alternatives to Google Reader and Feedly. Get hosted RSS solutions with privacy-first features and full data ownership."
+  }
+  </script>
+---
+
+<section class="hero is-dark is-fullheight-with-navbar">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column is-two-thirds">
+          <h1 class="title is-1">
+            Take Back Control of Your Digital Life
+          </h1>
+          <p class="is-4 has-text-grey-light mt-4">
+            CloudBreak offers simple, reliable, and privacy-respecting alternatives to Big Tech services. Reclaim your digital independence with tools that put you in control.
+          </p>
+          <p class="is-4 has-text-grey-light mt-4 has-text-weight-bold">
+            Join the "small tech" movement.
+          </p>
+          <a href="#services" class="button is-primary is-medium mt-5">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section has-background-light">
+    <div class="container">
+        <div class="has-text-centered mb-6">
+            <h2 class="title is-2">Our Services</h2>
+            <p class="is-5 has-text-grey">Professionally hosted open-source applications, maintained and updated for you.</p>
+            <p class="is-size-7 mt-2">Google Analytics is a trademark of Google LLC. Instapaper is a trademark of Instant Paper, Inc. Pocket is a trademark of Mozilla Corporation.</p>
+        </div>
+
+        {% assign categories = "rss,read-it-later,analytics,url-shortener" | split: "," %}
+        {% for category in categories %}
+            {% assign products = site.data.products | where: "category", category | where: "featured", true %}
+            {% if products.size > 0 %}
+                <div class="mb-6">
+                    <h3 class="title is-3 has-text-centered">
+                        {% if category == 'rss' %}RSS Readers
+                        {% elsif category == 'read-it-later' %}Read-It-Later & Bookmarking
+                        {% elsif category == 'analytics' %}Analytics
+                        {% elsif category == 'url-shortener' %}URL Shorteners
+                        {% endif %}
+                    </h3>
+                    <div class="columns is-centered is-multiline mt-4">
+                        {% for product in products %}
+                            <div class="column is-one-third">
+                                <div class="card product-card">
+                                    <div class="card-content has-text-centered">
+                                        <p class="title is-4 mb-5">
+                                            {{ product.name }}
+                                            {% assign expiry_timestamp = site.coupon_expiry | date: "%s" %}
+                                            {% assign current_timestamp = site.time | date: "%s" %}
+                                            {% if product.key == 'freshrss' and site.coupon_code and site.coupon_code != "" and expiry_timestamp > current_timestamp %}
+                                                <span class="tag is-success ml-2">{{ site.coupon_discount_percent }}% OFF COUPON</span>
+                                            {% endif %}
+                                        </p>
+                                        <p class="is-6">{{ product.description }}</p>
+                                    </div>
+                                    <footer class="card-footer">
+                                        <a href="/products/{{ product.key }}/" class="card-footer-item has-text-weight-bold">Learn More</a>
+
+                                        {% assign action_url = product.subscribe_url | default: product.preorder_url %}
+                                        {% assign action_text = "Get Started" %}
+                                        {% if product.action == 'subscribe' %}
+                                          {% assign action_text = "Subscribe" %}
+                                        {% elsif product.action == 'pre-order' %}
+                                          {% assign action_text = "Pre-Order" %}
+                                        {% elsif product.action == 'join waitlist' %}
+                                          {% assign action_text = "Join Waitlist" %}
+                                          {% assign action_url = "/products/" | append: product.key | append: "/" %}
+                                        {% endif %}
+
+                                        {% assign expiry_timestamp = site.coupon_expiry | date: "%s" %}
+                                        {% assign current_timestamp = site.time | date: "%s" %}
+                                        {% if product.key == 'freshrss' and site.coupon_code and site.coupon_code != "" and expiry_timestamp > current_timestamp %}
+                                          {% assign action_url_final = action_url | append: "?prefilled_promo_code=" | append: site.coupon_code %}
+                                        {% else %}
+                                          {% assign action_url_final = action_url %}
+                                        {% endif %}
+
+                                        <a href="{{ action_url_final }}" class="card-footer-item has-text-weight-bold has-text-white has-background-grey-dark">
+                                            <span>{{ action_text }}</span>
+                                            <span class="icon is-small ml-2"><i class="fas fa-arrow-right"></i></span>
+                                        </a>
+                                    </footer>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<section id="principles" class="section">
+  <div class="container">
+    <div class="has-text-centered mb-6">
+      <h2 class="title is-2">Our Principles</h2>
+    </div>
+        <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title is-4">Privacy First</p>
+                    <div class="content">
+                        Your data belongs to you. We don't track your activity on our products, analyze your content, or sell your information. Period.
+                    </div>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title is-4">Open Source</p>
+                    <div class="content">
+                        We build on and contribute to trusted open-source software. No black boxes, no vendor lock-in.
+                    </div>
+                </article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child box">
+                    <p class="title is-4">Data Portability</p>
+                    <div class="content">
+                        If you're not happy, you can take your data and go. We make it easy to migrate, because your freedom to choose matters.
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-vcentered">
+            <div class="column is-7">
+                <h3 class="title is-3">Frequently Asked Questions</h3>
+                <div class="content">
+                    <div class="box">
+                        <p><strong>What is CloudBreak?</strong></p>
+                        <p>We provide managed hosting for a curated set of open-source applications, so you can enjoy the benefits of great software without the hassle of running your own server. We handle installation, updates, and maintenance.</p>
+                    </div>
+                    <div class="box">
+                        <p><strong>Why choose CloudBreak over a free service?</strong></p>
+                        <p>When a service is free, <strong>*you*</strong> are often the product. Our business model is simple: you pay a small fee for a great service. This allows us to be sustainable while protecting your privacy, not exploiting it.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-4 is-offset-1">
+                 <div class="box has-text-centered has-background-light">
+                    <h3 class="title is-4">Don't see your favorite app?</h3>
+                    <p>We're always looking for new services to offer. Let us know what you'd like to see next!</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNEFwFRUTbWAjDvHvrh6tCMlBDGDAAsiH9OHkxveLzmpEsRA/viewform" class="button is-primary mt-4">Request a Service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
