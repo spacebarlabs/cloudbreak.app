@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Privacy You Deserve | CloudBreak</title>
+    <meta name="description" content="What happened to the software we use every day? Take back your privacy with fully-managed open-source apps.">
+    <meta name="keywords" content="CloudBreak, privacy, open source, manifesto, letter, self-hosting">
+    <meta name="author" content="Space Bar Labs">
+    <link rel="canonical" href="https://cloudbreak.app/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'wait_for_update': 500
+      });
+      function updateConsent(consent) {
+        gtag('consent', 'update', consent);
+      }
+      if (localStorage.getItem('analytics_consent') === 'granted') {
+        updateConsent({
+          'analytics_storage': 'granted'
+        });
+      }
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C1RRDV39YN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      var userProperties = { 'visitor_type': 'new_visitor' };
+      gtag('config', 'G-C1RRDV39YN', {
+        'user_properties': userProperties,
+        'page_title': document.title,
+        'send_page_view': true
+      });
+    </script>
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html {
+        scroll-behavior: smooth;
+        background: #fff;
+      }
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #1a1a2e;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      /* ── Topnav ──────────────────────────────────── */
+      .letter-nav {
+        background: #0f172a;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 0 1.5rem;
+      }
+      .letter-nav-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+      }
+      .letter-nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+      }
+      .letter-nav-brand img {
+        height: 24px;
+        width: auto;
+      }
+      .letter-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .letter-nav-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.4rem 0.65rem;
+        border-radius: 6px;
+        transition: color 0.15s, background 0.15s;
+        white-space: nowrap;
+      }
+      .letter-nav-links a:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+      }
+      .letter-nav-links a.nav-podcasts:hover { color: #c4b5fd; background: rgba(139, 92, 246, 0.15); }
+      .letter-nav-links a.nav-news:hover { color: #fdba74; background: rgba(234, 88, 12, 0.15); }
+      .letter-nav-links a.nav-readlater:hover { color: #fca5a5; background: rgba(220, 38, 38, 0.15); }
+      .letter-nav-sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(255,255,255,0.12);
+        margin: 0 0.35rem;
+      }
+      .letter-nav-burger {
+        display: none;
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .letter-nav-mobile {
+        display: none;
+        background: #0f172a;
+        padding: 0.5rem 1.5rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .letter-nav-mobile.is-open { display: block; }
+      .letter-nav-mobile a {
+        display: block;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: color 0.15s;
+      }
+      .letter-nav-mobile a:last-child { border-bottom: none; }
+      .letter-nav-mobile a:hover { color: #fff; }
+      @media (max-width: 768px) {
+        .letter-nav-links { display: none; }
+        .letter-nav-burger { display: block; }
+      }
+      /* ── Hero ─────────────────────────────────────── */
+      .letter-hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%);
+        padding: 6rem 1.5rem 5.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .letter-hero::before {
+        content: ''; position: absolute; top: -120px; right: -80px; width: 400px; height: 400px;
+        border-radius: 50%; background: rgba(255,255,255,0.03); pointer-events: none;
+      }
+      .letter-hero::after {
+        content: ''; position: absolute; bottom: -100px; left: -60px; width: 300px; height: 300px;
+        border-radius: 50%; background: rgba(255,255,255,0.02); pointer-events: none;
+      }
+      .letter-hero-eyebrow {
+        display: inline-block;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 0.3rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #94a3b8;
+        margin-bottom: 1.5rem;
+      }
+      .letter-hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin: 0 auto 1.25rem;
+        max-width: 800px;
+        letter-spacing: -0.025em;
+      }
+      .letter-hero p {
+        font-size: 1.25rem;
+        color: #94a3b8;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+      .letter-hero-cta {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-top: 2.5rem;
+        flex-wrap: wrap;
+      }
+      .letter-hero-btn-primary {
+        background: linear-gradient(135deg, #06b6d4, #0891b2);
+        color: #fff;
+        padding: 0.85rem 2.2rem;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+        box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+      }
+      .letter-hero-btn-primary:hover {
+        background: linear-gradient(135deg, #22d3ee, #06b6d4);
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.55);
+        transform: translateY(-2px);
+      }
+      .letter-hero-btn-ghost {
+        background: transparent;
+        color: #cbd5e1;
+        border: 2px solid rgba(255,255,255,0.35);
+        padding: 0.85rem 2.2rem;
+        border-radius: 8px;
+        font-size: 1.05rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.2s;
+      }
+      .letter-hero-btn-ghost:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.6);
+        color: #fff;
+      }
+
+      /* ── Main Landing Body ───────────────────────── */
+      .landing-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 5rem 1.5rem;
+      }
+      .landing-section-title {
+        text-align: center;
+        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-weight: 800;
+        color: #0f172a;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+      .landing-section-subtitle {
+        text-align: center;
+        font-size: 1.15rem;
+        color: #64748b;
+        max-width: 600px;
+        margin: 0 auto 4rem;
+        line-height: 1.7;
+      }
+
+      /* ── Splits ──────────────────────────────────── */
+      .letter-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-bottom: 6rem;
+      }
+      .letter-split-reverse .letter-split-text { order: 2; }
+      .letter-split-reverse .letter-split-illustration { order: 1; }
+      .letter-split-text h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 1.25rem;
+        line-height: 1.2;
+      }
+      .letter-split-text p {
+        font-size: 1.1rem;
+        color: #475569;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+      .letter-split-illustration img {
+        width: 100%;
+        border-radius: 16px;
+        box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+      }
+
+      /* ── Pillars ─────────────────────────────────── */
+      .letter-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 6rem;
+      }
+      .letter-pillar-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .letter-pillar-card:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transform: translateY(-4px);
+      }
+      .letter-pillar-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        color: #fff;
+        margin: 0 auto 1.25rem;
+        background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      }
+      .letter-pillar-card h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 1rem;
+      }
+      .letter-pillar-card p {
+        font-size: 1rem;
+        color: #475569;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      /* ── App Grid ────────────────────────────────── */
+      .app-grid-container {
+        background: #f8fafc;
+        padding: 5rem 0;
+        border-top: 1px solid #e2e8f0;
+        border-bottom: 1px solid #e2e8f0;
+      }
+      .letter-app-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      .letter-app-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .letter-app-card:hover {
+        box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+        transform: translateY(-4px);
+      }
+      .letter-app-card-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.25rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        color: white;
+        font-size: 2rem;
+      }
+      .icon-news { background: #555; }
+      .icon-bookmarks { background: #555; }
+      .icon-audio { background: #555; }
+      .letter-app-card h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 0.75rem;
+      }
+      .letter-app-card p {
+        font-size: 0.95rem;
+        color: #475569;
+        line-height: 1.65;
+        margin: 0 0 1rem;
+      }
+      .app-names {
+        display: inline-block;
+        font-size: 0.85rem;
+        color: #64748b;
+        font-weight: 600;
+        background: #f1f5f9;
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+      }
+
+      /* ── Pricing ─────────────────────────────────── */
+      .letter-pricing-section {
+        background: linear-gradient(135deg, #f8fafc, #eef2f7);
+        border-radius: 24px;
+        padding: 4rem 2rem;
+        margin: 6rem auto 3rem;
+        text-align: center;
+        max-width: 900px;
+      }
+      .letter-pricing-section h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 0.5rem;
+      }
+      .letter-pricing-section > p {
+        color: #64748b;
+        font-size: 1.1rem;
+        margin: 0 0 3rem;
+      }
+      .letter-pricing-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+      .letter-pricing-card {
+        background: #fff;
+        border: 2px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        position: relative;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .letter-pricing-card:hover {
+        box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+        transform: translateY(-4px);
+      }
+      .letter-pricing-featured {
+        border-color: #1d4ed8;
+        box-shadow: 0 8px 30px rgba(29, 78, 216, 0.15);
+      }
+      .letter-pricing-badge {
+        position: absolute;
+        top: -14px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 0.4rem 1.2rem;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+      .letter-pricing-card h4 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 1rem;
+      }
+      .letter-pricing-price {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.1;
+        margin-bottom: 0.25rem;
+      }
+      .letter-pricing-price span {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #64748b;
+      }
+      .letter-pricing-note {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 2rem;
+      }
+      .letter-pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem;
+        text-align: left;
+      }
+      .letter-pricing-features li {
+        font-size: 0.95rem;
+        color: #475569;
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .letter-pricing-features li i {
+        color: #34d399;
+        margin-top: 0.25rem;
+        flex-shrink: 0;
+      }
+      .letter-pricing-btn {
+        display: block;
+        padding: 0.85rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .letter-pricing-btn-primary {
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+      }
+      .letter-pricing-btn-primary:hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45);
+        transform: translateY(-2px);
+      }
+      .letter-pricing-btn-secondary {
+        background: #f1f5f9;
+        color: #1e3a5f;
+        border: 1px solid #e2e8f0;
+      }
+      .letter-pricing-btn-secondary:hover {
+        background: #e2e8f0;
+        color: #0f172a;
+      }
+
+      /* ── Founder Signoff ─────────────────────────── */
+      .founder-signoff {
+        max-width: 600px;
+        margin: 4rem auto 0;
+        padding-top: 3rem;
+        border-top: 1px solid #e2e8f0;
+        text-align: center;
+      }
+      .founder-signoff p {
+        font-size: 1.1rem;
+        color: #334155;
+        line-height: 1.7;
+      }
+
+      /* ── Footer ───────────────────────────────────── */
+      .letter-footer {
+        background: #0f172a;
+        padding: 3.5rem 1.5rem;
+        text-align: center;
+        color: #64748b;
+      }
+      .letter-footer-inner {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .letter-footer p {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+        color: #94a3b8;
+      }
+      .letter-footer a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .letter-footer a:hover { color: #fff; }
+      .letter-footer-social {
+        margin: 1.5rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+      .letter-footer-social a {
+        color: #64748b;
+        font-size: 1.5rem;
+      }
+      .letter-footer-social a:hover { color: #fff; }
+      .letter-footer-links {
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+      .letter-footer-pledges {
+        margin-top: 2rem;
+        font-size: 0.85rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
+      .letter-footer-pledges i.fa-leaf { color: #34d399; }
+      .letter-footer-pledges i.fa-heart { color: #a78bfa; }
+
+      @media (max-width: 768px) {
+        .letter-split { grid-template-columns: 1fr; gap: 2.5rem; }
+        .letter-split-reverse .letter-split-text { order: 1; }
+        .letter-split-reverse .letter-split-illustration { order: 2; }
+        .letter-pillars { grid-template-columns: 1fr; }
+        .letter-app-grid { grid-template-columns: 1fr; }
+        .letter-pricing-cards { grid-template-columns: 1fr; }
+        .letter-pricing-section { padding: 3rem 1.5rem; margin-top: 4rem; }
+      }
+      @media (min-width: 769px) and (max-width: 960px) {
+        .letter-pillars { grid-template-columns: repeat(2, 1fr); }
+        .letter-app-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+    </style>
+</head>
+<body>
+
+    <div id="letter-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#f0f9ff;border-top:1px solid #bae6fd;padding:0.75rem 1.5rem;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;font-size:0.85rem;color:#334155;">
+      <span>We use analytics to improve our services. This data is anonymous.</span>
+      <span style="display:flex;gap:0.5rem;">
+        <button onclick="acceptConsent()" style="background:#1d4ed8;color:#fff;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Accept</button>
+        <button onclick="rejectConsent()" style="background:#e2e8f0;color:#475569;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Reject</button>
+      </span>
+    </div>
+
+    <nav class="letter-nav" role="navigation" aria-label="main navigation">
+      <div class="letter-nav-inner">
+        <a class="letter-nav-brand" href="/">
+          <img src="/logo.svg" alt="CloudBreak Logo">
+          <span>CloudBreak</span>
+        </a>
+        <ul class="letter-nav-links">
+          <li><a href="#apps" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcasts</a></li>
+          <li><a href="#apps" class="nav-news"><i class="fas fa-rss"></i> News</a></li>
+          <li><a href="#apps" class="nav-readlater"><i class="fas fa-bookmark"></i> Read Later</a></li>
+          <li class="letter-nav-sep" role="presentation"></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+        <button class="letter-nav-burger" id="letterBurger" aria-label="menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="letter-nav-mobile" id="letterMobileMenu">
+        <a href="#apps" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a>
+        <a href="#apps" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feed Readers</a>
+        <a href="#apps" class="nav-readlater"><i class="fas fa-bookmark"></i> Bookmarking</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/about/">About</a>
+      </div>
+    </nav>
+
+    <header class="letter-hero">
+      <div class="letter-hero-eyebrow">The Privacy You Deserve</div>
+      <h1>Take back the software that runs your life.</h1>
+      <p>We provide a bundle of the world's best open-source apps. Simple, fully-managed, and completely private. No IT expertise required.</p>
+      <div class="letter-hero-cta">
+        <a href="#apps" class="letter-hero-btn-primary"><i class="fas fa-th-large"></i> Explore Apps</a>
+        <a href="/letter/" class="letter-hero-btn-ghost"><i class="fas fa-envelope-open-text"></i> Read Our Mission</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="landing-container">
+
+        <section class="letter-split">
+          <div class="letter-split-text">
+            <h3>It wasn't always this way.</h3>
+            <p>We used to buy software. It did what you told it to do, and it kept to itself. Today, most software runs in the cloud. It doesn’t cost anything upfront, but it's far from free. And it’s actively watching you.</p>
+            <p>Using modern apps enters you into a hidden surveillance agreement. The platform quietly harvests your habits, inputs, and attention to sell to advertisers.</p>
+          </div>
+          <div class="letter-split-illustration">
+            <img src="/letter/panel1.jpg" alt="Big Tech companies monitoring a user" />
+          </div>
+        </section>
+
+        <section class="letter-split letter-split-reverse">
+          <div class="letter-split-text">
+            <h3>It needs to be easier.</h3>
+            <p>Community-built, open-source software is the answer, but adoption has stagnated because taking back control meant becoming a part-time IT professional.</p>
+            <p>You shouldn’t have to learn command-line interfaces, manage AWS accounts, or know how to work a Raspberry Pi just to use a decent app without being tracked.</p>
+          </div>
+          <div class="letter-split-illustration">
+            <img src="/letter/panel2.jpg" alt="Difficult installation" />
+          </div>
+        </section>
+
+        <h2 class="landing-section-title" style="margin-top: 4rem;">Introducing CloudBreak</h2>
+        <p class="landing-section-subtitle">Pay with your money, not with your data.</p>
+
+        <div class="letter-pillars">
+          <div class="letter-pillar-card">
+            <div class="letter-pillar-icon"><i class="fas fa-code"></i></div>
+            <h4>The code is open</h4>
+            <p>Anyone gets to inspect it. Know exactly what the software is—and isn’t—doing. It’s yours. It can’t be taken away.</p>
+          </div>
+          <div class="letter-pillar-card">
+            <div class="letter-pillar-icon"><i class="fas fa-server"></i></div>
+            <h4>We host it, you own it</h4>
+            <p>We handle the servers, the uptime, and the updates. You retain 100% ownership of your data to export and walk away whenever you want.</p>
+          </div>
+          <div class="letter-pillar-card">
+            <div class="letter-pillar-icon"><i class="fas fa-mobile-screen"></i></div>
+            <h4>Frictionless access</h4>
+            <p>A fair, transparent subscription. Sign up and log in with only your phone. No laptop or computer science degree needed.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <section id="apps" class="app-grid-container">
+        <h2 class="landing-section-title">Tools You Use Every Day</h2>
+        <p class="landing-section-subtitle">We're starting with media consumption—where Big Tech's grip on our attention is the tightest.</p>
+
+        <div class="letter-app-grid">
+          <div class="letter-app-card">
+            <div class="letter-app-card-icon icon-audio"><i class="fas fa-podcast"></i></div>
+            <h4>Podcasts &amp; Audio</h4>
+            <p>Stream and download your favorite shows without someone tracking what you skip and what you listen to daily.</p>
+            <div class="app-names">PinePods</div>
+          </div>
+
+          <div class="letter-app-card">
+            <div class="letter-app-card-icon icon-news"><i class="fas fa-rss"></i></div>
+            <h4>News &amp; Feeds</h4>
+            <p>Clean, powerful feed readers. No algorithms, no promoted content, no hidden trackers monitoring your scrolling.</p>
+            <div class="app-names">Miniflux &bull; <a href="compare/freshrss/">FreshRSS</a></div>
+          </div>
+
+          <div class="letter-app-card">
+            <div class="letter-app-card-icon icon-bookmarks"><i class="fas fa-bookmark"></i></div>
+            <h4>Bookmarking</h4>
+            <p>Keep your content organized with tags and notes. Make it available offline to read later, without distractions.</p>
+            <div class="app-names">Linkding &bull; Readeck &bull; Wallabag</div>
+          </div>
+        </div>
+      </section>
+
+      <div class="landing-container" style="padding-top: 2rem; padding-bottom: 2rem;">
+
+        <div class="letter-pricing-section" id="pricing">
+          <h3>Simple, Transparent Pricing</h3>
+          <p>No hidden fees, no data selling.</p>
+          <div class="letter-pricing-cards">
+            <div class="letter-pricing-card">
+              <h4>A La Carte</h4>
+              <div class="letter-pricing-price">$1<span>/mo</span></div>
+              <div class="letter-pricing-note">and up, billed annually</div>
+              <ul class="letter-pricing-features">
+                <li><i class="fas fa-check"></i> Pick only the apps you need</li>
+                <li><i class="fas fa-check"></i> Full data ownership &amp; export</li>
+                <li><i class="fas fa-check"></i> Fully managed hosting</li>
+                <li><i class="fas fa-check"></i> 2-week free trial</li>
+              </ul>
+              <a href="/compare/freshrss" class="letter-pricing-btn letter-pricing-btn-secondary">Compare Apps</a>
+            </div>
+            <div class="letter-pricing-card letter-pricing-featured">
+              <div class="letter-pricing-badge">Best Value</div>
+              <h4>All-Access Pass</h4>
+              <div class="letter-pricing-price">$8<span>/mo</span></div>
+              <div class="letter-pricing-note">billed annually</div>
+              <ul class="letter-pricing-features">
+                <li><i class="fas fa-check"></i> Every app, one subscription</li>
+                <li><i class="fas fa-check"></i> Full data ownership &amp; export</li>
+                <li><i class="fas fa-check"></i> Fully managed hosting</li>
+                <li><i class="fas fa-check"></i> 2-week free trial</li>
+              </ul>
+              <a href="/products/freshrss/" class="letter-pricing-btn letter-pricing-btn-primary">Get Started</a>
+            </div>
+          </div>
+
+          <p style="margin-top: 3rem; font-size: 0.9rem; margin-bottom: 0;">
+            <em>A portion of your subscription funds <strong>open source</strong> and <strong>environmental charities</strong>.</em>
+          </p>
+        </div>
+
+        <div class="founder-signoff">
+          <p>Not long ago, software was on our side. Now, our goal is to help lead the way to a brighter future. We’re closer than you think.</p>
+          <a href="/products/freshrss/" class="letter-pricing-btn letter-pricing-btn-primary" style="margin-top: 4em">Join us</a>
+        </div>
+      </div>
+    </main>
+
+    <footer class="letter-footer">
+      <div class="letter-footer-inner">
+        <p>&copy; 2026 Space Bar Labs, LLC</p>
+        <div class="letter-footer-social">
+          <a href="https://mastodon.social/@cloudbreak_app" rel="me noopener" target="_blank" aria-label="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+          <a href="https://x.com/cloudbreak_app" rel="noopener" target="_blank" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/spacebarlabs" rel="noopener" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="#apps">Browse Apps</a>
+          <a href="/about/">About</a>
+          <a href="/support/">Support</a>
+          <a href="/forum">Forum</a>
+        </div>
+        <div class="letter-footer-links" style="margin-top: 0.5rem; font-size: 0.8rem;">
+          <a href="https://spacebarlabs.com/privacy-policy/">Privacy</a>
+          <a href="https://spacebarlabs.com/terms-of-service/">Terms</a>
+          <a href="https://spacebarlabs.com/security/">Security</a>
+        </div>
+        <div class="letter-footer-pledges">
+          <a href="/#sustainability"><i class="fas fa-leaf"></i> 1% Sustainability</a> &nbsp;&middot;&nbsp;
+          <a href="/#open-source-pledge"><i class="fas fa-heart"></i> 10% Open Source</a>
+        </div>
+        <p style="margin-top: 2rem; font-size: 0.8rem;">
+          ♥️ Love the mission but you self-host your apps? <strong>Please share CloudBreak</strong>. More people using open source benefits everyone.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.getElementById('letterBurger');
+        var menu = document.getElementById('letterMobileMenu');
+        if (burger && menu) {
+          burger.addEventListener('click', function() {
+            menu.classList.toggle('is-open');
+            var expanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', !expanded);
+          });
+        }
+      });
+    </script>
+    <script>
+      if (!localStorage.getItem('analytics_consent')) {
+        document.getElementById('letter-consent-banner').style.display = 'flex';
+      }
+      function acceptConsent() {
+        localStorage.setItem('analytics_consent', 'granted');
+        updateConsent({ 'analytics_storage': 'granted' });
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+      function rejectConsent() {
+        localStorage.setItem('analytics_consent', 'denied');
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+    </script>
+</body>
+</html>

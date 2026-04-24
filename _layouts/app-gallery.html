@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }}</title>
+    <meta name="description" content="{{ page.description | escape }}">
+    <meta name="author" content="Space Bar Labs">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    {% if site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html { scroll-behavior: smooth; background: #fff; }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #1a1a2e;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Topnav ──────────────────────────────────── */
+      .letter-nav {
+        background: #0f172a;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 0 1.5rem;
+      }
+      .letter-nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+      }
+      .letter-nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+      }
+      .letter-nav-brand img { height: 24px; width: auto; }
+      .letter-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .letter-nav-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.4rem 0.65rem;
+        border-radius: 6px;
+        transition: color 0.15s, background 0.15s;
+        white-space: nowrap;
+      }
+      .letter-nav-links a:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+      }
+      .letter-nav-sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(255,255,255,0.12);
+        margin: 0 0.35rem;
+      }
+      .letter-nav-burger {
+        display: none;
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .letter-nav-mobile {
+        display: none;
+        background: #0f172a;
+        padding: 0.5rem 1.5rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .letter-nav-mobile.is-open { display: block; }
+      .letter-nav-mobile a {
+        display: block;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: color 0.15s;
+      }
+      .letter-nav-mobile a:last-child { border-bottom: none; }
+      .letter-nav-mobile a:hover { color: #fff; }
+      @media (max-width: 768px) {
+        .letter-nav-links { display: none; }
+        .letter-nav-burger { display: block; }
+      }
+
+      /* ── Gallery Hero ────────────────────────────── */
+      .gallery-hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%);
+        padding: 3rem 1.5rem 2.5rem;
+        text-align: center;
+      }
+      .gallery-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-weight: 500;
+        margin-bottom: 1.25rem;
+        transition: color 0.15s;
+      }
+      .gallery-back:hover { color: #fff; }
+      .gallery-hero-platform {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 0.3rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #94a3b8;
+        margin-bottom: 1rem;
+      }
+      .gallery-hero h1 {
+        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.2;
+        margin: 0 auto 0.75rem;
+        max-width: 600px;
+        letter-spacing: -0.025em;
+      }
+      .gallery-hero p {
+        font-size: 1rem;
+        color: #94a3b8;
+        max-width: 480px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* ── Gallery Body ────────────────────────────── */
+      .gallery-body {
+        background: #f8fafc;
+        padding: 3rem 1.5rem 4rem;
+      }
+      .gallery-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+
+      /* ── Gallery Grid ────────────────────────────── */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1.25rem;
+      }
+      .gallery-item {
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        transition: box-shadow 0.2s, transform 0.2s;
+        position: relative;
+      }
+      .gallery-item:hover {
+        box-shadow: 0 8px 28px rgba(0,0,0,0.1);
+        transform: translateY(-3px);
+      }
+      .gallery-item a {
+        display: block;
+        position: relative;
+      }
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .gallery-item-zoom {
+        position: absolute;
+        bottom: 0.6rem;
+        right: 0.75rem;
+        background: rgba(0,0,0,0.45);
+        color: #fff;
+        border-radius: 6px;
+        width: 1.9rem;
+        height: 1.9rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+      }
+      .gallery-item:hover .gallery-item-zoom { opacity: 1; }
+      .gallery-item-caption {
+        padding: 0.75rem 1rem;
+        font-size: 0.82rem;
+        color: #64748b;
+        font-weight: 500;
+        border-top: 1px solid #f1f5f9;
+      }
+
+      /* ── Lightbox ────────────────────────────────── */
+      .cb-lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(0,0,0,0.88);
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+      }
+      .cb-lightbox.is-open { display: flex; }
+      .cb-lightbox-img {
+        max-width: 92vw;
+        max-height: 88vh;
+        border-radius: 10px;
+        box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+        object-fit: contain;
+      }
+      .cb-lightbox-close {
+        position: fixed;
+        top: 1rem;
+        right: 1.25rem;
+        background: rgba(255,255,255,0.12);
+        border: none;
+        color: #fff;
+        font-size: 1.4rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s;
+      }
+      .cb-lightbox-close:hover { background: rgba(255,255,255,0.25); }
+      .cb-lightbox-prev,
+      .cb-lightbox-next {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.12);
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        width: 2.8rem;
+        height: 2.8rem;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.15s;
+      }
+      .cb-lightbox-prev { left: 1rem; }
+      .cb-lightbox-next { right: 1rem; }
+      .cb-lightbox-prev:hover,
+      .cb-lightbox-next:hover { background: rgba(255,255,255,0.25); }
+
+      /* ── Footer ───────────────────────────────────── */
+      .letter-footer {
+        background: #0f172a;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        color: #64748b;
+      }
+      .letter-footer-inner { max-width: 640px; margin: 0 auto; }
+      .letter-footer p { font-size: 0.8rem; margin: 0.4rem 0; color: #64748b; }
+      .letter-footer a { color: #94a3b8; text-decoration: none; transition: color 0.15s; }
+      .letter-footer a:hover { color: #fff; }
+      .letter-footer-social {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .letter-footer-social a { color: #475569; font-size: 1.1rem; }
+      .letter-footer-social a:hover { color: #fff; }
+      .letter-footer-links { margin-top: 1rem; font-size: 0.78rem; }
+      .letter-footer-links a { margin: 0 0.35rem; }
+      .letter-footer-pledges { margin-top: 1rem; font-size: 0.78rem; }
+      .letter-footer-pledges i.fa-leaf { color: #34d399; }
+      .letter-footer-pledges i.fa-heart { color: #a78bfa; }
+
+      @media (max-width: 640px) {
+        .gallery-grid { grid-template-columns: 1fr; }
+        .gallery-body { padding: 2rem 1.25rem 3rem; }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- ── Consent Banner ──────────────────────────── -->
+    <div id="letter-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#f0f9ff;border-top:1px solid #bae6fd;padding:0.75rem 1.5rem;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;font-size:0.85rem;color:#334155;">
+      <span>We use analytics to improve our services. This data is anonymous.</span>
+      <span style="display:flex;gap:0.5rem;">
+        <button onclick="acceptConsent()" style="background:#1d4ed8;color:#fff;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Accept</button>
+        <button onclick="rejectConsent()" style="background:#e2e8f0;color:#475569;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Reject</button>
+      </span>
+    </div>
+
+    <!-- ── Nav ──────────────────────────────────────── -->
+    <nav class="letter-nav" role="navigation" aria-label="main navigation">
+      <div class="letter-nav-inner">
+        <a class="letter-nav-brand" href="/">
+          <img src="/logo.svg" alt="CloudBreak Logo">
+          <span>CloudBreak</span>
+        </a>
+        <ul class="letter-nav-links">
+          <li><a href="/#browse" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a></li>
+          <li><a href="/#browse" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feeds</a></li>
+          <li><a href="/#browse" class="nav-readlater"><i class="fas fa-bookmark"></i> Read Later</a></li>
+          <li class="letter-nav-sep" role="presentation"></li>
+          <li><a href="/#browse">Pricing</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/support/">Support</a></li>
+        </ul>
+        <button class="letter-nav-burger" id="letterBurger" aria-label="menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="letter-nav-mobile" id="letterMobileMenu">
+        <a href="/#browse" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a>
+        <a href="/#browse" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feed Readers</a>
+        <a href="/#browse" class="nav-readlater"><i class="fas fa-bookmark"></i> Bookmarking &amp; Read Later</a>
+        <a href="/#browse">Pricing</a>
+        <a href="/about/">About</a>
+        <a href="/support/">Support</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ─────────────────────────────────────── -->
+    <header class="gallery-hero">
+      <div>
+        <a href="{{ page.back_url }}" class="gallery-back"><i class="fas fa-arrow-left"></i> Back to Comparison</a>
+      </div>
+      <div class="gallery-hero-platform">
+        <i class="{{ page.platform_icon }}"></i>
+        {{ page.platform }}
+      </div>
+      <h1>{{ page.app_name }}</h1>
+      <p>{{ page.description }}</p>
+    </header>
+
+    <!-- ── Gallery ───────────────────────────────────── -->
+    <main class="gallery-body">
+      <div class="gallery-inner">
+        <div class="gallery-grid" id="galleryGrid">
+          {% for image in page.images %}
+          <div class="gallery-item">
+            <a href="{{ image.src }}" class="cb-gallery-link" aria-label="{{ image.alt }}">
+              <img src="{{ image.thumb | default: image.src }}" alt="{{ image.alt }}" loading="lazy">
+              <span class="gallery-item-zoom"><i class="fas fa-expand"></i></span>
+            </a>
+            {% if image.caption %}
+            <div class="gallery-item-caption">{{ image.caption }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </main>
+
+    <!-- ── Lightbox ──────────────────────────────── -->
+    <div id="cbLightbox" class="cb-lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="cb-lightbox-close" id="cbLightboxClose" aria-label="Close"><i class="fas fa-times"></i></button>
+      <button class="cb-lightbox-prev" id="cbLightboxPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+      <img src="" alt="" class="cb-lightbox-img" id="cbLightboxImg" data-proofer-ignore>
+      <button class="cb-lightbox-next" id="cbLightboxNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
+    <!-- ── Footer ──────────────────────────────────── -->
+    <footer class="letter-footer">
+      <div class="letter-footer-inner">
+        <p>&copy; {{ site.time | date: '%Y' }} Space Bar Labs, LLC</p>
+        <div class="letter-footer-social">
+          <a href="https://mastodon.social/@cloudbreak_app" rel="me noopener" target="_blank" aria-label="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+          <a href="https://x.com/cloudbreak_app" rel="noopener" target="_blank" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/spacebarlabs" rel="noopener" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="/">Browse Apps</a> |
+          <a href="/about/">About</a> |
+          <a href="/support/">Support</a> |
+          <a href="/forum">Forum</a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="https://spacebarlabs.com/privacy-policy/">Privacy</a> |
+          <a href="https://spacebarlabs.com/terms-of-service/">Terms</a> |
+          <a href="https://spacebarlabs.com/security/">Security</a>
+        </div>
+        <div class="letter-footer-pledges">
+          <a href="/#sustainability"><i class="fas fa-leaf"></i> 1% Sustainability</a> &nbsp;&middot;&nbsp;
+          <a href="/#open-source-pledge"><i class="fas fa-heart"></i> 10% Open Source</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mobile nav
+        var burger = document.getElementById('letterBurger');
+        var menu = document.getElementById('letterMobileMenu');
+        if (burger && menu) {
+          burger.addEventListener('click', function() {
+            menu.classList.toggle('is-open');
+            var expanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', !expanded);
+          });
+        }
+
+        // Lightbox
+        var galleryLinks = Array.from(document.querySelectorAll('.cb-gallery-link'));
+        var lightbox = document.getElementById('cbLightbox');
+        var lbImg = document.getElementById('cbLightboxImg');
+        var lbClose = document.getElementById('cbLightboxClose');
+        var lbPrev = document.getElementById('cbLightboxPrev');
+        var lbNext = document.getElementById('cbLightboxNext');
+        var currentIdx = 0;
+
+        function openLightbox(idx) {
+          currentIdx = idx;
+          var link = galleryLinks[currentIdx];
+          lbImg.src = link.getAttribute('href');
+          lbImg.alt = link.getAttribute('aria-label') || '';
+          lightbox.classList.add('is-open');
+          lbClose.focus();
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('is-open');
+          lbImg.src = '';
+          document.body.style.overflow = '';
+          if (galleryLinks[currentIdx]) galleryLinks[currentIdx].focus();
+        }
+
+        galleryLinks.forEach(function(link, idx) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openLightbox(idx);
+          });
+        });
+
+        lbClose.addEventListener('click', closeLightbox);
+
+        lbPrev.addEventListener('click', function() {
+          currentIdx = (currentIdx - 1 + galleryLinks.length) % galleryLinks.length;
+          var link = galleryLinks[currentIdx];
+          lbImg.src = link.getAttribute('href');
+          lbImg.alt = link.getAttribute('aria-label') || '';
+        });
+
+        lbNext.addEventListener('click', function() {
+          currentIdx = (currentIdx + 1) % galleryLinks.length;
+          var link = galleryLinks[currentIdx];
+          lbImg.src = link.getAttribute('href');
+          lbImg.alt = link.getAttribute('aria-label') || '';
+        });
+
+        lightbox.addEventListener('click', function(e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+          if (!lightbox.classList.contains('is-open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          if (e.key === 'ArrowLeft') lbPrev.click();
+          if (e.key === 'ArrowRight') lbNext.click();
+        });
+      });
+    </script>
+
+    <script>
+      if (!localStorage.getItem('analytics_consent')) {
+        document.getElementById('letter-consent-banner').style.display = 'flex';
+      }
+      function acceptConsent() {
+        localStorage.setItem('analytics_consent', 'granted');
+        updateConsent({ 'analytics_storage': 'granted' });
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+      function rejectConsent() {
+        localStorage.setItem('analytics_consent', 'denied');
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+    </script>
+</body>
+</html>

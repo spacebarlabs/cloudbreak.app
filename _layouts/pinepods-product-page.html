@@ -1,0 +1,333 @@
+---
+layout: default
+---
+{% assign product = site.data.products | where: "key", "pinepods" | first %}
+
+<style>
+  .pinepods-hero {
+    background: linear-gradient(135deg, #0d2b25 0%, #163d33 50%, #0a2820 100%);
+  }
+  .pinepods-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .pinepods-icon svg {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+  .pinepods-branding {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .pinepods-branding .title {
+    font-size: 4.5rem;
+  }
+  .pinepods-branding .managed-by {
+    font-size: 1.25rem;
+  }
+
+  .pinepods-price-highlight {
+    color: #7ee8c8;
+  }
+  .pinepods-price-original {
+    opacity: 0.6;
+  }
+
+  /* Mobile styles */
+  @media screen and (max-width: 768px) {
+    .pinepods-icon {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .pinepods-icon svg {
+      width: 64px;
+      height: 64px;
+    }
+    .pinepods-branding .title {
+      font-size: 3rem;
+    }
+    .pinepods-branding .managed-by {
+      margin-left: 0 !important;
+      margin-top: 0.5rem !important;
+    }
+  }
+</style>
+
+<section class="hero pinepods-hero is-medium">
+  <div class="hero-body">
+    <div class="container">
+      <div class="pinepods-branding">
+          <div class="pinepods-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="80" height="80">
+              <circle cx="100" cy="100" r="95" fill="none" stroke="#ffffff" stroke-width="5" opacity="0.5" />
+              <g stroke="#ffffff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <line x1="100" y1="35" x2="100" y2="170" />
+                <line x1="91" y1="170" x2="109" y2="170" />
+                <polyline points="75,50 100,35 125,50" />
+                <polyline points="65,81 100,60 135,81" />
+                <polyline points="55,112 100,85 145,112" />
+                <polyline points="65,131 100,110 135,131" />
+                <polyline points="55,162 100,135 145,162" />
+              </g>
+            </svg>
+            <span class="title has-text-white">PinePods</span>
+          </div>
+          <p class="managed-by has-text-grey-lighter" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-left: 95px; margin-top: -0.75rem;">
+            managed by <svg width="18" height="29" viewBox="0 0 18 29" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 2em; width: auto; position: relative; top: -2px;" aria-label="CloudBreak"><circle cx="9.00031" cy="16" r="7.03238" transform="rotate(12.6592 9.00031 16)" stroke="#ffffff"/><path d="M9.6429 16.4544C8.47803 18.068 7.19626 19.3377 6.08111 20.0919C5.52177 20.4702 5.0275 20.703 4.6282 20.7974C4.22712 20.8923 3.987 20.8349 3.84689 20.7338C3.70679 20.6327 3.57679 20.4228 3.54056 20.0122C3.5045 19.6035 3.56989 19.0611 3.75289 18.4111C4.11773 17.1152 4.91943 15.4989 6.0843 13.8853C7.24918 12.2718 8.53095 11.002 9.64609 10.2478C10.2054 9.86954 10.6997 9.63672 11.099 9.5423C11.5001 9.44745 11.7402 9.50478 11.8803 9.60592C12.0204 9.70707 12.1504 9.91694 12.1866 10.3275C12.2227 10.7362 12.1573 11.2786 11.9743 11.9286C11.6095 13.2245 10.8078 14.8408 9.6429 16.4544Z" stroke="#ffffff"/><path d="M7.97388 17.0813C6.46834 15.6895 5.26494 14.2824 4.53324 13.1421C4.16531 12.5687 3.93254 12.0871 3.83064 11.7244C3.77986 11.5436 3.76815 11.415 3.77477 11.3314C3.77793 11.2914 3.78487 11.2671 3.78993 11.2542C3.79458 11.2423 3.79813 11.2386 3.79881 11.2379L3.79884 11.2378C3.79959 11.237 3.8031 11.2332 3.81441 11.2277C3.82687 11.2217 3.85051 11.2128 3.89015 11.2066C3.97296 11.1934 4.1021 11.195 4.28632 11.2314C4.65592 11.3046 5.15427 11.4988 5.75477 11.8207C6.94898 12.4607 8.44617 13.55 9.95172 14.9417C11.4573 16.3334 12.6607 17.7406 13.3924 18.8809C13.7603 19.4543 13.9931 19.9359 14.095 20.2986C14.1457 20.4794 14.1574 20.608 14.1508 20.6916C14.1477 20.7316 14.1407 20.7559 14.1357 20.7688C14.1311 20.7805 14.1276 20.7843 14.1268 20.7851L14.1268 20.7851L14.1268 20.7852C14.126 20.786 14.1225 20.7898 14.1112 20.7953C14.0987 20.8013 14.0751 20.8101 14.0355 20.8164C13.9526 20.8296 13.8235 20.828 13.6393 20.7916C13.2697 20.7184 12.7713 20.5241 12.1708 20.2023C10.9766 19.5623 9.47942 18.473 7.97388 17.0813Z" stroke="#ffffff"/></svg> CloudBreak
+          </p>
+        </div>
+
+        <hr style="background-color: rgba(255, 255, 255, 0.3); height: 1px; border: none; margin: 0 auto 2rem auto; width: 80%;">
+
+        <div class="columns is-vcentered">
+        <div class="column is-7">
+          <h1 class="title is-1 has-text-white mt-5">
+            Your Podcasts, Your Way. No Server Required.
+          </h1>
+          <h2 class="subtitle is-4 has-text-grey-lighter mt-4">
+            All the power of PinePods. None of the self-hosting hassle.
+          </h2>
+
+          <p class="mt-5">
+            <span class="tag is-warning is-light is-medium">🌲 Early Bird Pre-Order</span>
+          </p>
+          <p class="is-size-5 has-text-white mt-3">
+            <strong class="has-text-white">Lock in your early-bird rate of just <del class="pinepods-price-original">${{ product.normal_price }}</del> <span class="pinepods-price-highlight">${{ product.sale_price }}/year</span> before we launch.</strong>
+          </p>
+
+          <div class="buttons mt-5 is-centered">
+            {% if product.preorder_url and product.preorder_url != "" %}
+            <a href="{{ product.preorder_url }}" class="button is-success is-large is-rounded">
+              <strong>Pre-Order Now</strong>
+              <span class="icon is-small ml-2"><i class="fas fa-arrow-right"></i></span>
+            </a>
+            {% else %}
+            <span class="button is-success is-large is-rounded" style="opacity: 0.7; cursor: default;">
+              <strong>Pre-Order Coming Soon</strong>
+            </span>
+            {% endif %}
+          </div>
+
+          <div class="has-text-centered mt-4">
+            <p class="is-size-7 has-text-grey-lighter" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span class="icon" style="color: #f5a623;"><i class="fas fa-lock"></i></span>
+              <span>Secure payment via Stripe</span>
+            </p>
+            <p class="is-size-7 mt-2" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+              <i class="fab fa-cc-visa fa-lg" style="color: #ffffff;" title="Visa"></i>
+              <i class="fab fa-cc-mastercard fa-lg" style="color: #ffffff;" title="Mastercard"></i>
+              <i class="fab fa-cc-amex fa-lg" style="color: #ffffff;" title="American Express"></i>
+              <i class="fas fa-credit-card fa-lg" style="color: #ffffff;" title="Credit Card"></i>
+              <i class="fab fa-apple-pay fa-lg" style="color: #ffffff;" title="Apple Pay"></i>
+              <i class="fab fa-google-pay fa-lg" style="color: #ffffff;" title="Google Pay"></i>
+              <i class="fab fa-amazon-pay fa-lg" style="color: #ffffff;" title="Amazon Pay"></i>
+              <img src="https://cash.app/favicon.ico" alt="Cash App" title="Cash App" style="height: 20px; vertical-align: middle;">
+              <img src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg" alt="Klarna" title="Klarna" style="height: 20px; vertical-align: middle;">
+            </p>
+          </div>
+
+          <p class="is-size-6 has-text-white mt-5" style="display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap;">
+            <strong class="has-text-white">PinePods is free, open-source software</strong>
+            <a href="{{ product.scm_url }}" class="is-size-7 has-text-white button is-rounded is-primary" target="_blank"> <span class="icon"><i class="fas fa-code-branch"></i></span>
+              <span>View Source Code</span>
+            </a>
+          </p>
+
+          <p class="is-size-7 has-text-grey-lighter mt-4">
+            {{ site.cancel_policy }}
+          </p>
+          <p class="is-size-7 has-text-grey-lighter mt-4">
+            🇺🇸 US and 🇨🇦 CA Only (for now)
+          </p>
+        </div>
+        <div class="column is-5 has-text-centered">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" style="width: 220px; height: 220px; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));">
+            <circle cx="100" cy="100" r="100" fill="#589B86" />
+            <circle cx="100" cy="100" r="95" fill="none" stroke="#F4C0BE" stroke-width="5" />
+            <g stroke="#F4C0BE" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+              <line x1="100" y1="35" x2="100" y2="170" />
+              <line x1="91" y1="170" x2="109" y2="170" />
+              <polyline points="75,50 100,35 125,50" />
+              <polyline points="65,81 100,60 135,81" />
+              <polyline points="55,112 100,85 145,112" />
+              <polyline points="65,131 100,110 135,131" />
+              <polyline points="55,162 100,135 145,162" />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <h2 class="title is-3">Why CloudBreak PinePods?</h2>
+        <p class="is-size-5 mb-4">
+          You love podcasts because they let you learn and stay informed on your own schedule. But you don't love handing your entire listening history to Spotify, Apple, or Google just to get a good experience.
+        </p>
+        <p class="is-size-5">
+          We give you a fast, private, and fully managed PinePods instance so you can own your podcast library — not rent it from a corporation.
+        </p>
+      </div>
+    </div>
+
+    <div class="columns is-multiline mt-6">
+      <div class="column is-one-third">
+        <div class="box has-text-centered" style="height: 100%;">
+          <span class="icon is-large has-text-primary">
+            <i class="fas fa-rocket fa-3x"></i>
+          </span>
+          <h3 class="title is-4 mt-4">Instant Setup, Zero Maintenance</h3>
+          <p>No Docker, no VPS, no SSL headaches. Get your own PinePods instance ready in seconds. We handle the backups, the security patches, and the software updates.</p>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="box has-text-centered" style="height: 100%;">
+          <span class="icon is-large has-text-primary">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+          </span>
+          <h3 class="title is-4 mt-4">All Your Devices, In Sync</h3>
+          <p>Start an episode on your desktop, pick it up exactly where you left off on your phone. PinePods keeps your progress, queue, and subscriptions in sync everywhere.</p>
+        </div>
+      </div>
+
+      <div class="column is-one-third">
+        <div class="box has-text-centered" style="height: 100%;">
+          <span class="icon is-large has-text-primary">
+            <i class="fas fa-shield-alt fa-3x"></i>
+          </span>
+          <h3 class="title is-4 mt-4">Your Data, Your Rules</h3>
+          <p>We don't track what you listen to, we don't sell your habits, and we don't insert ads. Your podcast subscriptions belong to you — export them any time and take them elsewhere.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section mb-5">
+  <div class="container">
+    <h2 class="title is-3 has-text-centered mb-6">Frequently Asked Questions</h2>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <h4 class="title is-5">What is PinePods?</h4>
+          <p>PinePods is a free, open-source, self-hosted podcast manager. It lets you subscribe to any podcast feed, sync your progress across devices, and manage your library — all without relying on a third-party service.</p>
+
+          <h4 class="title is-5 mt-5">When will it launch?</h4>
+          <p>We're working hard to get PinePods hosting ready. Pre-ordering now locks you in at the early-bird price and puts you at the front of the queue when we go live. We'll email you as soon as your instance is ready.</p>
+
+          <h4 class="title is-5 mt-5">What if I change my mind?</h4>
+          <p>Pre-orders are fully refundable before launch. Just drop us a line at <a href="mailto:support@spacebarlabs.com">support@spacebarlabs.com</a> and we'll sort you out.</p>
+
+          <h4 class="title is-5 mt-5">Can I import my existing podcast subscriptions?</h4>
+          <p>Absolutely. PinePods supports OPML import, so you can bring your subscriptions over from any other podcast app in seconds.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr style="background-color: rgba(0, 0, 0, 0.3); height: 1px; border: none; margin: 0 auto 2rem auto; width: 80%;">
+
+<section class="section has-background-light" id="pricing">
+  <div class="container">
+    <h2 class="title is-3 has-text-centered mb-4">Early Bird Pre-Order Pricing</h2>
+    <p class="has-text-centered is-size-5 mb-6">Lock in the lowest price we'll ever offer. This rate is only available to pre-order customers.</p>
+    <div class="columns is-centered">
+      <div class="column is-8-tablet is-6-desktop">
+        <div class="box has-text-centered p-6">
+          <div class="is-flex is-justify-content-center is-align-items-baseline mb-5">
+            <span class="title is-3 has-text-grey-light" style="text-decoration: line-through;">${{ product.normal_price }}</span>
+            <span class="title is-1 has-text-success ml-3">${{ product.sale_price }}</span>
+            <span class="subtitle is-4 has-text-grey">/ year</span>
+          </div>
+          <p class="has-text-success has-text-weight-bold mb-3">
+            <span class="tag is-success is-medium">🌲 Early Bird — Save ${{ product.normal_price | minus: product.sale_price }}/year</span>
+          </p>
+          <p class="has-text-info has-text-weight-bold mb-5">(That's just $2/month)</p>
+
+          <ul class="content is-medium has-text-left" style="display: inline-block;">
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Unlimited Podcast Subscriptions</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Cross-Device Progress Sync</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Daily Backups</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Priority Launch Access</li>
+            <li class="mb-2"><span class="icon has-text-success"><i class="fas fa-check"></i></span> Full Refund Before Launch</li>
+          </ul>
+
+          <div class="mt-5">
+            {% if product.preorder_url and product.preorder_url != "" %}
+            <a href="{{ product.preorder_url }}" class="button is-primary is-fullwidth is-large">
+              Pre-Order Now
+            </a>
+            {% else %}
+            <button class="button is-primary is-fullwidth is-large" disabled>
+              Pre-Order Coming Soon
+            </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section has-text-white" style="background: linear-gradient(135deg, #0d2b25 0%, #163d33 50%, #0a2820 100%);">
+  <div class="container has-text-centered">
+    <h2 class="title is-2 has-text-white mb-5">Stop letting Big Tech profile you through your podcast habits.</h2>
+    <p class="subtitle is-4 has-text-white mt-4 mb-6">Take back control of your listening today.</p>
+    <p class="is-size-5 has-text-white mb-4"><del class="pinepods-price-original">${{ product.normal_price }}</del> <span class="pinepods-price-highlight has-text-weight-bold">${{ product.sale_price }}/year</span> — Early Bird Price</p>
+    {% if product.preorder_url and product.preorder_url != "" %}
+    <a href="{{ product.preorder_url }}" class="button is-white is-large">
+      <strong>Pre-Order My Instance</strong>
+    </a>
+    {% else %}
+    <button class="button is-white is-large" disabled>
+      <strong>Pre-Order Coming Soon</strong>
+    </button>
+    {% endif %}
+    <p class="is-size-6 mt-4" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+      <span class="icon" style="color: #f5a623;"><i class="fas fa-lock"></i></span>
+      <span>Secure payment via Stripe</span>
+    </p>
+    <p class="is-size-7 mt-2" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+      <span style="display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <i class="fab fa-cc-visa fa-lg" style="color: #ffffff;" title="Visa"></i>
+        <i class="fab fa-cc-mastercard fa-lg" style="color: #ffffff;" title="Mastercard"></i>
+        <i class="fab fa-cc-amex fa-lg" style="color: #ffffff;" title="American Express"></i>
+        <i class="fas fa-credit-card fa-lg" style="color: #ffffff;" title="Credit Card"></i>
+        <i class="fab fa-apple-pay fa-lg" style="color: #ffffff;" title="Apple Pay"></i>
+        <i class="fab fa-google-pay fa-lg" style="color: #ffffff;" title="Google Pay"></i>
+        <i class="fab fa-amazon-pay fa-lg" style="color: #ffffff;" title="Amazon Pay"></i>
+        <img src="https://cash.app/favicon.ico" alt="Cash App" title="Cash App" style="height: 20px; vertical-align: middle;">
+        <img src="https://x.klarnacdn.net/payment-method/assets/badges/generic/klarna.svg" alt="Klarna" title="Klarna" style="height: 20px; vertical-align: middle;">
+      </span>
+    </p>
+    <p class="is-size-7 mt-4">
+      <em>{{ site.cancel_policy }}</em>
+    </p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <p class="is-size-5 has-text-grey">
+      <span class="icon"><i class="fas fa-th-large"></i></span>
+      Love open source? We host other privacy-focused tools too.
+    </p>
+    <a href="/" class="button is-link is-outlined mt-4">
+      <span class="icon"><i class="fas fa-server"></i></span>
+      <span>Explore</span>
+    </a>
+  </div>
+</section>

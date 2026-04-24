@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }}</title>
+    <meta name="description" content="{{ page.description | escape }}">
+    <meta name="keywords" content="{{ page.keywords | escape }}">
+    <meta name="author" content="Space Bar Labs">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    {% if site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+    {{ page.head_content }}
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        background: #fff;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #1a1a2e;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Topnav ──────────────────────────────────── */
+      .letter-nav {
+        background: #0f172a;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 0 1.5rem;
+      }
+      .letter-nav-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+      }
+      .letter-nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+      }
+      .letter-nav-brand img {
+        height: 24px;
+        width: auto;
+      }
+      .letter-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .letter-nav-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.4rem 0.65rem;
+        border-radius: 6px;
+        transition: color 0.15s, background 0.15s;
+        white-space: nowrap;
+      }
+      .letter-nav-links a:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+      }
+      .letter-nav-links a.nav-podcasts:hover,
+      .letter-nav-links a.nav-podcasts:active {
+        color: #c4b5fd;
+        background: rgba(139, 92, 246, 0.15);
+      }
+      .letter-nav-links a.nav-news:hover,
+      .letter-nav-links a.nav-news:active {
+        color: #fdba74;
+        background: rgba(234, 88, 12, 0.15);
+      }
+      .letter-nav-links a.nav-readlater:hover,
+      .letter-nav-links a.nav-readlater:active {
+        color: #fca5a5;
+        background: rgba(220, 38, 38, 0.15);
+      }
+      .letter-nav-sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(255,255,255,0.12);
+        margin: 0 0.35rem;
+      }
+
+      /* Mobile burger */
+      .letter-nav-burger {
+        display: none;
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .letter-nav-mobile {
+        display: none;
+        background: #0f172a;
+        padding: 0.5rem 1.5rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .letter-nav-mobile.is-open {
+        display: block;
+      }
+      .letter-nav-mobile a {
+        display: block;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: color 0.15s;
+      }
+      .letter-nav-mobile a:last-child {
+        border-bottom: none;
+      }
+      .letter-nav-mobile a:hover {
+        color: #fff;
+      }
+      .letter-nav-mobile a.nav-podcasts:hover {
+        color: #c4b5fd;
+      }
+      .letter-nav-mobile a.nav-news:hover {
+        color: #fdba74;
+      }
+      .letter-nav-mobile a.nav-readlater:hover {
+        color: #fca5a5;
+      }
+
+      @media (max-width: 768px) {
+        .letter-nav-links { display: none; }
+        .letter-nav-burger { display: block; }
+      }
+
+      /* ── Hero ─────────────────────────────────────── */
+      .letter-hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%);
+        padding: 5rem 1.5rem 4.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .letter-hero::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        right: -80px;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.03);
+        pointer-events: none;
+      }
+      .letter-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        left: -60px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.02);
+        pointer-events: none;
+      }
+      .letter-hero-eyebrow {
+        display: inline-block;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 0.3rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #94a3b8;
+        margin-bottom: 1.5rem;
+      }
+      .letter-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin: 0 auto 1.25rem;
+        max-width: 680px;
+        letter-spacing: -0.025em;
+      }
+      .letter-hero p {
+        font-size: 1.15rem;
+        color: #94a3b8;
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* ── Hero CTA ────────────────────────────────── */
+      .letter-hero-cta {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+      .letter-hero-btn-primary {
+        background: linear-gradient(135deg, #06b6d4, #0891b2);
+        color: #fff;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+        box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .letter-hero-btn-primary:hover {
+        background: linear-gradient(135deg, #22d3ee, #06b6d4);
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.55);
+        transform: translateY(-1px);
+        color: #fff;
+      }
+      .letter-hero-btn-ghost {
+        background: transparent;
+        color: #cbd5e1;
+        border: 2px solid rgba(255,255,255,0.35);
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .letter-hero-btn-ghost:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.6);
+        color: #fff;
+      }
+
+      /* ── Manifesto split sections ────────────────── */
+      .letter-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        align-items: center;
+        margin-bottom: 3rem;
+      }
+      .letter-split-reverse .letter-split-text {
+        order: 2;
+      }
+      .letter-split-reverse .letter-split-illustration {
+        order: 1;
+      }
+      .letter-split-text p {
+        margin-bottom: 1.5rem;
+      }
+      .letter-split-illustration {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .letter-split-illustration svg {
+        width: 100%;
+        max-width: 320px;
+        height: auto;
+      }
+
+      /* ── Pillar cards ────────────────────────────── */
+      .letter-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 2.5rem 0 3rem;
+      }
+      .letter-pillar-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .letter-pillar-card:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+      }
+      .letter-pillar-icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: #fff;
+        margin: 0 auto 1rem;
+        background: linear-gradient(135deg, #0f172a, #1e3a5f);
+      }
+      .letter-pillar-card h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 0.75rem;
+        letter-spacing: -0.01em;
+      }
+      .letter-pillar-card p {
+        font-size: 0.92rem;
+        color: #475569;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      /* ── App category grid ──────────────────────── */
+      .letter-app-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        margin: 2rem 0 3rem;
+      }
+      .letter-app-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 1.75rem 1.5rem;
+        text-align: center;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .letter-app-card:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transform: translateY(-2px);
+      }
+      .letter-app-card-icon {
+        width: 72px;
+        height: 72px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        overflow: hidden;
+      }
+      .letter-app-card-icon.icon-news {
+        background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      }
+      .letter-app-card-icon.icon-bookmarks {
+        background: linear-gradient(135deg, #0d2535, #0a1e2d, #061825);
+      }
+      .letter-app-card-icon.icon-audio {
+        background: linear-gradient(135deg, #78350f, #b45309);
+      }
+      .letter-app-card h4 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 0.5rem;
+      }
+      .letter-app-card p {
+        font-size: 0.88rem;
+        color: #475569;
+        line-height: 1.65;
+        margin: 0;
+      }
+      .letter-app-card .app-names {
+        display: inline-block;
+        margin-top: 0.75rem;
+        font-size: 0.78rem;
+        color: #64748b;
+        font-weight: 600;
+        background: #f1f5f9;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+      }
+
+      /* ── Pricing section ─────────────────────────── */
+      .letter-pricing-section {
+        background: linear-gradient(135deg, #f8fafc, #eef2f7);
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        margin: 3rem 0 2rem;
+        text-align: center;
+      }
+      .letter-pricing-section h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .letter-pricing-section > p {
+        color: #64748b;
+        font-size: 0.95rem;
+        margin: 0 0 2rem;
+      }
+      .letter-pricing-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .letter-pricing-card {
+        background: #fff;
+        border: 2px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        position: relative;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .letter-pricing-card:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        transform: translateY(-2px);
+      }
+      .letter-pricing-card.letter-pricing-featured {
+        border-color: #1d4ed8;
+        box-shadow: 0 4px 20px rgba(29, 78, 216, 0.15);
+      }
+      .letter-pricing-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        color: #fff;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.3rem 1rem;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+      .letter-pricing-card h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 1rem;
+        letter-spacing: -0.01em;
+      }
+      .letter-pricing-price {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: #0f172a;
+        line-height: 1.1;
+        margin-bottom: 0.25rem;
+      }
+      .letter-pricing-price span {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #64748b;
+      }
+      .letter-pricing-note {
+        font-size: 0.82rem;
+        color: #64748b;
+        margin-bottom: 1.25rem;
+      }
+      .letter-pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem;
+        text-align: left;
+      }
+      .letter-pricing-features li {
+        font-size: 0.88rem;
+        color: #475569;
+        padding: 0.4rem 0;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .letter-pricing-features li i {
+        color: #34d399;
+        margin-top: 0.15rem;
+        flex-shrink: 0;
+      }
+      .letter-pricing-btn {
+        display: inline-block;
+        padding: 0.65rem 1.8rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+      }
+      .letter-pricing-btn-primary {
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(29, 78, 216, 0.3);
+      }
+      .letter-pricing-btn-primary:hover {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45);
+        transform: translateY(-1px);
+        color: #fff;
+      }
+      .letter-pricing-btn-secondary {
+        background: #f1f5f9;
+        color: #1e3a5f;
+        border: 1px solid #e2e8f0;
+      }
+      .letter-pricing-btn-secondary:hover {
+        background: #e2e8f0;
+        color: #0f172a;
+      }
+
+      /* ── Section divider ─────────────────────────── */
+      .letter-section-divider {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, #06b6d4, #1d4ed8);
+        border-radius: 2px;
+        margin: 3rem auto;
+        border: none;
+      }
+
+      /* ── Footer note ─────────────────────────────── */
+      .letter-footer-note {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e2e8f0;
+      }
+      .letter-footer-note p {
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── Letter content ──────────────────────────── */
+      .letter-body {
+        background: #fff;
+        padding: 4rem 1.5rem 5rem;
+      }
+      .letter-body img {
+        display: block;
+        margin: 0 auto;
+        width: 33%;
+      }
+      .letter-content {
+        max-width: 960px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.85;
+        color: #334155;
+      }
+      .letter-prose {
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .letter-content p {
+        margin-bottom: 1.5rem;
+      }
+      .letter-content h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 3rem 0 1.25rem;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+      .letter-content h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 3.5rem 0 1.25rem;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .letter-content strong {
+        color: #0f172a;
+        font-weight: 700;
+      }
+      .letter-content em {
+        font-style: italic;
+        color: #475569;
+      }
+      .letter-content a {
+        color: #1d4ed8;
+        text-decoration: underline;
+        text-decoration-color: rgba(29, 78, 216, 0.3);
+        text-underline-offset: 2px;
+        transition: text-decoration-color 0.15s;
+      }
+      .letter-content a:hover {
+        text-decoration-color: #1d4ed8;
+      }
+      .letter-content ul, .letter-content ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+      .letter-content li {
+        margin-bottom: 0.75rem;
+      }
+      .letter-content blockquote {
+        border-left: 3px solid #1e3a5f;
+        margin: 2rem 0;
+        padding: 0.75rem 1.5rem;
+        color: #475569;
+        font-style: italic;
+        background: #f8fafc;
+        border-radius: 0 8px 8px 0;
+      }
+
+      /* ── Pull quotes ─────────────────────────────── */
+      .letter-content .pull-quote {
+        border-left: none;
+        border-top: 2px solid #1e3a5f;
+        border-bottom: 2px solid #1e3a5f;
+        border-radius: 0;
+        background: transparent;
+        text-align: center;
+        margin: 2.5rem auto;
+        padding: 1.75rem 2rem;
+        max-width: 520px;
+        position: relative;
+        font-style: normal;
+      }
+      .letter-content .pull-quote p {
+        font-size: 1.35rem;
+        font-weight: 700;
+        line-height: 1.5;
+        color: #0f172a;
+        margin: 0;
+        letter-spacing: -0.01em;
+      }
+      .letter-content .pull-quote::before {
+        content: '\201C';
+        position: absolute;
+        top: -0.55em;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 3rem;
+        font-weight: 800;
+        color: #1e3a5f;
+        background: #fff;
+        padding: 0 0.4rem;
+        line-height: 1;
+      }
+      .letter-content hr {
+        border: none;
+        height: 1px;
+        background: #e2e8f0;
+        margin: 3rem 0;
+      }
+      .letter-content small {
+        font-size: 0.88rem;
+        color: #64748b;
+        line-height: 1.7;
+      }
+
+      /* ── Signature area ──────────────────────────── */
+      .letter-content p:last-child small,
+      .letter-content > small:last-child {
+        display: block;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e2e8f0;
+      }
+
+      /* ── Specificity overrides for components inside .letter-content ── */
+      .letter-content .letter-pricing-section h3 {
+        margin: 0 0 0.5rem;
+      }
+      .letter-content .letter-pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem;
+      }
+      .letter-content .letter-pricing-features li {
+        margin-bottom: 0;
+      }
+      .letter-content .letter-pricing-btn {
+        text-decoration: none;
+      }
+      .letter-content .letter-pricing-btn:hover {
+        text-decoration: none;
+      }
+      .letter-content .letter-pricing-btn-primary,
+      .letter-content .letter-pricing-btn-primary:hover {
+        color: #fff;
+      }
+      .letter-content .letter-pricing-section p {
+        margin-bottom: 0;
+      }
+      .letter-content .letter-pricing-note {
+        margin-bottom: 1.25rem;
+      }
+      .letter-content .letter-pillar-card p {
+        margin-bottom: 0;
+      }
+      .letter-content .letter-app-card p {
+        margin-bottom: 0;
+      }
+      .letter-content .letter-section-divider {
+        height: 3px;
+        width: 60px;
+        background: linear-gradient(90deg, #06b6d4, #1d4ed8);
+        margin: 3rem auto;
+      }
+      .letter-content .letter-footer-note p {
+        margin-bottom: 0.75rem;
+      }
+
+      /* ── Footer ───────────────────────────────────── */
+      .letter-footer {
+        background: #0f172a;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        color: #64748b;
+      }
+      .letter-footer-inner {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .letter-footer p {
+        font-size: 0.8rem;
+        margin: 0.4rem 0;
+        color: #64748b;
+      }
+      .letter-footer a {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .letter-footer a:hover {
+        color: #fff;
+      }
+      .letter-footer-social {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .letter-footer-social a {
+        color: #475569;
+        font-size: 1.1rem;
+      }
+      .letter-footer-social a:hover {
+        color: #fff;
+      }
+      .letter-footer-links {
+        margin-top: 1rem;
+        font-size: 0.78rem;
+      }
+      .letter-footer-links a {
+        margin: 0 0.35rem;
+      }
+      .letter-footer-pledges {
+        margin-top: 1rem;
+        font-size: 0.78rem;
+      }
+      .letter-footer-pledges i.fa-leaf {
+        color: #34d399;
+      }
+      .letter-footer-pledges i.fa-heart {
+        color: #a78bfa;
+      }
+
+      @media (max-width: 768px) {
+        .letter-hero {
+          padding: 3.5rem 1.25rem 3rem;
+        }
+        .letter-hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+        .letter-body {
+          padding: 2.5rem 1.25rem 3rem;
+        }
+        .letter-body img {
+          width: 80%;
+        }
+        .letter-content {
+          font-size: 1.02rem;
+        }
+        .letter-content .pull-quote {
+          padding: 1.25rem 1rem;
+          max-width: 100%;
+        }
+        .letter-content .pull-quote p {
+          font-size: 1.15rem;
+        }
+        .letter-split {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .letter-split-reverse .letter-split-text {
+          order: 1;
+        }
+        .letter-split-reverse .letter-split-illustration {
+          order: 2;
+        }
+        .letter-split-illustration svg {
+          max-width: 220px;
+        }
+        .letter-pillars {
+          grid-template-columns: 1fr;
+        }
+        .letter-app-grid {
+          grid-template-columns: 1fr;
+        }
+        .letter-pricing-cards {
+          grid-template-columns: 1fr;
+        }
+        .letter-pricing-section {
+          padding: 2rem 1.25rem;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 960px) {
+        .letter-pillars {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .letter-app-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- ── Consent Banner ──────────────────────────── -->
+    <div id="letter-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#f0f9ff;border-top:1px solid #bae6fd;padding:0.75rem 1.5rem;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;font-size:0.85rem;color:#334155;">
+      <span>We use analytics to improve our services. This data is anonymous.</span>
+      <span style="display:flex;gap:0.5rem;">
+        <button onclick="acceptConsent()" style="background:#1d4ed8;color:#fff;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Accept</button>
+        <button onclick="rejectConsent()" style="background:#e2e8f0;color:#475569;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Reject</button>
+      </span>
+    </div>
+
+    <!-- ── Nav ──────────────────────────────────────── -->
+    <nav class="letter-nav" role="navigation" aria-label="main navigation">
+      <div class="letter-nav-inner">
+        <a class="letter-nav-brand" href="/letter/home.html">
+          <img src="/logo.svg" alt="CloudBreak Logo">
+          <span>CloudBreak</span>
+        </a>
+
+        <ul class="letter-nav-links">
+          <li><a href="/#browse" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a></li>
+          <li><a href="/#browse" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feeds</a></li>
+          <li><a href="/#browse" class="nav-readlater"><i class="fas fa-bookmark"></i> Read Later</a></li>
+          <li class="letter-nav-sep" role="presentation"></li>
+          <li><a href="/#browse">Pricing</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/support/">Support</a></li>
+        </ul>
+
+        <button class="letter-nav-burger" id="letterBurger" aria-label="menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="letter-nav-mobile" id="letterMobileMenu">
+        <a href="/#browse" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a>
+        <a href="/#browse" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feed Readers</a>
+        <a href="/#browse" class="nav-readlater"><i class="fas fa-bookmark"></i> Bookmarking &amp; Read Later</a>
+        <a href="/#browse">Pricing</a>
+        <a href="/about/">About</a>
+        <a href="/support/">Support</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ─────────────────────────────────────── -->
+    <header class="letter-hero">
+      <div class="letter-hero-eyebrow">A letter from our founder</div>
+      <h1>{{ page.hero_title }}</h1>
+      <p>{{ page.hero_subtitle }}</p>
+      <p style="margin-top: 1em"><strong>{{ page.hero_subtitle_2 }}</strong></p>
+      <div class="letter-hero-cta">
+        <a href="/compare/freshrss" class="letter-hero-btn-primary"><i class="fas fa-th-large"></i> Compare Our Apps</a>
+        <a href="#pricing" class="letter-hero-btn-ghost"><i class="fas fa-tag"></i> View Pricing</a>
+      </div>
+    </header>
+
+    <!-- ── Letter ───────────────────────────────────── -->
+    <main class="letter-body">
+      <article class="letter-content">
+        {{ content }}
+      </article>
+    </main>
+
+    <!-- ── Footer ──────────────────────────────────── -->
+    <footer class="letter-footer">
+      <div class="letter-footer-inner">
+        <p>&copy; {{ site.time | date: '%Y' }} Space Bar Labs, LLC</p>
+        <div class="letter-footer-social">
+          <a href="https://mastodon.social/@cloudbreak_app" rel="me noopener" target="_blank" aria-label="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+          <a href="https://x.com/cloudbreak_app" rel="noopener" target="_blank" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/spacebarlabs" rel="noopener" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="/">Browse Apps</a> |
+          <a href="/about/">About</a> |
+          <a href="/support/">Support</a> |
+          <a href="/forum">Forum</a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="https://spacebarlabs.com/privacy-policy/">Privacy</a> |
+          <a href="https://spacebarlabs.com/terms-of-service/">Terms</a> |
+          <a href="https://spacebarlabs.com/security/">Security</a>
+        </div>
+        <div class="letter-footer-pledges">
+          <a href="/#sustainability"><i class="fas fa-leaf"></i> 1% Sustainability</a> &nbsp;&middot;&nbsp;
+          <a href="/#open-source-pledge"><i class="fas fa-heart"></i> 10% Open Source</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.getElementById('letterBurger');
+        var menu = document.getElementById('letterMobileMenu');
+        if (burger && menu) {
+          burger.addEventListener('click', function() {
+            menu.classList.toggle('is-open');
+            var expanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', !expanded);
+          });
+        }
+      });
+    </script>
+
+    <script>
+      if (!localStorage.getItem('analytics_consent')) {
+        document.getElementById('letter-consent-banner').style.display = 'flex';
+      }
+      function acceptConsent() {
+        localStorage.setItem('analytics_consent', 'granted');
+        updateConsent({ 'analytics_storage': 'granted' });
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+      function rejectConsent() {
+        localStorage.setItem('analytics_consent', 'denied');
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+    </script>
+
+    {{ page.body_scripts }}
+</body>
+</html>

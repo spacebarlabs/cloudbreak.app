@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CloudBreak | The Privacy You Deserve</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      
+      /* Print & Base Setup */
+      html { background: #fff; }
+      body {
+        margin: 0 auto;
+        font-family: 'Inter', -apple-system, sans-serif;
+        color: #111;
+        -webkit-font-smoothing: antialiased;
+        max-width: 780px; 
+        padding: 10px;
+        font-size: 9.5pt;
+        line-height: 1.3;
+      }
+
+      /* Maximize page real estate for print */
+      @media print {
+        @page { margin: 0.35in; size: letter; }
+        body { padding: 0; max-width: 100%; }
+        .no-print { display: none !important; }
+        * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      }
+
+      h1, h2, h3, h4 { margin: 0 0 0.3rem; color: #000; line-height: 1.15; }
+      p { margin: 0 0 0.5rem; color: #333; }
+      
+      /* ── Header / Hero ──────────────────────────────── */
+      .flyer-header {
+        text-align: center;
+        border-bottom: 2px solid #0f172a;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .flyer-header-eyebrow {
+        display: inline-block;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        border-radius: 12px;
+        padding: 0.15rem 0.6rem;
+        font-size: 7.5pt;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #475569;
+        margin-bottom: 0.3rem;
+      }
+      .flyer-header h1 { font-size: 20pt; font-weight: 800; }
+      .flyer-header p { font-size: 11pt; font-weight: 600; color: #475569; max-width: 600px; margin: 0 auto; }
+
+      /* ── Intro Section ──────────────────────────────── */
+      .intro-split {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+      .intro-col { flex: 1; }
+      .intro-col h3 { font-size: 12pt; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.2rem; margin-bottom: 0.4rem;}
+
+      /* ── Pillars ────────────────────────────────────── */
+      .section-title { text-align: center; font-size: 14pt; margin-top: 1rem; margin-bottom: 0.1rem; }
+      .section-subtitle { text-align: center; font-size: 9.5pt; color: #64748b; margin-bottom: 0.75rem; }
+      
+      .pillars-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .pillar-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 0.75rem;
+        text-align: center;
+      }
+      .pillar-icon { font-size: 16pt; color: #1d4ed8; margin-bottom: 0.3rem; }
+      .pillar-card h4 { font-size: 10pt; }
+      .pillar-card p { font-size: 8.5pt; margin: 0; }
+
+      /* ── Apps Grid ──────────────────────────────────── */
+      .app-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .app-card {
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 0.75rem;
+        text-align: center;
+      }
+      .app-icon { font-size: 14pt; color: #475569; margin-bottom: 0.3rem; }
+      .app-card h4 { font-size: 10pt; margin-bottom: 0.2rem; }
+      .app-card p { font-size: 8.5pt; margin-bottom: 0.4rem; }
+      .app-names {
+        display: inline-block;
+        font-size: 7.5pt;
+        color: #1e40af;
+        background: #eff6ff;
+        padding: 0.15rem 0.4rem;
+        border-radius: 12px;
+        font-weight: 600;
+      }
+
+      /* ── Pricing ────────────────────────────────────── */
+      .pricing-section {
+        background: #f8fafc;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        text-align: center;
+        margin-bottom: 0.75rem;
+      }
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        max-width: 550px;
+        margin: 0.75rem auto 0;
+      }
+      .price-card {
+        background: #fff;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 0.75rem;
+        position: relative;
+      }
+      .price-card.featured { border-color: #1d4ed8; border-width: 2px; }
+      .price-badge {
+        position: absolute;
+        top: -9px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #1d4ed8;
+        color: #fff;
+        font-size: 6.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 0.15rem 0.5rem;
+        border-radius: 12px;
+      }
+      .price-card h4 { font-size: 10pt; margin-bottom: 0.2rem; }
+      .price-amount { font-size: 16pt; font-weight: 800; color: #0f172a; margin: 0; }
+      .price-amount span { font-size: 9pt; font-weight: 600; color: #64748b; }
+      .price-features { list-style: none; padding: 0; margin: 0.4rem 0 0; text-align: left; font-size: 8.5pt; }
+      .price-features li { padding: 0.1rem 0; display: flex; gap: 0.4rem; }
+      .price-features i { color: #10b981; margin-top: 0.15rem; }
+
+      /* ── Footer ─────────────────────────────────────── */
+      .flyer-footer {
+        text-align: center;
+        border-top: 1px solid #e2e8f0;
+        padding-top: 0.5rem;
+        font-size: 8.5pt;
+        color: #475569;
+      }
+      .flyer-footer strong { color: #0f172a; }
+      
+      /* Print Button */
+      .print-btn {
+        display: block;
+        width: 100%;
+        background: #0f172a;
+        color: #fff;
+        text-align: center;
+        padding: 8px;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-bottom: 15px;
+        cursor: pointer;
+        border: none;
+      }
+      .print-btn:hover { background: #1e293b; }
+    </style>
+</head>
+<body>
+
+    <button onclick="window.print()" class="print-btn no-print"><i class="fas fa-print"></i> Print this page</button>
+
+    <header class="flyer-header">
+      <div class="flyer-header-eyebrow">The Privacy You Deserve</div>
+      <h1>CloudBreak</h1>
+      <p>Take back the software that runs your life with fully-managed open-source apps.</p>
+    </header>
+
+    <main>
+      <div class="intro-split">
+        <div class="intro-col">
+          <h3>It wasn't always this way.</h3>
+          <p>We used to buy software. It did what you told it to do, and it kept to itself. Today, most software runs in the cloud. It doesn’t cost anything upfront, but it's far from free.</p>
+          <p>Using modern apps enters you into a hidden surveillance agreement. The platform quietly harvests your habits, inputs, and attention to sell to advertisers.</p>
+        </div>
+        <div class="intro-col">
+          <h3>It needs to be easier.</h3>
+          <p>Community-built, open-source software is the answer, but adoption has stagnated because taking back control meant becoming a part-time IT professional.</p>
+          <p>You shouldn’t have to learn command-line interfaces, manage AWS accounts, or know how to work a Raspberry Pi just to use a decent app without being tracked.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Introducing CloudBreak</h2>
+      <p class="section-subtitle">Pay with your money, not with your data.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon"><i class="fas fa-code"></i></div>
+          <h4>The code is open</h4>
+          <p>Anyone gets to inspect it. Know exactly what the software is—and isn’t—doing. It’s yours.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon"><i class="fas fa-server"></i></div>
+          <h4>We host it, you own it</h4>
+          <p>We handle servers and updates. You retain 100% ownership of your data to export anytime.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-icon"><i class="fas fa-mobile-screen"></i></div>
+          <h4>Frictionless access</h4>
+          <p>A fair, transparent subscription. Sign up and log in with only your phone. No IT degree needed.</p>
+        </div>
+      </div>
+
+      <h2 class="section-title">Tools You Use Every Day</h2>
+      <p class="section-subtitle">Starting with media consumption—where Big Tech's grip on our attention is tightest.</p>
+
+      <div class="app-grid">
+        <div class="app-card">
+          <div class="app-icon"><i class="fas fa-podcast"></i></div>
+          <h4>Podcasts &amp; Audio</h4>
+          <p>Stream your favorite shows without someone tracking your daily habits.</p>
+          <div class="app-names">PinePods</div>
+        </div>
+        <div class="app-card">
+          <div class="app-icon"><i class="fas fa-rss"></i></div>
+          <h4>News &amp; Feeds</h4>
+          <p>Clean readers. No algorithms, promoted content, or hidden trackers.</p>
+          <div class="app-names">Miniflux &bull; FreshRSS</div>
+        </div>
+        <div class="app-card">
+          <div class="app-icon"><i class="fas fa-bookmark"></i></div>
+          <h4>Bookmarking</h4>
+          <p>Organize with tags and notes. Read offline later without distractions.</p>
+          <div class="app-names">Linkding &bull; Readeck &bull; Wallabag</div>
+        </div>
+      </div>
+
+      <div class="pricing-section">
+        <h3 style="font-size: 13pt;">Simple, Transparent Pricing</h3>
+        <p style="margin: 0; font-size: 9pt; color: #475569;">No hidden fees, no data selling.</p>
+        
+        <div class="pricing-grid">
+          <div class="price-card">
+            <h4>A La Carte</h4>
+            <div class="price-amount">$1<span>/mo</span></div>
+            <p style="font-size: 7.5pt; color: #64748b; margin-bottom: 0.3rem;">and up, billed annually</p>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Pick only the apps you need</li>
+              <li><i class="fas fa-check"></i> Full data ownership &amp; export</li>
+              <li><i class="fas fa-check"></i> Fully managed hosting</li>
+            </ul>
+          </div>
+          <div class="price-card featured">
+            <div class="price-badge">Best Value</div>
+            <h4>All-Access Pass</h4>
+            <div class="price-amount">$8<span>/mo</span></div>
+            <p style="font-size: 7.5pt; color: #64748b; margin-bottom: 0.3rem;">billed annually</p>
+            <ul class="price-features">
+              <li><i class="fas fa-check"></i> Every app, one subscription</li>
+              <li><i class="fas fa-check"></i> Full data ownership &amp; export</li>
+              <li><i class="fas fa-check"></i> Fully managed hosting</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top: 0.75rem; font-size: 8pt; margin-bottom: 0;">
+          <em>A portion of your subscription funds <strong>open source</strong> and <strong>environmental charities</strong>.</em>
+        </p>
+      </div>
+    </main>
+
+    <footer class="flyer-footer">
+      <p style="font-size: 9.5pt; margin-bottom: 0.15rem;"><strong>Join us at CloudBreak.app</strong></p>
+      <p style="margin-bottom: 0.25rem;">Not long ago, software was on our side. Now, our goal is to help lead the way to a brighter future.</p>
+      <p style="font-size: 7.5pt; margin-top: 0;">&copy; 2026 Space Bar Labs, LLC</p>
+    </footer>
+
+</body>
+</html>

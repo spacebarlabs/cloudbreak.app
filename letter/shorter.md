@@ -1,0 +1,109 @@
+---
+layout: letter
+title: "The Privacy You Deserve | CloudBreak"
+hero_title: "The Privacy You Deserve"
+hero_subtitle: "It's time to take back the software that runs our lives."
+description: "What happened to the software we use every day?"
+keywords: "CloudBreak, privacy, open source, manifesto, letter, self-hosting"
+permalink: /letter-shorter/
+---
+
+What happened to the software we use every day?
+
+We used to buy software. Whether it was on your desktop or a mobile device, you were in charge. The software did what you told it to do, and it kept to itself.
+
+Today, most software you use runs in the cloud. Often, this software doesn't cost anything, but it's far from free. It's actively watching you. It's not owned, but rented with your data and attention. You're the product, a product sold to advertisers.
+
+<blockquote class="pull-quote"><p>Often, this software doesn't cost anything, but it's far from free. It's actively watching you.</p></blockquote>
+
+![Big Tech companies monitoring a user](/letter/panel1.jpg)
+
+Using modern apps enters you into a surveillance agreement that *most people avoid thinking about*. You use these apps every day while the platform quietly harvests your habits, your inputs, and your attention. Then suddenly, those shoes you searched for are following you around everywhere on the internet.
+
+<blockquote class="pull-quote"><p>Community-built, open-source software is the escape hatch, but its adoption has stagnated.</p></blockquote>
+
+Community-built, open-source software is the escape hatch, but its adoption has stagnated. It just isn't easy enough to get started. Often, taking back control has meant becoming a part-time IT professional. Setting up servers, managing databases, and running security updates is just *not something the average person wants to do*. And even the more user friendly options are anything but.
+
+![Competitors](/letter/competitors.png)
+
+<blockquote class="pull-quote"><p>And even the more user friendly options are anything but.</p></blockquote>
+
+![Difficult installation](/letter/panel2.jpg)
+
+You shouldn't have to learn command-line interfaces just to use a decent app without being tracked. And *it's tedious and time-consuming for techies too*. Wouldn't it be great to get help?
+
+<blockquote class="pull-quote"><p>You shouldn't have to learn command-line interfaces just to use a decent app without being tracked.</p></blockquote>
+
+Once upon a time, you controlled the tools you depended on, and your digital life was your own private business. We think it's time for that again.
+
+### Introducing CloudBreak
+
+**Pay with your money, not with your data.**
+
+We believe in a simple trade. You pay a fair price for a subscription, and you get the world's best open-source software within minutes.
+
+- **The code is open.** Anyone gets to inspect it. You can know exactly what the software is--and isn't--doing. You can even host it yourself. It's yours. It can't be taken away.
+- **We host it, you own what's inside.** We handle the technical details. You retain ownership of your data. Export it and walk away whenever you want, the way it should be.
+- **A fair, transparent subscription.** Pay with your money, keep your privacy. You can sign up and log in with _only your phone_, just like you'd expect, no laptop required.
+
+![Easy transaction](/letter/panel3.jpg)
+
+To reclaim the software that runs our lives, we're starting with something everyone does every single day: consuming media. It's where Big Tech's grip on our attention is the tightest.
+
+<blockquote class="pull-quote"><p>We're starting with something everyone does every single day: consuming media</p></blockquote>
+
+So far, we offer hosted versions of these essential open-source tools:
+
+- **News and Feeds:** Clean, powerful news and feed readers. Read the articles, blogs, newspapers, and newsletters you care about, and more. You can get your Facebook, Twitter, Reddit, and more in a single app. It all happens using a widely-supported and open standard called RSS. No algorithms deciding what you should see. And when you've read everything, it's empty. No suggested articles. We have popular open source services like <span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:-3px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#475569,#334155);flex-shrink:0;vertical-align:middle;"><svg width="18" height="18" viewBox="0 78.9 512 354.1" xmlns="http://www.w3.org/2000/svg"><path fill="#fff" d="M166.8 96.2c16.6-8.8 35.2-13.2 54-13.1 39.9 0 65.2 17.3 76.2 52 12.6-14.8 27.7-27.3 44.6-36.9 17.5-10.1 37-15.1 58.6-15.1 29.9 0 51.3 9.1 64.1 27.4s19.3 45.7 19.2 82.3v206.6c0 5.2.7 8.7 2.2 10.5 1.4 1.9 4.6 3.6 9.4 4.9l16.9 5.6V433H411.7c-8.7 0-15-3.3-18.8-9.8-3.8-6.6-5.8-16.4-5.8-29.5V180.1c0-21.1-2.3-36.1-7-45s-12.5-13.3-23.4-13.4c-17.4 0-35.8 10.3-55.4 30.9 2.1 13.3 3 26.7 2.9 40.1v206.6c0 5.2.7 8.7 2.2 10.5s4.6 3.6 9.4 4.9l16.9 5.6v12.6H232.4c-8.7 0-15-3.3-18.8-9.8s-5.8-16.4-5.8-29.5V180.1c0-21.1-2.3-36.1-7-45s-12.4-13.3-23.4-13.4c-17 0-34.6 9.4-52.5 28.1v249.4c0 5.2.7 8.8 2.2 10.9 1.4 2.1 4.4 3.9 8.9 5.3l16.4 4.9v12.6H0v-12.6l16.9-5.6c4.8-1.4 8-3 9.4-4.9s2.2-5.4 2.2-10.5V133.7c0-5.2-.7-8.7-2.2-10.5-1.4-1.9-4.6-3.5-9.4-4.9L0 112.7V100l115.7-21.1h8.2v49.2c12.5-12.8 27-23.6 42.9-31.9"/></svg></span><strong>Miniflux</strong></span> and <span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:-3px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);flex-shrink:0;vertical-align:middle;"><svg width="18" height="18" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#ffffff" d="M128,128m-33,0a33,33 0,1 1,66 0a33,33 0,1 1,-66 0"/><path fill="none" stroke="#ffffff" stroke-width="24" opacity="0.3" d="M12,128A116,116 0,1 1,128 244"/><path fill="none" stroke="#ffffff" stroke-width="24" opacity="0.3" d="M54,128A74,74 0,1 1,128 202"/><path fill="none" stroke="#ffffff" stroke-width="24" d="M128,12A116,116 0,0 1,244 128"/><path fill="none" stroke="#ffffff" stroke-width="24" d="M128,54A74,74 0,0 1,202 128"/></svg></span><strong>FreshRSS</strong></span>.
+- **Bookmarking and Read-it-Later:** Keep your content organized with tags and notes. Make it available offline so you can *read it later*, on your own terms and without ads or other distractions. You can choose from <span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:-3px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#1c1a4a 0%,#3230a0 50%,#5856e0 100%);flex-shrink:0;vertical-align:middle;"><svg width="18" height="18" viewBox="0 0 450 450" xmlns="http://www.w3.org/2000/svg" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.5;"><g transform="matrix(1,0,0,1,-70.3466,-70.3466)"><g transform="matrix(0.793058,0,0,0.793058,-739.034,-836.215)"><g transform="matrix(0.707351,0.706862,-0.706862,0.707351,1331.93,-512.804)"><path d="M1244.39,1293.95L1244.39,1493.59C1244.39,1493.59 1243.58,1561.48 1319.29,1562.47C1395.27,1563.46 1394.17,1493.59 1394.17,1493.59L1394.17,1293.95" style="fill:none;stroke:white;stroke-width:34.15px;stroke-linecap:round;"/></g><g transform="matrix(-0.710067,-0.704134,0.704134,-0.710067,1284.12,3366.41)"><path d="M1244.39,1293.95L1244.39,1493.59C1244.39,1493.59 1243.58,1561.48 1319.29,1562.47C1395.27,1563.46 1394.17,1493.59 1394.17,1493.59L1394.17,1293.95" style="fill:none;stroke:white;stroke-width:34.15px;stroke-linecap:round;"/></g></g></g></svg></span><strong>Linkding</strong></span>, <span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:-3px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#021f29 0%,#063c49 50%,#042d38 100%);flex-shrink:0;vertical-align:middle;"><svg width="18" height="18" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path fill-rule="nonzero" fill="rgb(27.45098%, 73.333333%, 83.921569%)" fill-opacity="1" d="M 206.734375 59.800781 L 98.734375 119.382812 L 418.730469 268.601562 L 418.730469 149.4375 Z M 206.734375 59.800781"/><path fill-rule="nonzero" fill="rgb(98.431373%, 80.784314%, 33.333333%)" fill-opacity="1" d="M 373.089844 170.71875 L 206.734375 248.296875 L 206.734375 367.457031 L 418.730469 268.601562 Z M 373.089844 170.71875"/><path fill-rule="nonzero" fill="rgb(27.45098%, 73.333333%, 83.921569%)" fill-opacity="1" d="M 206.734375 250.792969 L 206.734375 369.964844 L 383.203125 452.25 L 372.625 387.726562 L 428.839844 354.371094 Z M 206.734375 250.792969"/><path fill-rule="nonzero" fill="rgb(100%, 98.039216%, 93.72549%)" fill-opacity="1" d="M 98.734375 119.382812 L 206.734375 119.382812 L 206.734375 439.378906 L 98.734375 439.378906 Z M 98.734375 119.382812"/><path fill-rule="nonzero" fill="rgb(0%, 0%, 0%)" fill-opacity="0.313725" d="M 98.734375 119.378906 L 98.734375 126.277344 L 411.328125 272.050781 L 418.734375 268.597656 Z M 98.734375 119.378906"/></svg></span><strong>Readeck</strong></span>, and <span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:-3px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#0d2535 0%,#0a1e2d 50%,#061825 100%);flex-shrink:0;vertical-align:middle;"><svg width="18" height="18" viewBox="0 0 200 215" xmlns="http://www.w3.org/2000/svg" style="position:relative;left:-2px;"><g><g><path fill="#ffffff" d="M100.314,63.113c2.569-1.58,16.424-8.941,38.776,0.286c22.991,9.489,37.256,1.248,39.026,0.126 c-5.559-9.137-12.168-17.089-19.479-22.436c0.487-0.133,0.985-0.268,1.512-0.424c9.692-2.803,12.153-11.009,12.673-18.037 c0.585-7.971,0.99-8.094,2.723-15.266c1.661-6.888-0.191-8.266-1.9-6.875c-0.921,0.749-8.933,2.6-13.685,6.306 c-7.672,5.987-12.401,17.369-14.546,23.663c-0.04,0.097-0.329,0.971-0.426,1.275C143.99,34.14,142,34.133,142,34.133v0.001 c-0.964-0.105-1.934-0.161-2.909-0.161c-0.87,0-1.736,0.047-2.601,0.13c-0.019,0.003-0.029,0-0.051,0.001 c-2.543,0.375-3.942-2.731-4.235-3.471c-2.972-8.536-10.967-25.365-28.938-29.894c0,0-3.265-2.5-2.269,1.729 c0.946,4.041,2.903,8.125,2.468,14.065c-0.197,2.742-1.899,16.803,11.023,24.121c1.228,0.694,2.319,1.28,3.3,1.771 C111.283,47.635,105.372,54.884,100.314,63.113z"/><path fill="#ffffff" d="M185.157,191.702c-15.835-9.812-21.164-13.262-20.831-17.015c0,0,0.003-0.61,0.159-1.541 c0.384-1.99,1.601-5.388,5.481-7.324c0.128-0.063,0.235-0.135,0.335-0.207c12.338-7.161,21.353-18.689,24.532-33.082 c-3.202,7.95-26.929,14.128-55.747,14.128c-28.809,0-52.54-6.178-55.741-14.128c0.712,3.23,1.727,6.311,3,9.238 c1.071,6.027,2.512,20.217-4.302,32.637c-6.004,10.941-35.642,25.859-79.626,17.294c0,0-1.764-1.23-2.297-0.217 c-0.79,1.499,2.44,2.709,5.766,3.586c30.624,8.109,76.845,4.811,91.36-7.148c6.623-5.452,9.177-12.797,9.828-20.702l0.005,0.013 c0,0,0.178-2.07,2.767-0.516c0.741,0.447,3.418,2.189,3.847,4.16c0.373,2.805,0.397,6.248-1.051,8.66 c-2.07,3.448-2.093,3.944,0.633,5.892c1.673,1.194,8.508,6.219,18.019,11.931c0.024,0.018,0.036,0.032,0.062,0.046 c2.012,1.21,4.807,4.18,4.807,4.18l0,0c4.282,4.954,13.601,14.922,17.655,13.046c1.916-0.887-0.081-4.881-0.081-4.881 s3.186,4.138,4.896,2.729c1.301-1.077-0.761-5.196-0.761-5.196s2.78,2.412,4.436,1.521c2.024-1.094-0.3-7.426-16.218-17.103 c-15.924-9.682-20.239-11.167-20.62-15.488c0,0-0.007-0.217,0.007-0.589c0.125-0.953,0.667-2.972,2.98-2.756 c3.445,0.558,6.997,0.855,10.635,0.855c4.163,0,8.216-0.382,12.126-1.111l0.001,0.006c0,0,0.204-0.041,0.264-0.052 c0.457-0.058,1.348-0.027,1.352,1.08c-0.145,1.404-0.533,2.817-1.359,4.054c-2.329,3.488-1.563,3.967,0.868,6.209 c1.501,1.383,8.385,7.438,17.814,13.296c0.018,0.015,0.026,0.028,0.05,0.039c2.011,1.209,5.486,4.533,5.486,4.533v-0.004 c3.908,3.97,11.094,10.613,15.01,10.214c2.647-0.271,0.491-4.831,0.491-4.831s3.345,3.229,4.985,2.278 c1.838-1.059-0.761-4.432-0.761-4.432s2.153,1.14,3.673,0.761 C200.612,205.383,200.993,201.509,185.157,191.702z"/></g><path fill="#ffffff" d="M167.466,80.835c-1.9,0-3.479,0.572-4.687,1.701c-1.222,1.143-1.841,2.463-1.841,3.923v25.835 c0,3.468-0.613,6.021-1.824,7.596c-1.171,1.523-3.044,2.264-5.723,2.264c-2.739,0-4.606-0.734-5.709-2.246 c-1.152-1.576-1.736-4.137-1.736-7.613V86.357c0-1.767-0.805-3.211-2.329-4.177c-2.074-1.306-4.136-1.779-6.645-0.945 c-0.766,0.256-1.486,0.589-2.144,0.99c-0.7,0.426-1.291,0.961-1.759,1.585c-0.519,0.694-0.782,1.45-0.782,2.246v26.238 c0,3.473-0.583,6.034-1.735,7.611c-1.107,1.514-2.975,2.248-5.71,2.248c-2.743,0-4.63-0.738-5.768-2.255 c-1.182-1.576-1.78-4.136-1.78-7.604V86.459c0-1.46-0.619-2.78-1.843-3.923c-1.21-1.129-2.819-1.701-4.784-1.701 c-2.025,0-3.695,0.566-4.965,1.681c-1.305,1.143-1.965,2.47-1.965,3.943v25.434c0,3.199,0.312,6.225,0.926,8.991 c0.631,2.828,1.731,5.311,3.274,7.379c1.557,2.09,3.671,3.739,6.284,4.908c2.586,1.152,5.82,1.735,9.614,1.735 c3.953,0,7.265-0.732,9.84-2.177c2.16-1.213,3.979-2.807,5.424-4.749c1.394,1.942,3.172,3.536,5.302,4.747 c2.542,1.446,5.904,2.179,9.994,2.179c3.794,0,7.014-0.585,9.57-1.738c2.575-1.168,4.67-2.817,6.23-4.905 c1.544-2.076,2.645-4.559,3.272-7.379c0.613-2.767,0.926-5.792,0.926-8.991V86.459c0-1.466-0.642-2.789-1.904-3.934 C171.252,81.403,169.561,80.835,167.466,80.835z"/></g></svg></span><strong>Wallabag</strong></span>.
+- **Podcasts:** Keep listening to your favorite podcasts. Easily switch devices (and even platforms), then continue listening. Stream and download without someone tracking what you skip and what you listen to daily. Coming soon, starting with <span style="display:inline-flex;align-items:center;gap:0.3em;vertical-align:-3px;"><span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#14532d,#166534);flex-shrink:0;vertical-align:middle;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="18" height="18"><g stroke="#ffffff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"><line x1="100" y1="35" x2="100" y2="170"/><line x1="91" y1="170" x2="109" y2="170"/><polyline points="75,50 100,35 125,50"/><polyline points="65,81 100,60 135,81"/><polyline points="55,112 100,85 145,112"/><polyline points="65,131 100,110 135,131"/><polyline points="55,162 100,135 145,162"/></g></svg></span><strong>PinePods</strong></span>.
+
+![All's Well That Ends Well](/letter/panel4.jpg)
+
+Not long ago, software was on our side. Slowly, we entered an era where privacy was an afterthought and ads took over. Now, our goal is to help lead the way to a brighter future. We're closer than you think.
+
+Join us.
+
+**Benjamin Oakes** \
+Founder, Space Bar Labs \
+[cloudbreak@spacebarlabs.com](mailto:cloudbreak@spacebarlabs.com)
+
+<blockquote class="pull-quote"><p>A brighter future is closer than you think.</p></blockquote>
+
+<div class="letter-pricing-section" id="pricing">
+  <h3>See What We Offer</h3>
+  <p>Simple, transparent pricing. No hidden fees, no data selling.</p>
+  <div class="letter-pricing-cards" style="margin-top: 1em">
+    <div class="letter-pricing-card">
+      <h4>A La Carte</h4>
+      <div class="letter-pricing-price">$1<span>/mo</span></div>
+      <div class="letter-pricing-note">and up, billed annually</div>
+      <ul class="letter-pricing-features">
+        <li><i class="fas fa-check"></i> Pick only the apps you need</li>
+        <li><i class="fas fa-check"></i> Full data ownership &amp; export</li>
+        <li><i class="fas fa-check"></i> Fully managed hosting</li>
+        <li><i class="fas fa-check"></i> 2-week free trial</li>
+        <li><i class="fas fa-check"></i> Community support</li>
+      </ul>
+      <a href="/compare/freshrss" class="letter-pricing-btn letter-pricing-btn-secondary">Compare Apps</a>
+    </div>
+    <div class="letter-pricing-card letter-pricing-featured">
+      <div class="letter-pricing-badge">Best Value</div>
+      <h4>All-Access Pass</h4>
+      <div class="letter-pricing-price">$8<span>/mo</span></div>
+      <div class="letter-pricing-note">billed annually</div>
+      <ul class="letter-pricing-features">
+        <li><i class="fas fa-check"></i> Every app, one subscription</li>
+        <li><i class="fas fa-check"></i> Full data ownership &amp; export</li>
+        <li><i class="fas fa-check"></i> Fully managed hosting</li>
+        <li><i class="fas fa-check"></i> 2-week free trial</li>
+        <li><i class="fas fa-check"></i> Community support</li>
+      </ul>
+      <a href="/products/freshrss/" class="letter-pricing-btn letter-pricing-btn-primary">Get Started</a>
+    </div>
+  </div>
+</div>
+
+*Thank you for your support. A portion of your subscription funds **open source** and **environmental charities**.*
+
+<small>♥️ Love the mission but you self host your apps? **Please share CloudBreak**. More people using open source benefits everyone.</small>

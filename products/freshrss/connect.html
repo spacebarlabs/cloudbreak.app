@@ -1,0 +1,249 @@
+---
+permalink: /products/freshrss/connect/
+layout: default
+title: "FreshRSS: Connect to Your Account | CloudBreak"
+---
+
+<section class="section">
+  <div class="container" style="max-width: 800px;">
+    <h1 class="title has-text-centered mb-6">Connect Your Apps to FreshRSS</h1>
+
+    <p class="has-text-centered mb-6"><a class="button is-info" href="/products/freshrss">&larr; Back to the FreshRSS product page</a></p>
+
+    <div class="box has-background-info-light mb-6">
+      <h2 class="title is-4">Step 1: Create an API Password</h2>
+
+      <p class="mb-3">Before connecting any mobile or desktop app, you must create a dedicated API password. <strong>Your standard web login password will not work for third-party apps.</strong></p>
+
+      <a class="button is-link mb-4" href="https://freshrss.cloudbreak.app/i/?c=user&a=profile">Direct Link: Go to Settings</a>
+
+      <ol class="ml-5">
+        <li>Log into your FreshRSS web interface.</li>
+        <li>Go to <strong>Settings</strong> (the gear icon) and click on <strong>Profile</strong>.</li>
+        <li>Scroll down to the <strong>API management</strong> section.</li>
+        <li>Enter a new password in the "API password" field and click submit.</li>
+      </ol>
+    </div>
+
+    <h2 class="title is-4 mb-6">Step 2: Choose Your Device</h2>
+    <p class="subtitle is-6 has-text-grey mb-4">We've automatically selected your current device, but you can explore apps for other platforms below.</p>
+
+    <div class="tabs is-toggle is-fullwidth" id="os-tabs">
+      <ul>
+        <li class="is-active" data-target="apple-setup">
+          <a href="#apple-setup">
+            <span class="icon is-small"><i class="fab fa-apple"></i></span>
+            <span>iOS & Mac</span>
+          </a>
+        </li>
+        <li data-target="android-setup">
+          <a href="#android-setup">
+            <span class="icon is-small"><i class="fab fa-android"></i></span>
+            <span>Android</span>
+          </a>
+        </li>
+        <li data-target="windows-setup">
+          <a href="#windows-setup">
+            <span class="icon is-small"><i class="fab fa-windows"></i></span>
+            <span>Windows</span>
+          </a>
+        </li>
+        <li data-target="linux-setup">
+          <a href="#linux-setup">
+            <span class="icon is-small"><i class="fab fa-linux"></i></span>
+            <span>Linux</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="tab-content">
+
+      <div class="box os-content" id="apple-setup">
+        <h3 class="title is-5"><i class="fab fa-apple"></i> iPhone, iPad, and Mac Setup</h3>
+
+        <div class="box has-background-white is-shadowless" style="border: 1px solid #dbdbdb;">
+          <article class="media is-align-items-center">
+            <figure class="media-left">
+              <span class="icon is-large has-text-link">
+                <i class="fas fa-rss-square fa-3x"></i> </span>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p class="mb-0">
+                  <strong class="is-size-5">NetNewsWire</strong> <br>
+                  <span class="is-size-7 has-text-grey">Recommended for iOS & Mac</span>
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <a href="https://netnewswire.com/" target="_blank" class="button is-success">Get App</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="mb-3 mt-4">It's free, open-source, and provides a native, seamless reading experience.</p>
+        <ol class="ml-5">
+          <li>Download <strong>NetNewsWire</strong> from the App Store or Mac App Store.</li>
+          <li>Open the app and go to settings to <strong>Add an Account</strong>.</li>
+          <li>Select <strong>FreshRSS</strong> (or Google Reader API if FreshRSS isn't explicitly listed).</li>
+          <li>Enter your CloudBreak server URL: <code>https://freshrss.cloudbreak.app/api/greader.php</code></li>
+          <li>Enter your username and the <strong>API Password</strong> you generated in Step 1.</li>
+        </ol>
+      </div>
+
+      <div class="box os-content is-hidden" id="android-setup">
+        <h3 class="title is-5"><i class="fab fa-android"></i> Android Setup</h3>
+
+        <div class="box has-background-white is-shadowless" style="border: 1px solid #dbdbdb;">
+          <article class="media is-align-items-center">
+            <figure class="media-left">
+              <span class="icon is-large has-text-link">
+                <i class="fas fa-book-open fa-3x"></i> </span>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p class="mb-0">
+                  <strong class="is-size-5">Capy Reader</strong> <br>
+                  <span class="is-size-7 has-text-grey">Recommended for Android</span>
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <a href="https://capyreader.com/" target="_blank" class="button is-success">Get App</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="mb-3 mt-4">It's fast, modern, and built to work perfectly with FreshRSS.</p>
+        <ol class="ml-5">
+          <li>Download <strong>Capy Reader</strong> from the Google Play Store.</li>
+          <li>Open the app and add a new account.</li>
+          <li>Select <strong>FreshRSS</strong> as your service type.</li>
+          <li>Enter your CloudBreak server URL: <code>https://freshrss.cloudbreak.app/</code></li>
+          <li>Enter your username and the <strong>API Password</strong> you generated in Step 1.</li>
+        </ol>
+      </div>
+
+      <div class="box os-content is-hidden" id="windows-setup">
+        <h3 class="title is-5"><i class="fab fa-windows"></i> Windows Setup</h3>
+
+        <div class="box has-background-white is-shadowless" style="border: 1px solid #dbdbdb;">
+          <article class="media is-align-items-center">
+            <figure class="media-left">
+              <span class="icon is-large has-text-link">
+                <i class="fas fa-newspaper fa-3x"></i> </span>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p class="mb-0">
+                  <strong class="is-size-5">Fluent Reader</strong> <br>
+                  <span class="is-size-7 has-text-grey">Recommended for Windows</span>
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <a href="https://hyliu.me/fluent-reader/" target="_blank" class="button is-success">Get App</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="mb-3 mt-4">A beautiful desktop reading experience designed for modern Windows.</p>
+        <ol class="ml-5">
+          <li>Download <strong>Fluent Reader</strong> from the Microsoft Store or GitHub.</li>
+          <li>Go to Settings > Service and select <strong>Google Reader API / FreshRSS</strong>.</li>
+          <li>Enter your CloudBreak server URL: <code>https://freshrss.cloudbreak.app/api/greader.php</code></li>
+          <li>Enter your username and the <strong>API Password</strong> you generated in Step 1.</li>
+        </ol>
+      </div>
+
+      <div class="box os-content is-hidden" id="linux-setup">
+        <h3 class="title is-5"><i class="fab fa-linux"></i> Linux Setup</h3>
+
+        <div class="box has-background-white is-shadowless" style="border: 1px solid #dbdbdb;">
+          <article class="media is-align-items-center">
+            <figure class="media-left">
+              <span class="icon is-large has-text-link">
+                <i class="fas fa-bolt fa-3x"></i> </span>
+            </figure>
+            <div class="media-content">
+              <div class="content">
+                <p class="mb-0">
+                  <strong class="is-size-5">NewsFlash</strong> <br>
+                  <span class="is-size-7 has-text-grey">Recommended for Linux</span>
+                </p>
+              </div>
+            </div>
+            <div class="media-right">
+              <a href="https://flathub.org/en/apps/io.gitlab.news_flash.NewsFlash" target="_blank" class="button is-success">Get App</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="mb-3 mt-4">Integrates beautifully with modern Linux desktop environments.</p>
+        <ol class="ml-5">
+          <li>Install <strong>NewsFlash</strong> via Flathub (Flatpak).</li>
+          <li>Open the app and choose to add a new <strong>FreshRSS</strong> or Google Reader account.</li>
+          <li>Enter your CloudBreak server URL: <code>https://freshrss.cloudbreak.app/api/greader.php</code></li>
+          <li>Enter your username and the <strong>API Password</strong> you generated in Step 1.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Tab Switching Logic
+    const tabs = document.querySelectorAll('#os-tabs li');
+    const tabContents = document.querySelectorAll('.os-content');
+
+    function activateTab(targetId) {
+      tabs.forEach(tab => {
+        if (tab.dataset.target === targetId) {
+          tab.classList.add('is-active');
+        } else {
+          tab.classList.remove('is-active');
+        }
+      });
+
+      tabContents.forEach(content => {
+        if (content.id === targetId) {
+          content.classList.remove('is-hidden');
+        } else {
+          content.classList.add('is-hidden');
+        }
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        activateTab(tab.dataset.target);
+      });
+    });
+
+    // 2. OS Detection Logic
+    function detectOS() {
+      const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
+
+      if (/windows phone/i.test(userAgent) || /Win32|Win64|Windows|WinCE/i.test(userAgent)) {
+        return "windows-setup";
+      }
+      if (/android/i.test(userAgent)) {
+        return "android-setup";
+      }
+      if (/iPad|iPhone|iPod/i.test(userAgent) || /Macintosh|MacIntel|MacPPC|Mac68K/i.test(userAgent)) {
+        return "apple-setup";
+      }
+      if (/Linux/i.test(userAgent)) {
+        return "linux-setup";
+      }
+      return "apple-setup"; // Default fallback
+    }
+
+    // Auto-select the tab based on detected OS
+    const userOS = detectOS();
+    activateTab(userOS);
+  });
+</script>
