@@ -1,0 +1,82 @@
+{% if jekyll.environment == "production" %}
+  {% assign galaxy_host = "https://galaxy.cloudbreak.app" %}
+  {% assign site_domain = "https://cloudbreak.app" %}
+{% elsif jekyll.environment == "development" %}
+  {% assign galaxy_host = "http://galaxy.localhost:3000" %}
+  {% assign site_domain = "http://localhost:4000" %}
+{% endif %}
+
+{% if galaxy_host %}
+<script>
+  (function() {
+    var currentUrl = window.location.href;
+    var currentReferrer = document.referrer;
+    var cacheBuster = Math.random().toString(36).substring(2, 10);
+
+    var verify = new Image();
+    verify.src = "{{ galaxy_host }}/jekyll/verify" +
+                 "?url=" + encodeURIComponent(currentUrl) +
+                 "&referrer=" + encodeURIComponent(currentReferrer) +
+                 "&plain=true" +
+                 "&cb=" + cacheBuster;
+  })();
+</script>
+
+<noscript>
+  <img src="{{ galaxy_host }}/jekyll/verify?url={{ site_domain | append: page.url | url_encode }}&plain=true&noscript=true"
+       width="1" height="1"
+       style="display:none;"
+       alt="" />
+</noscript>
+{% endif %}
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+
+  // Default consent settings - respect privacy
+  gtag('consent', 'default', {
+    'analytics_storage': 'denied',
+    'ad_storage': 'denied',
+    'wait_for_update': 500
+  });
+
+  // Function to update consent
+  function updateConsent(consent) {
+    gtag('consent', 'update', consent);
+  }
+
+  // Check for saved consent
+  if (localStorage.getItem('analytics_consent') === 'granted') {
+    updateConsent({
+      'analytics_storage': 'granted'
+    });
+  }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  // Determine page-specific user properties
+  var userProperties = { 'visitor_type': 'new_visitor' };
+
+  {% if page.url contains '/products/freshrss' and page.url contains 'faq' %}
+    userProperties.service_page = 'freshrss';
+    userProperties.page_type = 'faq';
+  {% elsif page.url contains '/products/freshrss' %}
+    userProperties.service_page = 'freshrss';
+  {% elsif page.url contains '/products/feedbin-mini' and page.url contains 'faq' %}
+    userProperties.service_page = 'feedbin_mini';
+    userProperties.page_type = 'faq';
+  {% elsif page.url contains '/products/feedbin-mini' %}
+    userProperties.service_page = 'feedbin_mini';
+  {% endif %}
+
+  gtag('config', '{{ site.google_analytics }}', {
+    'user_properties': userProperties,
+    'page_title': document.title,
+    'send_page_view': true
+  });
+</script>

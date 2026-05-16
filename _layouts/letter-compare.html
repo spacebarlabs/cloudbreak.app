@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title | escape }}</title>
+    <meta name="description" content="{{ page.description | escape }}">
+    <meta name="keywords" content="{{ page.keywords | escape }}">
+    <meta name="author" content="Space Bar Labs">
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    {% if site.google_analytics %}
+      {% include google-analytics.html %}
+    {% endif %}
+    {{ page.head_content }}
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        background: #fff;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        color: #1a1a2e;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ── Topnav ──────────────────────────────────── */
+      .letter-nav {
+        background: #0f172a;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 0 1.5rem;
+      }
+      .letter-nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 56px;
+      }
+      .letter-nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        letter-spacing: -0.01em;
+      }
+      .letter-nav-brand img {
+        height: 24px;
+        width: auto;
+      }
+      .letter-nav-links {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .letter-nav-links a {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.8rem;
+        font-weight: 500;
+        padding: 0.4rem 0.65rem;
+        border-radius: 6px;
+        transition: color 0.15s, background 0.15s;
+        white-space: nowrap;
+      }
+      .letter-nav-links a:hover {
+        color: #fff;
+        background: rgba(255,255,255,0.08);
+      }
+      .letter-nav-links a.nav-podcasts:hover,
+      .letter-nav-links a.nav-podcasts:active {
+        color: #c4b5fd;
+        background: rgba(139, 92, 246, 0.15);
+      }
+      .letter-nav-links a.nav-news:hover,
+      .letter-nav-links a.nav-news:active {
+        color: #fdba74;
+        background: rgba(234, 88, 12, 0.15);
+      }
+      .letter-nav-links a.nav-readlater:hover,
+      .letter-nav-links a.nav-readlater:active {
+        color: #fca5a5;
+        background: rgba(220, 38, 38, 0.15);
+      }
+      .letter-nav-sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(255,255,255,0.12);
+        margin: 0 0.35rem;
+      }
+
+      /* Mobile burger */
+      .letter-nav-burger {
+        display: none;
+        background: none;
+        border: none;
+        color: #94a3b8;
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+      .letter-nav-mobile {
+        display: none;
+        background: #0f172a;
+        padding: 0.5rem 1.5rem 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .letter-nav-mobile.is-open {
+        display: block;
+      }
+      .letter-nav-mobile a {
+        display: block;
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 0.88rem;
+        font-weight: 500;
+        padding: 0.55rem 0;
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        transition: color 0.15s;
+      }
+      .letter-nav-mobile a:last-child {
+        border-bottom: none;
+      }
+      .letter-nav-mobile a:hover {
+        color: #fff;
+      }
+      .letter-nav-mobile a.nav-podcasts:hover {
+        color: #c4b5fd;
+      }
+      .letter-nav-mobile a.nav-news:hover {
+        color: #fdba74;
+      }
+      .letter-nav-mobile a.nav-readlater:hover {
+        color: #fca5a5;
+      }
+
+      @media (max-width: 768px) {
+        .letter-nav-links { display: none; }
+        .letter-nav-burger { display: block; }
+      }
+
+      /* ── Hero ─────────────────────────────────────── */
+      .letter-hero {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%);
+        padding: 4rem 1.5rem 3.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .letter-hero::before {
+        content: '';
+        position: absolute;
+        top: -120px;
+        right: -80px;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.03);
+        pointer-events: none;
+      }
+      .letter-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -100px;
+        left: -60px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.02);
+        pointer-events: none;
+      }
+      .letter-hero-eyebrow {
+        display: inline-block;
+        background: rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: 20px;
+        padding: 0.3rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #94a3b8;
+        margin-bottom: 1.5rem;
+      }
+      .letter-hero h1 {
+        font-size: clamp(2.2rem, 5vw, 3.2rem);
+        font-weight: 800;
+        color: #fff;
+        line-height: 1.15;
+        margin: 0 auto 1.25rem;
+        max-width: 680px;
+        letter-spacing: -0.025em;
+      }
+      .letter-hero p {
+        font-size: 1.15rem;
+        color: #94a3b8;
+        max-width: 520px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* ── Hero CTA ────────────────────────────────── */
+      .letter-hero-cta {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+      }
+      .letter-hero-btn-primary {
+        background: linear-gradient(135deg, #06b6d4, #0891b2);
+        color: #fff;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        cursor: pointer;
+        transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+        box-shadow: 0 4px 14px rgba(6, 182, 212, 0.4);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .letter-hero-btn-primary:hover {
+        background: linear-gradient(135deg, #22d3ee, #06b6d4);
+        box-shadow: 0 6px 20px rgba(6, 182, 212, 0.55);
+        transform: translateY(-1px);
+        color: #fff;
+      }
+      .letter-hero-btn-ghost {
+        background: transparent;
+        color: #cbd5e1;
+        border: 2px solid rgba(255,255,255,0.35);
+        padding: 0.75rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s, border-color 0.2s, color 0.2s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .letter-hero-btn-ghost:hover {
+        background: rgba(255,255,255,0.1);
+        border-color: rgba(255,255,255,0.6);
+        color: #fff;
+      }
+
+      /* ── Compare content ─────────────────────────── */
+      .letter-body {
+        background: #fff;
+        padding: 4rem 1.5rem 5rem;
+      }
+      .letter-content {
+        max-width: 1100px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+        line-height: 1.85;
+        color: #334155;
+      }
+      .letter-content p {
+        margin-bottom: 1.5rem;
+      }
+      .letter-content h3 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 3rem 0 1.25rem;
+        letter-spacing: -0.02em;
+        line-height: 1.25;
+      }
+      .letter-content h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 3.5rem 0 1.25rem;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+      .letter-content strong {
+        color: #0f172a;
+        font-weight: 700;
+      }
+      .letter-content em {
+        font-style: italic;
+        color: #475569;
+      }
+      .letter-content a {
+        color: #1d4ed8;
+        text-decoration: underline;
+        text-decoration-color: rgba(29, 78, 216, 0.3);
+        text-underline-offset: 2px;
+        transition: text-decoration-color 0.15s;
+      }
+      .letter-content a:hover {
+        text-decoration-color: #1d4ed8;
+      }
+      .letter-content ul, .letter-content ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+      .letter-content li {
+        margin-bottom: 0.75rem;
+      }
+      .letter-content hr {
+        border: none;
+        height: 1px;
+        background: #e2e8f0;
+        margin: 3rem 0;
+      }
+      .letter-content small {
+        font-size: 0.88rem;
+        color: #64748b;
+        line-height: 1.7;
+      }
+
+      /* ── Comparison Table ────────────────────────── */
+      .compare-table-wrap {
+        overflow-x: auto;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        margin: 2rem 0 3rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      .letter-content table {
+        width: 100%;
+        min-width: 820px;
+        border-collapse: collapse;
+        font-size: 0.92rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .letter-content thead th {
+        background: #f1f5f9;
+        color: #475569;
+        font-weight: 600;
+        font-size: 0.78rem;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        padding: 0.85rem 1.25rem;
+        text-align: center;
+        border-bottom: 2px solid #e2e8f0;
+        white-space: nowrap;
+        position: relative;
+      }
+      .letter-content thead th:first-child {
+        text-align: left;
+        text-transform: none;
+        font-size: 0.85rem;
+        letter-spacing: normal;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        background: #f1f5f9;
+        color: #334155;
+      }
+      .letter-content thead th:nth-child(2) {
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 0.82rem;
+        border-bottom-color: #bfdbfe;
+      }
+      .letter-content tbody td {
+        padding: 0.9rem 1.25rem;
+        text-align: center;
+        border-bottom: 1px solid #f1f5f9;
+        color: #475569;
+        vertical-align: middle;
+        transition: background 0.15s;
+      }
+      .letter-content tbody td:first-child {
+        text-align: left;
+        font-weight: 600;
+        color: #1e293b;
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: #fff;
+        white-space: nowrap;
+      }
+      .letter-content tbody td:nth-child(2) {
+        background: rgba(29, 78, 216, 0.04);
+        font-weight: 500;
+      }
+      .letter-content tbody tr:nth-child(even) td {
+        background: #f8fafc;
+      }
+      .letter-content tbody tr:nth-child(even) td:first-child {
+        background: #f8fafc;
+      }
+      .letter-content tbody tr:nth-child(even) td:nth-child(2) {
+        background: rgba(29, 78, 216, 0.07);
+      }
+      .letter-content tbody tr:hover td {
+        background: #eef2ff;
+      }
+      .letter-content tbody tr:hover td:first-child {
+        background: #eef2ff;
+      }
+      .letter-content tbody tr:hover td:nth-child(2) {
+        background: rgba(29, 78, 216, 0.10);
+      }
+      .letter-content tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* ── Check / X icons ────────────────────────── */
+      .cb-yes {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        background: #dcfce7;
+        color: #16a34a;
+        font-size: 0.8rem;
+      }
+      .cb-no {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        background: #fee2e2;
+        color: #dc2626;
+        font-size: 0.8rem;
+      }
+      .cb-neutral {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.75rem;
+        height: 1.75rem;
+        border-radius: 50%;
+        background: #f1f5f9;
+        color: #64748b;
+        font-size: 0.8rem;
+      }
+      .cb-note {
+        display: block;
+        font-size: 0.72rem;
+        color: #334155;
+        margin-top: 0.25rem;
+        font-weight: 400;
+        font-style: italic;
+      }
+
+      /* ── Native App Screenshots Section ─────────── */
+      .native-apps-section {
+        background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1e40af 100%);
+        border-radius: 20px;
+        padding: 3.5rem 2rem;
+        margin: 1rem auto 2rem;
+        max-width: 1100px;
+      }
+      .native-apps-section h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #fff;
+        text-align: center;
+        margin: 0 0 0.5rem;
+        letter-spacing: -0.02em;
+      }
+      .native-apps-section > p {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 0.95rem;
+        margin: 0 0 2.5rem;
+        line-height: 1.7;
+      }
+      .native-apps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .native-app-card {
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        border-radius: 16px;
+        overflow: hidden;
+        transition: box-shadow 0.2s, transform 0.2s;
+      }
+      .native-app-card:hover {
+        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transform: translateY(-3px);
+      }
+      .native-app-screenshot {
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(135deg, #e2e8f0, #f1f5f9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        font-size: 0.82rem;
+        font-weight: 500;
+        border-bottom: 1px solid #e2e8f0;
+        position: relative;
+        overflow: hidden;
+      }
+      .native-app-screenshot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .native-app-screenshot .screenshot-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .native-app-screenshot .screenshot-placeholder i {
+        font-size: 1.8rem;
+        color: #cbd5e1;
+      }
+      .native-app-info {
+        padding: 1.25rem 1.5rem;
+      }
+      .native-app-info h4 {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin: 0 0 0.4rem;
+      }
+      .native-app-info h4 a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .native-app-info h4 a:hover {
+        color: #1d4ed8;
+      }
+      .native-app-info .app-platform {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #64748b;
+        background: #f1f5f9;
+        padding: 0.2rem 0.65rem;
+        border-radius: 20px;
+        margin-bottom: 0.5rem;
+      }
+      .native-app-info p {
+        font-size: 0.85rem;
+        color: #64748b;
+        line-height: 1.6;
+        margin: 0 0 0.75rem;
+      }
+      .native-app-gallery-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #1d4ed8;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .native-app-gallery-link:hover {
+        color: #1e40af;
+        text-decoration: underline;
+      }
+
+
+      /* ── Screenshot thumbnail link ───────────────── */
+      .native-app-screenshot a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+      }
+      .native-app-screenshot a:focus-visible {
+        outline: 2px solid #1d4ed8;
+        outline-offset: -2px;
+      }
+      .native-app-screenshot .zoom-icon {
+        position: absolute;
+        bottom: 0.5rem;
+        right: 0.6rem;
+        background: rgba(0,0,0,0.45);
+        color: #fff;
+        border-radius: 6px;
+        width: 1.8rem;
+        height: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.2s;
+        pointer-events: none;
+      }
+      .native-app-card:hover .zoom-icon {
+        opacity: 1;
+      }
+
+      @media (max-width: 960px) {
+        .native-apps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .native-apps-grid {
+          grid-template-columns: 1fr;
+        }
+        .native-apps-section {
+          padding: 2.5rem 1.25rem;
+        }
+      }
+
+      /* ── How-to Section ──────────────────────────── */
+      .how-to-wrapper {
+        width: 100%;
+        margin: 0 0 2rem;
+      }
+      .how-to-header {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2.5rem 1rem 1.5rem;
+      }
+      .how-to-header h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.5rem;
+      }
+      .how-to-header > p {
+        color: #475569;
+      }
+      .how-to-block {
+        width: 100%;
+        background: #ffffff;
+        padding: 2rem 1rem;
+      }
+      .how-to-block--alt {
+        background: #f8fafc;
+      }
+      .how-to-block-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .how-to-step {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+      .how-to-step-text h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+      }
+      .how-to-step-text p {
+        color: #334155;
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+      }
+      .how-to-step-text ul {
+        margin: 0.5rem 0 0.75rem 1.25rem;
+        color: #334155;
+        line-height: 1.7;
+      }
+      .how-to-step-text strong {
+        color: #0f172a;
+      }
+      .how-to-step-img img {
+        width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.10);
+        display: block;
+      }
+      .how-to-inline-img {
+        display: block;
+        margin: 0.5rem 0 0.75rem;
+        border-radius: 6px;
+        max-width: 100%;
+        width: auto;
+      }
+      .how-to-step-text--full {
+        grid-column: 1 / -1;
+      }
+      .how-to-mobile-platform {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 0.75rem;
+      }
+      .how-to-app-icon {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        object-fit: contain;
+        vertical-align: middle;
+      }
+      @media (max-width: 700px) {
+        .how-to-step {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ── Footer ───────────────────────────────────── */
+      .letter-footer {
+        background: #0f172a;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        color: #64748b;
+      }
+      .letter-footer-inner {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+      .letter-footer p {
+        font-size: 0.8rem;
+        margin: 0.4rem 0;
+        color: #64748b;
+      }
+      .letter-footer a {
+        color: #94a3b8;
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .letter-footer a:hover {
+        color: #fff;
+      }
+      .letter-footer-social {
+        margin: 1rem 0;
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .letter-footer-social a {
+        color: #475569;
+        font-size: 1.1rem;
+      }
+      .letter-footer-social a:hover {
+        color: #fff;
+      }
+      .letter-footer-links {
+        margin-top: 1rem;
+        font-size: 0.78rem;
+      }
+      .letter-footer-links a {
+        margin: 0 0.35rem;
+      }
+      .letter-footer-pledges {
+        margin-top: 1rem;
+        font-size: 0.78rem;
+      }
+      .letter-footer-pledges i.fa-leaf {
+        color: #34d399;
+      }
+      .letter-footer-pledges i.fa-heart {
+        color: #a78bfa;
+      }
+
+      @media (max-width: 768px) {
+        .letter-hero {
+          padding: 3.5rem 1.25rem 3rem;
+        }
+        .letter-hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+        .letter-body {
+          padding: 2.5rem 1.25rem 3rem;
+        }
+        .letter-content {
+          font-size: 1.02rem;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- ── Consent Banner ──────────────────────────── -->
+    <div id="letter-consent-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:100;background:#f0f9ff;border-top:1px solid #bae6fd;padding:0.75rem 1.5rem;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;font-size:0.85rem;color:#334155;">
+      <span>We use analytics to improve our services. This data is anonymous.</span>
+      <span style="display:flex;gap:0.5rem;">
+        <button onclick="acceptConsent()" style="background:#1d4ed8;color:#fff;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Accept</button>
+        <button onclick="rejectConsent()" style="background:#e2e8f0;color:#475569;border:none;padding:0.35rem 0.9rem;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;">Reject</button>
+      </span>
+    </div>
+
+    <!-- ── Nav ──────────────────────────────────────── -->
+    <nav class="letter-nav" role="navigation" aria-label="main navigation">
+      <div class="letter-nav-inner">
+        <a class="letter-nav-brand" href="/letter/home.html">
+          <img src="/logo.svg" alt="CloudBreak Logo">
+          <span>CloudBreak</span>
+        </a>
+
+        <ul class="letter-nav-links">
+          <li><a href="/#browse" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a></li>
+          <li><a href="/#browse" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feeds</a></li>
+          <li><a href="/#browse" class="nav-readlater"><i class="fas fa-bookmark"></i> Read Later</a></li>
+          <li class="letter-nav-sep" role="presentation"></li>
+          <li><a href="/#browse">Pricing</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/support/">Support</a></li>
+        </ul>
+
+        <button class="letter-nav-burger" id="letterBurger" aria-label="menu" aria-expanded="false">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      <div class="letter-nav-mobile" id="letterMobileMenu">
+        <a href="/#browse" class="nav-podcasts"><i class="fas fa-podcast"></i> Podcast Players</a>
+        <a href="/#browse" class="nav-news"><i class="fas fa-rss"></i> News &amp; Feed Readers</a>
+        <a href="/#browse" class="nav-readlater"><i class="fas fa-bookmark"></i> Bookmarking &amp; Read Later</a>
+        <a href="/#browse">Pricing</a>
+        <a href="/about/">About</a>
+        <a href="/support/">Support</a>
+      </div>
+    </nav>
+
+    <!-- ── Hero ─────────────────────────────────────── -->
+    <header class="letter-hero">
+      <div class="letter-hero-eyebrow">Feature Comparison</div>
+      <h1>{{ page.hero_title }}</h1>
+      <p>{{ page.hero_subtitle }}</p>
+      <div class="letter-hero-cta">
+        <a href="/products/freshrss/" class="letter-hero-btn-primary"><i class="fas fa-rocket"></i> Get Started</a>
+        <a href="/letter/" class="letter-hero-btn-ghost"><i class="fas fa-envelope-open-text"></i> Read Our Mission</a>
+      </div>
+    </header>
+
+    <!-- ── Compare Content ─────────────────────────── -->
+    <main class="letter-body">
+      <article class="letter-content">
+        {{ content }}
+      </article>
+
+      <!-- ── Native App Screenshots ──────────────── -->
+      <section class="native-apps-section">
+        <h2>Recommended Native Apps</h2>
+        <p>CloudBreak FreshRSS works with many RSS readers on every platform.</p>
+
+        <div class="native-apps-grid">
+
+          <div class="native-app-card">
+            <div class="native-app-screenshot">
+              <a href="/compare/apps/freshrss/" aria-label="View FreshRSS gallery">
+                <img src="/images/freshrss-web/thumbs/main-light.webp" alt="FreshRSS web interface screenshot" loading="lazy">
+                <span class="zoom-icon"><i class="fas fa-images"></i></span>
+              </a>
+            </div>
+            <div class="native-app-info">
+              <span class="app-platform"><i class="fas fa-globe"></i> Web</span>
+              <h4><a href="/compare/apps/freshrss/">FreshRSS</a></h4>
+              <p>A powerful, self-hostable RSS aggregator with a clean web interface. Included with your CloudBreak subscription.</p>
+              <a href="/compare/apps/freshrss/" class="native-app-gallery-link"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+
+          <div class="native-app-card">
+            <div class="native-app-screenshot">
+              <a href="/compare/apps/netnewswire/" aria-label="View NetNewsWire iOS gallery">
+                <img src="/images/netnewswire/thumbs/iphone-list-light.webp" alt="NetNewsWire iOS screenshot" loading="lazy">
+                <span class="zoom-icon"><i class="fas fa-images"></i></span>
+              </a>
+            </div>
+            <div class="native-app-info">
+              <span class="app-platform"><i class="fa-brands fa-apple"></i> iOS</span>
+              <h4><a href="/compare/apps/netnewswire/">NetNewsWire</a></h4>
+              <p>A free and open-source RSS reader beloved by the iOS community. Fast, reliable, and privacy-respecting.</p>
+              <a href="/compare/apps/netnewswire/" class="native-app-gallery-link"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+
+          <div class="native-app-card">
+            <div class="native-app-screenshot">
+              <a href="/compare/apps/netnewswire/" aria-label="View NetNewsWire macOS gallery">
+                <img src="/images/netnewswire/thumbs/mac-light.webp" alt="NetNewsWire macOS screenshot" loading="lazy">
+                <span class="zoom-icon"><i class="fas fa-images"></i></span>
+              </a>
+            </div>
+            <div class="native-app-info">
+              <span class="app-platform"><i class="fa-brands fa-apple"></i> macOS</span>
+              <h4><a href="/compare/apps/netnewswire/">NetNewsWire</a></h4>
+              <p>The same trusted NetNewsWire experience, built natively for Mac. Sync your feeds across all your Apple devices.</p>
+              <a href="/compare/apps/netnewswire/" class="native-app-gallery-link"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+
+          <div class="native-app-card">
+            <div class="native-app-screenshot">
+              <a href="/compare/apps/capy-reader/" aria-label="View Capy Reader Android gallery">
+                <img src="/images/capy-reader/thumbs/capy-reader-list-light.webp" alt="Capy Reader Android screenshot" loading="lazy">
+                <span class="zoom-icon"><i class="fas fa-images"></i></span>
+              </a>
+            </div>
+            <div class="native-app-info">
+              <span class="app-platform"><i class="fa-brands fa-android"></i> Android</span>
+              <h4><a href="/compare/apps/capy-reader/">Capy Reader</a></h4>
+              <p>A beautiful, native RSS reader for Android. Syncs seamlessly with your CloudBreak FreshRSS instance.</p>
+              <a href="/compare/apps/capy-reader/" class="native-app-gallery-link"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+
+          <div class="native-app-card">
+            <div class="native-app-screenshot">
+              <a href="/compare/apps/fluent-reader/" aria-label="View Fluent Reader Windows gallery">
+                <img src="/images/fluent/thumbs/main-light.webp" alt="Fluent Reader Windows screenshot" loading="lazy">
+                <span class="zoom-icon"><i class="fas fa-images"></i></span>
+              </a>
+            </div>
+            <div class="native-app-info">
+              <span class="app-platform"><i class="fa-brands fa-windows"></i> Windows</span>
+              <h4><a href="/compare/apps/fluent-reader/">Fluent Reader</a></h4>
+              <p>A sleek, modern RSS reader for Windows with a fluent design. Full support for syncing with FreshRSS.</p>
+              <a href="/compare/apps/fluent-reader/" class="native-app-gallery-link"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+
+          <div class="native-app-card">
+            <div class="native-app-screenshot">
+              <a href="/compare/apps/newsflash/" aria-label="View NewsFlash Linux gallery">
+                <img src="/images/newflash/thumbs/gnome-light.webp" alt="NewsFlash Linux screenshot" loading="lazy">
+                <span class="zoom-icon"><i class="fas fa-images"></i></span>
+              </a>
+            </div>
+            <div class="native-app-info">
+              <span class="app-platform"><i class="fa-brands fa-linux"></i> Linux</span>
+              <h4><a href="/compare/apps/newsflash/">NewsFlash</a></h4>
+              <p>A modern, GTK-based feed reader for the Linux desktop. Connects directly to your CloudBreak account.</p>
+              <a href="/compare/apps/newsflash/" class="native-app-gallery-link"><i class="fas fa-images"></i> View Gallery</a>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── How to Find & Add Content ──────────────── -->
+      <div class="how-to-wrapper">
+
+        <div class="how-to-header">
+          <h2>How to Find &amp; Add Content to FreshRSS</h2>
+          <p>CloudBreak gives you total control over your information diet. Since there are no &ldquo;suggested posts&rdquo; or algorithms, your feed stays exactly as you build it. Here is how to find content and add it to your setup.</p>
+        </div>
+
+        <!-- Block 1: OPML Import (white) -->
+        <div class="how-to-block">
+          <div class="how-to-block-inner">
+            <div class="how-to-step">
+              <div class="how-to-step-text">
+                <h3>Importing an Existing Feed List (OPML)</h3>
+                <p>Already using another RSS reader? Move everything over in one step.</p>
+                <ul>
+                  <li>Export an <strong>OPML file</strong> from your current reader.</li>
+                  <li>In FreshRSS, go to <strong>Subscription Management &rarr; Import/Export</strong>.</li>
+                  <li>Upload the OPML file &mdash; all your feeds and categories are restored instantly.</li>
+                </ul>
+              </div>
+              <div class="how-to-step-img">
+                <img src="/images/freshrss-web/thumbs/import-opml.webp" alt="FreshRSS import OPML screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 2: Finding Feed URLs (white) -->
+        <div class="how-to-block">
+          <div class="how-to-block-inner">
+            <div class="how-to-step">
+              <div class="how-to-step-text">
+                <h3>Finding Feed URLs</h3>
+                <p>Most websites that publish regularly have an RSS feed, even if they don&rsquo;t advertise it. Here are the best ways to track them down:</p>
+                <ul>
+                  <li><strong>Look for the Icon:</strong> Keep an eye out for the classic orange RSS icon (<i class="fas fa-rss-square" style="color: #de7b20"></i>) or the word &ldquo;Feed&rdquo; in the footer or sidebar of your favorite blogs and news sites.</li>
+                  <li><strong>The &ldquo;URL Trick&rdquo;:</strong> FreshRSS is smarter than it looks. For most modern websites, you can just paste the <strong>main homepage URL</strong> (e.g., <code>theverge.com</code>) into the &ldquo;Add Feed&rdquo; box. FreshRSS will &ldquo;sniff&rdquo; the site&rsquo;s code, find the hidden feed link, and do the heavy lifting for you.</li>
+                  <li><strong>YouTube &amp; Substack:</strong> You don&rsquo;t need an account or a newsletter subscription to stay updated.
+                    <ul>
+                      <li><strong>YouTube:</strong> Paste a channel URL directly into FreshRSS to get new videos in your feed.</li>
+                      <li><strong>Substack:</strong> Every Substack has an RSS feed&mdash;just paste the publication&rsquo;s URL.</li>
+                    </ul>
+                  </li>
+                  <li><strong>Facebook &amp; Twitter:</strong> Stay updated without an account through 3rd parties
+                    <ul>
+                      <li><strong>Facebook:</strong> Keep up to date with Facebook Pages. Users have reported success with <a href="https://fetchrss.com">FetchRSS</a>. Unfortunately, Facebook user profiles are not supported.
+                      <li><strong>Twitter:</strong> Public Twitter accounts can be converted to RSS. Users have reported success with <a href="https://rss.app/rss-feed/create-twitter-rss-feed">RSS.app</a>.</li>
+                    </ul>
+                  </li>
+                  <li><strong>Reddit &amp; Mastodon:</strong>
+                    <ul>
+                      <li><strong>Reddit:</strong> You can follow any subreddit by adding <code>.rss</code> to the end of the URL (e.g., <code>reddit.com/r/technology/.rss</code>).</li>
+                      <li><strong>Mastodon:</strong> Follow your favorite creators by adding <code>.rss</code> to their profile URL.</li>
+                    </ul>
+                  </li>
+                  <li><strong>GitHub:</strong> Stay on top of software updates by adding the URL of a project&rsquo;s &ldquo;Releases&rdquo; page. It&rsquo;s the best way to track version updates without checking the site daily. You can also track commits and other changes.</li>
+                  <li><strong>Browser Extensions:</strong> If you do a lot of feed hunting, extensions like <strong><a href="https://chromewebstore.google.com/detail/rss-finder/ijdgeedipkpmcliidjhbemmlgibfnaff">RSS Finder</a></strong> (Chrome) or <strong><a href="https://addons.mozilla.org/en-US/firefox/addon/livemarks/">Livemarks</a></strong> (Firefox) will light up whenever you visit a site that has a hidden feed, allowing you to copy the link with one click.</li>
+                </ul>
+              </div>
+              <div class="how-to-step-img">
+                <img src="/images/finding-feed-urls.jpg" alt="Finding RSS feed URLs" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 3: Adding Feeds on Mobile (gray) -->
+        <div class="how-to-block how-to-block--alt">
+          <div class="how-to-block-inner">
+            <div class="how-to-step">
+              <div class="how-to-step-text">
+                <p class="how-to-mobile-platform"><i class="fa-brands fa-apple"></i> iOS: <img src="/images/netnewswire/netnewswire-icon.png" alt="NetNewsWire icon" class="how-to-app-icon"> NetNewsWire</p>
+                <ul>
+                  <li>Open NetNewsWire and ensure your FreshRSS account is synced.</li>
+                  <li>Tap the <strong>+</strong> button in the bottom toolbar.</li>
+                  <li>Select <strong>Add Web Feed</strong>.</li>
+                  <li>Paste the URL. Make sure the <strong>Account</strong> field is set to your FreshRSS account so it syncs back to all your other devices.</li>
+                </ul>
+              </div>
+              <div class="how-to-step-text">
+                <p class="how-to-mobile-platform"><i class="fa-brands fa-android"></i> Android: <img src="/images/capy-reader/capy-reader-icon.png" alt="Capy Reader icon" class="how-to-app-icon"> Capy Reader</p>
+                <ul>
+                  <li>Open Capy Reader and tap the <strong>+</strong> (Add) icon.</li>
+                  <li>Paste the URL or search for the site name.</li>
+                  <li>Choose the <strong>Category</strong> where you want the feed to live and hit <strong>Save</strong>.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 4: Adding Feeds via FreshRSS (white) -->
+        <div class="how-to-block">
+          <div class="how-to-block-inner">
+            <div class="how-to-step">
+              <div class="how-to-step-text">
+                <h3>Adding Feeds via the FreshRSS Web Interface</h3>
+                <p>Once you have a link, you can add it directly through the FreshRSS web interface.</p>
+                <ul>
+                  <li>Log in to your CloudBreak FreshRSS instance.</li>
+                  <li>Click the <strong>Subscription Management</strong> icon (the <code>+</code> sign in the sidebar):
+                    <img src="/images/freshrss-web/subscription-management-plus.png" alt="FreshRSS subscription management button" class="how-to-inline-img"></li>
+                  <li>Paste the URL into the <strong>Feed URL</strong> box and click <strong>Add</strong>.</li>
+                  <li><strong>Tip:</strong> You can assign the feed to a category (like &ldquo;Tech&rdquo; or &ldquo;Politics&rdquo;) right then and there.</li>
+                </ul>
+              </div>
+              <div class="how-to-step-img">
+                <img src="/images/freshrss-web/thumbs/add-category-or-feed.webp" alt="FreshRSS add category or feed dialog" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 5: Managing Feeds (gray) -->
+        <div class="how-to-block how-to-block--alt">
+          <div class="how-to-block-inner">
+            <div class="how-to-step">
+              <div class="how-to-step-text">
+                <h3>Managing Your Feeds</h3>
+                <p>Keep your subscription list tidy and organized from the Manage Feeds screen.</p>
+                <ul>
+                  <li>Rename, categorize, or remove feeds at any time.</li>
+                  <li>Group related feeds together under a shared category so they&rsquo;re easy to browse.</li>
+                </ul>
+              </div>
+              <div class="how-to-step-img">
+                <img src="/images/freshrss-web/thumbs/manage-feeds.webp" alt="FreshRSS manage feeds screen" loading="lazy">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- ── Footer ──────────────────────────────────── -->
+    <footer class="letter-footer">
+      <div class="letter-footer-inner">
+        <p>&copy; {{ site.time | date: '%Y' }} Space Bar Labs, LLC</p>
+        <div class="letter-footer-social">
+          <a href="https://mastodon.social/@cloudbreak_app" rel="me noopener" target="_blank" aria-label="Mastodon"><i class="fa-brands fa-mastodon"></i></a>
+          <a href="https://x.com/cloudbreak_app" rel="noopener" target="_blank" aria-label="X"><i class="fa-brands fa-twitter"></i></a>
+          <a href="https://www.linkedin.com/company/spacebarlabs" rel="noopener" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="/">Browse Apps</a> |
+          <a href="/about/">About</a> |
+          <a href="/support/">Support</a> |
+          <a href="/forum">Forum</a>
+        </div>
+        <div class="letter-footer-links">
+          <a href="https://spacebarlabs.com/privacy-policy/">Privacy</a> |
+          <a href="https://spacebarlabs.com/terms-of-service/">Terms</a> |
+          <a href="https://spacebarlabs.com/security/">Security</a>
+        </div>
+        <div class="letter-footer-pledges">
+          <a href="/#sustainability"><i class="fas fa-leaf"></i> 1% Sustainability</a> &nbsp;&middot;&nbsp;
+          <a href="/#open-source-pledge"><i class="fas fa-heart"></i> 10% Open Source</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var burger = document.getElementById('letterBurger');
+        var menu = document.getElementById('letterMobileMenu');
+        if (burger && menu) {
+          burger.addEventListener('click', function() {
+            menu.classList.toggle('is-open');
+            var expanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.setAttribute('aria-expanded', !expanded);
+          });
+        }
+
+        // Wrap comparison tables for horizontal scroll
+        var tables = document.querySelectorAll('.letter-content table');
+        tables.forEach(function(table) {
+          var wrapper = document.createElement('div');
+          wrapper.className = 'compare-table-wrap';
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        });
+
+        // Replace ✅ / ❌ / ➖ emojis with styled icon badges
+        document.querySelectorAll('.letter-content td').forEach(function(td) {
+          td.innerHTML = td.innerHTML
+            .replace(/✅\s*\(([^)]+)\)/g, function(_, note) {
+              return '<span class="cb-yes"><i class="fas fa-check"></i></span><span class="cb-note">' + note + '</span>';
+            })
+            .replace(/❌\s*\(([^)]+)\)/g, function(_, note) {
+              return '<span class="cb-no"><i class="fas fa-times"></i></span><span class="cb-note">' + note + '</span>';
+            })
+            .replace(/➖\s*\(([^)]+)\)/g, function(_, note) {
+              return '<span class="cb-neutral"><i class="fas fa-minus"></i></span><span class="cb-note">' + note + '</span>';
+            })
+            .replace(/✅/g, '<span class="cb-yes"><i class="fas fa-check"></i></span>')
+            .replace(/❌/g, '<span class="cb-no"><i class="fas fa-times"></i></span>')
+            .replace(/➖/g, '<span class="cb-neutral"><i class="fas fa-minus"></i></span>');
+        });
+      });
+    </script>
+
+    <script>
+      if (!localStorage.getItem('analytics_consent')) {
+        document.getElementById('letter-consent-banner').style.display = 'flex';
+      }
+      function acceptConsent() {
+        localStorage.setItem('analytics_consent', 'granted');
+        updateConsent({ 'analytics_storage': 'granted' });
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+      function rejectConsent() {
+        localStorage.setItem('analytics_consent', 'denied');
+        document.getElementById('letter-consent-banner').style.display = 'none';
+      }
+    </script>
+
+    {{ page.body_scripts }}
+</body>
+</html>

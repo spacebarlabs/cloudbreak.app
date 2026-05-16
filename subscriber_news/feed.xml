@@ -1,0 +1,26 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>{{ site.title }} - Subscriber News</title>
+  <link href="{{ site.url }}/subscriber_news/feed.xml" rel="self"/>
+  <link href="{{ site.url }}/subscriber_news/"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>{{ site.url }}/subscriber_news/</id>
+  <author>
+    <name>CloudBreak Team</name>
+  </author>
+  <subtitle>News and updates relevant to CloudBreak subscribers</subtitle>
+
+  {% assign sorted_news = site.subscriber_news | sort: 'date' | reverse %}
+  {% for post in sorted_news limit:20 %}
+  <entry>
+    <title>{{ post.title | xml_escape }}</title>
+    <link href="{{ site.url }}{{ post.url }}"/>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <id>{{ site.url }}{{ post.id }}</id>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+</feed>

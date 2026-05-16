@@ -1,0 +1,86 @@
+---
+layout: default
+title: "Coupon Eligible Products | CloudBreak"
+description: "See which CloudBreak products are eligible for the current coupon code discount."
+keywords: "coupon, discount, eligible products, CloudBreak"
+permalink: /promos/coupon-eligible-products/
+---
+
+{% assign expiry_timestamp = site.coupon_expiry | date: "%s" %}
+{% assign current_timestamp = site.time | date: "%s" %}
+{% assign coupon_active = false %}
+{% if site.coupon_code and site.coupon_code != "" and expiry_timestamp > current_timestamp %}
+  {% assign coupon_active = true %}
+{% endif %}
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      <h1 class="title has-text-centered">Special Offer - Eligible Products</h1>
+      
+      {% if coupon_active %}
+      <div class="box has-background-success-light">
+        <p class="has-text-centered">
+          <strong>Use coupon code {{ site.coupon_code }}</strong> for {{ site.coupon_discount_percent }}% off your first year on the following products:
+        </p>
+      </div>
+      {% else %}
+      <div class="box has-background-warning-light">
+        <p class="has-text-centered">
+          <strong>This promotion has ended.</strong> Check back later for future offers!
+        </p>
+      </div>
+      {% endif %}
+
+      <div class="columns is-centered is-multiline mt-5">
+        {% assign eligible_products = site.data.products | where: "key", "freshrss" %}
+        {% for product in eligible_products %}
+          <div class="column is-one-third">
+            <div class="card product-card">
+              <div class="card-content has-text-centered">
+                <p class="title is-4 mb-5">{{ product.name }}</p>
+                <p class="subtitle is-6">{{ product.description }}</p>
+                <p class="has-text-weight-bold">${{ product.normal_price }} / year</p>
+                {% if coupon_active %}
+                  {% assign discount_multiplier = 100 | minus: site.coupon_discount_percent %}
+                  {% assign discounted_price = product.normal_price | times: discount_multiplier | divided_by: 100.0 | round %}
+                  <p class="has-text-success has-text-weight-bold">
+                    ${{ discounted_price }} / year with code {{ site.coupon_code }}
+                  </p>
+                {% endif %}
+              </div>
+              <footer class="card-footer">
+                <a href="/products/{{ product.key }}/" class="card-footer-item has-text-weight-bold">Learn More</a>
+                
+                {% assign action_url = product.subscribe_url | default: product.preorder_url %}
+                {% assign action_text = "Subscribe" %}
+                
+                {% if coupon_active %}
+                  {% assign action_url_final = action_url | append: "?prefilled_promo_code=" | append: site.coupon_code %}
+                {% else %}
+                  {% assign action_url_final = action_url %}
+                {% endif %}
+                
+                <a href="{{ action_url_final }}" class="card-footer-item has-text-weight-bold has-text-white has-background-grey-dark">
+                    <span>{{ action_text }}</span>
+                    <span class="icon is-small ml-2"><i class="fas fa-arrow-right"></i></span>
+                </a>
+              </footer>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="content mt-6">
+        {% if coupon_active %}
+        <p class="has-text-centered">
+          <strong>Note:</strong> This offer expires {{ site.coupon_expiry | date: "%B %-d, %Y" }}.
+        </p>
+        {% endif %}
+        <p class="has-text-centered mt-4">
+          <a href="/" class="button is-primary">View All Products</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

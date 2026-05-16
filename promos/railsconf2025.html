@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudBreak Promotion at RailsConf 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+            color: #000;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+        .container {
+            max-width: 750px;
+            margin: 15px auto;
+            padding: 15px;
+        }
+        .header {
+            text-align: center;
+        }
+        .header .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            position: relative;
+            top: -3px;
+        }
+        .promo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 0px;
+        }
+        .promo-subtitle {
+            font-size: 1rem;
+            color: #333;
+        }
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .product-category {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 5px;
+            width: calc(50% - 35px);
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .product-icon {
+            font-size: 2.5rem;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .product-category h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+            color: #000;
+            text-transform: uppercase;
+        }
+        .product-category p {
+            font-size: 1rem;
+            color: #333;
+        }
+        .coupon-section {
+            border: 3px dashed #000;
+            padding: 12px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .coupon-code {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #000;
+            background-color: #fff;
+            padding: 8px 15px;
+            border: 2px solid #000;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        .coupon-section h2 {
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        .coupon-section p {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .qr-section {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .qr-section img {
+            width: 120px;
+            height: 120px;
+        }
+         .qr-section p {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+         .footer {
+            text-align: center;
+            /* border-top: 1px solid #ccc; */
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        @media print {
+            body {
+                -webkit-filter: grayscale(100%);
+                filter: grayscale(100%);
+            }
+            .container {
+                margin: 0;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="logo"><img src="/logo.svg" alt="CloudBreak Logo"> CloudBreak</h1>
+            <h2 class="promo-title">Refactor Your Digital Workflow</h2>
+            <p class="promo-subtitle">Your digital life, now on an open foundation.  Migrate your data today.</p>
+        </div>
+
+        <div class="products">
+            <div class="product-category">
+                <div class="product-icon"><i class="fa-solid fa-rss"></i></div>
+                <h3>RSS Readers</h3>
+                <p>Feedbin Mini, FreshRSS</p>
+            </div>
+            <div class="product-category">
+                <div class="product-icon"><i class="fa-solid fa-book-bookmark"></i></div>
+                <h3>Read-It-Later</h3>
+                <p>Karakeep, Linkding, Readeck, Wallabag</p>
+            </div>
+            <div class="product-category">
+                <div class="product-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h3>Analytics</h3>
+                <p>Matomo Nano</p>
+            </div>
+            <div class="product-category">
+                <div class="product-icon"><i class="fa-solid fa-link"></i></div>
+                <h3>URL Shorteners</h3>
+                <p>Shlink Nano</p>
+            </div>
+        </div>
+
+        <div class="coupon-section">
+            <h2>Get $2 Off Any Plan!</h2>
+            <div class="coupon-code">RAILSCONF2025</div>
+        </div>
+
+        <div class="qr-section">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fcloudbreak.app%3Futm_source%3Drailsconf2025%26utm_medium%3Dprint%26utm_campaign%3Drailsconf2025%26utm_content%3Dqr_code&size=120x120" alt="QR code for cloudbreak.app">
+            <p>cloudbreak.app</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 Space Bar Labs</p>
+        </div>
+    </div>
+</body>
+</html>

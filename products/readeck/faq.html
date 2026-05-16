@@ -1,0 +1,152 @@
+---
+permalink: /products/readeck/faq/
+layout: default
+title: "Readeck FAQ: Features, Mobile Apps & Setup | CloudBreak"
+description: "Everything you need to know about Readeck hosting. Learn about pricing, features, mobile apps, and how to get started with our privacy-focused read-it-later service."
+keywords: "Readeck FAQ, read-it-later questions, Readeck mobile apps, Readeck hosting support"
+head_content: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ site.url }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Readeck",
+        "item": "{{ site.url }}/products/readeck/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "FAQ",
+        "item": "{{ site.url }}/products/readeck/faq/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Readeck?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Readeck is a modern bookmark manager and read-it-later service that lets you save articles, web pages, and other content for later reading. We host and maintain Readeck for you, so you don't have to worry about server management or updates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Please visit our main page for current pricing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We primarily accept credit card payments through Stripe. PayPal is also available upon request - please contact us if you would like to pay via PayPal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the key features?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Readeck offers a modern, elegant interface for saving and organizing web content. It provides clean reading views, content archiving, tagging and organization, and browser extensions for easy saving of articles and web pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there browser extensions available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Readeck supports browser extensions and bookmarklets that make it easy to save articles and web pages directly from your browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I access Readeck on mobile devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Readeck has a responsive web interface that works well on mobile devices. You can access your saved articles and reading list from any device with a web browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does account creation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In most cases, your account will be created quickly after your subscription is processed. However, in some cases, it may take up to two business days to complete the account setup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kind of support do you provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We focus on providing a reliable, high-uptime Readeck hosting service. Our support is limited to the information provided in this FAQ. While we maintain and update the Readeck installation, we do not provide technical support or tutorials for using Readeck itself - for that, please refer to the official Readeck documentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Visit our main page to subscribe and get started with Readeck today!"
+        }
+      }
+    ]
+  }
+  </script>
+---
+{% assign product = site.data.products | where:"key", "readeck" | first %}
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Frequently Asked Questions</h1>
+
+    <p><a class="button is-link" href="/products/{{ product.key }}/">&larr; Back to {{ product.name }}</a></p>
+
+    <div class="content mt-6">
+      <h2 class="subtitle mt-4" id="what-is-readeck"><a href="#what-is-readeck" class="has-text-dark">What is {{ product.name }}?</a></h2>
+      <p><a href="{{ product.scm_url }}">{{ product.name }}</a> is a modern bookmark manager and read-it-later service that lets you save articles, web pages, and other content for later reading. We host and maintain {{ product.name }} for you, so you don't have to worry about server management or updates.</p>
+
+      <h2 class="subtitle mt-4" id="how-much-does-it-cost"><a href="#how-much-does-it-cost" class="has-text-dark">How much does it cost?</a></h2>
+      <p>Please visit our <a href="/products/{{ product.key }}/">main page</a> for current pricing.</p>
+
+      <h2 class="subtitle mt-4" id="what-payment-methods-do-you-accept"><a href="#what-payment-methods-do-you-accept" class="has-text-dark">What payment methods do you accept?</a></h2>
+      <p>We primarily accept credit card payments through Stripe. PayPal is also available upon request - please <a href="mailto:support@spacebarlabs.com?subject=PayPal Payment Request for Readeck">contact us</a> if you would like to pay via PayPal.</p>
+
+      <h2 class="subtitle mt-4" id="what-are-the-key-features"><a href="#what-are-the-key-features" class="has-text-dark">What are the key features?</a></h2>
+      <p>{{ product.name }} offers a modern, elegant interface for saving and organizing web content. It provides clean reading views, content archiving, tagging and organization, and browser extensions for easy saving of articles and web pages.</p>
+
+      <h2 class="subtitle mt-4" id="are-there-browser-extensions-available"><a href="#are-there-browser-extensions-available" class="has-text-dark">Are there browser extensions available?</a></h2>
+      <p>Yes! {{ product.name }} supports browser extensions and bookmarklets that make it easy to save articles and web pages directly from your browser.</p>
+
+      <h2 class="subtitle mt-4" id="can-i-access-readeck-on-mobile"><a href="#can-i-access-readeck-on-mobile" class="has-text-dark">Can I access {{ product.name }} on mobile devices?</a></h2>
+      <p>Yes! {{ product.name }} has a responsive web interface that works well on mobile devices. You can access your saved articles and reading list from any device with a web browser.</p>
+
+      <h2 class="subtitle mt-4" id="how-long-does-account-creation-take"><a href="#how-long-does-account-creation-take" class="has-text-dark">How long does account creation take?</a></h2>
+      <p>In most cases, your account will be created quickly after your subscription is processed. However, in some cases, it may take up to two business days to complete the account setup.</p>
+
+      <h2 class="subtitle mt-4" id="what-kind-of-support-do-you-provide"><a href="#what-kind-of-support-do-you-provide" class="has-text-dark">What kind of support do you provide?</a></h2>
+      <p>We focus on providing a reliable, high-uptime {{ product.name }} hosting service. Our support is limited to the information provided in this FAQ and our <a href="/support/">support page</a>. While we maintain and update the {{ product.name }} installation, we do not provide technical support or tutorials for using {{ product.name }} itself - for that, please refer to the <a target="_blank" href="{{ product.scm_url }}">official {{ product.name }} documentation</a>.</p>
+
+      <h2 class="subtitle mt-4" id="how-do-i-get-started"><a href="#how-do-i-get-started" class="has-text-dark">How do I get started?</a></h2>
+      <p>Visit our <a href="/products/{{ product.key }}/">main page</a> to subscribe and get started with {{ product.name }} today!</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudBreak</title>
+    <style>
+        /* CSS Reset & Variables */
+        :root {
+            --black: #000000;
+            --dark-gray: #333333;
+            --mid-gray: #888888;
+            --light-gray: #eeeeee;
+            --white: #ffffff;
+            --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+            /* Explore Button Colors */
+            --purple: #6f42c1;
+            --purple-hover: #5a32a3;
+            --orange: #fd7e14;
+            --orange-hover: #d1640a;
+            --red: #dc3545;
+            --red-hover: #a71d2a;
+        }
+
+        body, h1, h2, h3, h4, p, ul, ol, li {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            color: var(--black);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* Typography */
+        h1 { font-size: 3rem; letter-spacing: -0.05em; line-height: 1.1; margin-bottom: 1rem; }
+        h2 { font-size: 2rem; font-weight: 500; margin-bottom: 1.5rem; color: var(--dark-gray); }
+        h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 1rem; }
+        h4 { font-size: 1.5rem; margin-bottom: 1rem; }
+        p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+
+        .muted { color: var(--mid-gray); font-size: 0.95rem; }
+
+        /* Layout */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            border-bottom: 1px solid var(--light-gray);
+            padding: 1.5rem 2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        section {
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        /* Buttons & Inputs */
+        .btn {
+            display: inline-block;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--black);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--black);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--light-gray);
+        }
+
+        /* Explore Specific Buttons */
+        .explore-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-sm {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-purple { background-color: var(--purple); border-color: var(--purple); color: var(--white); }
+        .btn-purple:hover { background-color: var(--purple-hover); color: var(--white); border-color: var(--purple-hover); }
+
+        .btn-orange { background-color: var(--orange); border-color: var(--orange); color: var(--white); }
+        .btn-orange:hover { background-color: var(--orange-hover); color: var(--white); border-color: var(--orange-hover); }
+
+        .btn-red { background-color: var(--red); border-color: var(--red); color: var(--white); }
+        .btn-red:hover { background-color: var(--red-hover); color: var(--white); border-color: var(--red-hover); }
+
+        .search-box {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--black);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        /* Filters */
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+
+        .filter-label {
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .filter-tags {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: none;
+            border: 1px solid var(--mid-gray);
+            color: var(--dark-gray);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tag:hover {
+            border-color: var(--black);
+            color: var(--black);
+            background-color: var(--light-gray);
+        }
+
+        /* List Items */
+        .use-case-list {
+            list-style: none;
+            margin-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .use-case-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            font-size: 1.1rem;
+        }
+
+        .see-all-btn {
+            display: block;
+            width: auto;
+            margin: 1rem auto 0;
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: normal;
+            color: var(--mid-gray);
+            text-decoration: underline;
+            border-radius: 4px;
+        }
+
+        .see-all-btn:hover {
+            color: var(--black);
+        }
+
+        /* How it works */
+        .steps {
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .steps li {
+            margin-bottom: 0.75rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-gray);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .footer-legal {
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            color: var(--mid-gray);
+        }
+
+        .footer-legal-links {
+            margin-top: 0.5rem;
+        }
+
+        .footer-legal a {
+            color: inherit;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-legal a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">CloudBreak</div>
+    </header>
+
+    <section class="container">
+        <h1>You deserve freedom and privacy online</h1>
+        <h2>Private apps made simple. Zero ads, zero tracking.</h2>
+
+        <p>Swap the data-mining apps you use today for trusted, community-built alternatives. We offer a growing selection of apps, starting with podcast players, news readers, and read-it-later tools.</p>
+
+        <p>Your subscription simply pays for your private slice of the cloud, and we handle all the technical heavy lifting.</p>
+
+        <p><strong>Break away from the corporate cloud, easily.</strong></p>
+        <p><em>Starting at $1/mo</em></p>
+
+        <div style="margin: 2rem 0;">
+            <a href="#" class="btn">Find Your New Apps</a>
+        </div>
+
+        <div class="explore-buttons">
+            <a href="#" class="btn btn-purple btn-sm">Podcast Players</a>
+            <a href="#" class="btn btn-orange btn-sm">Feed Readers</a>
+            <a href="#" class="btn btn-red btn-sm">Read Later</a>
+        </div>
+    </section>
+
+    <section class="container">
+        <h4>How can we help you?</h4>
+        <p class="muted" style="margin-bottom: 2rem;">See how our customers use CloudBreak services</p>
+
+        <input type="text" id="searchInput" class="search-box" placeholder="Search, e.g. ">
+
+        <div class="filter-group">
+            <span class="filter-label">Goal:</span>
+            <div class="filter-tags">
+                <button class="tag" onclick="setSearch('Improve Privacy')">Improve Privacy</button>
+                <button class="tag" onclick="setSearch('Save Time')">Save Time</button>
+                <button class="tag" onclick="setSearch('Escape Algorithms')">Escape Algorithms</button>
+                <button class="tag" onclick="setSearch('Save Money')">Save Money</button>
+            </div>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">Role:</span>
+            <div class="filter-tags">
+                <button class="tag" onclick="setSearch('Reader')">Reader</button>
+                <button class="tag" onclick="setSearch('Researcher')">Researcher</button>
+                <button class="tag" onclick="setSearch('Creator')">Creator</button>
+                <button class="tag" onclick="setSearch('Techie')">Techie</button>
+                <button class="tag" onclick="setSearch('Indie Supporter')">Indie Supporter</button>
+                <button class="tag" onclick="setSearch('Teacher')">Teacher</button>
+                <button class="tag" onclick="setSearch('Shopper')">Shopper</button>
+                <button class="tag" onclick="setSearch('Busy')">Busy</button>
+            </div>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">Platform:</span>
+            <div class="filter-tags">
+                <button class="tag" onclick="setSearch('Reddit')">Reddit</button>
+                <button class="tag" onclick="setSearch('Twitter')">Twitter</button>
+                <button class="tag" onclick="setSearch('Facebook')">Facebook</button>
+                <button class="tag" onclick="setSearch('YouTube')">YouTube</button>
+                <button class="tag" onclick="setSearch('Google Reader')">Google Reader</button>
+                <button class="tag" onclick="setSearch('Newsletters')">Newsletters</button>
+            </div>
+        </div>
+
+        <ul class="use-case-list" id="useCaseList">
+            </ul>
+        <button id="seeAllBtn" class="see-all-btn" onclick="toggleExpand()">See all...</button>
+    </section>
+
+    <section class="container">
+        <h4>How it Works</h4>
+        <ol class="steps">
+            <li>Pick your apps (podcasts, news, etc)</li>
+            <li>We set up your private account</li>
+            <li>Enjoy the Internet on your terms</li>
+        </ol>
+
+        <p style="margin-bottom: 2rem;"><strong>Want to leave?</strong> Your data is yours. Export it anytime.</p>
+
+        <a href="#" class="btn btn-outline">Compare Us to Big Tech</a>
+    </section>
+
+    <footer>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2>Meet the people who make your tech</h2>
+            <p style="margin-bottom: 2rem;">We'd love to help you!</p>
+            <a href="#" class="btn">Ask us a question</a>
+        </div>
+        <div class="footer-legal">
+            <p>© 2026 Space Bar Labs, LLC</p>
+            <div class="footer-legal-links">
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Security Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Use Case Data with assigned Tags for filtering
+        const useCases = [
+            { text: "I want to save money instead of running a server on my own", tags: ["Save Money", "Techie"] },
+            { text: "I want to use NetNewsWire on more than just Apple devices", tags: ["Techie", "Reader"] },
+            { text: "I want NetNewsWire to be faster", tags: ["Save Time", "Reader", "Techie"] },
+            { text: "I want to understand what RSS is", tags: ["Reader"] },
+            { text: "I want to get updates for topics that are relevant to me", tags: ["Escape Algorithms", "Reader"] },
+            { text: "I want to be able to leave the Microsoft, Apple, or Google ecosystems", tags: ["Improve Privacy", "Techie", "Indie Supporter"] },
+            { text: "I don't want my attention to be sold as a product anymore", tags: ["Improve Privacy", "Indie Supporter"] },
+            { text: "I'm tired of doomscrolling", tags: ["Save Time", "Busy", "Escape Algorithms"] },
+            { text: "I don't want to use Facebook anymore but I have to for one page", tags: ["Facebook", "Improve Privacy"] },
+            { text: "I want to share updates about my family privately but without messaging or Facebook", tags: ["Facebook", "Improve Privacy", "Creator"] },
+            { text: "I want to see my local news", tags: ["Reader"] },
+            { text: "I want to see national news", tags: ["Reader"] },
+            { text: "I want to see news related to my work", tags: ["Researcher", "Busy"] },
+            { text: "I want to know when YouTube channels post videos without getting sucked into YouTube", tags: ["YouTube", "Save Time", "Escape Algorithms"] },
+            { text: "I don't want so many newsletters in my email, but I still want to see them", tags: ["Newsletters", "Save Time", "Busy"] },
+            { text: "I don't like Big Tech and I want to support an alternative", tags: ["Indie Supporter", "Improve Privacy"] },
+            { text: "I want to meet who makes the online services I use", tags: ["Indie Supporter"] },
+            { text: "I want to follow friends and creators, without social media", tags: ["Escape Algorithms", "Creator", "Reader"] },
+            { text: "I want to see sales from my favorite stores", tags: ["Shopper", "Save Money"] },
+            { text: "I want to know when my library has new books from my favorite author", tags: ["Reader"] },
+            { text: "I want to curate content feeds for my team at work", tags: ["Researcher", "Teacher"] },
+            { text: "I want to see new items for sale at my favorite stores", tags: ["Shopper"] },
+            { text: "I want to know when a certain webpage changes", tags: ["Techie", "Researcher"] },
+            { text: "I want the old Internet back", tags: ["Indie Supporter", "Techie"] },
+            { text: "I learned about enshittification and I want a way out", tags: ["Indie Supporter", "Escape Algorithms"] },
+            { text: "I want technology to be fun again", tags: ["Indie Supporter", "Techie"] },
+            { text: "Tell me when a new Reddit post matches my search", tags: ["Reddit", "Save Time", "Researcher"] },
+            { text: "I miss Google Reader", tags: ["Google Reader", "Reader"] },
+            { text: "I need an alternative to Twitter", tags: ["Twitter", "Reader", "Creator"] },
+            { text: "I'm tired of supporting tech companies I don't like", tags: ["Indie Supporter", "Save Money"] },
+            { text: "I want to see news, but not *that* politician", tags: ["Escape Algorithms", "Reader"] },
+            { text: "I want to have all the updates about my world in one place", tags: ["Save Time", "Busy"] },
+            { text: "I don't like someone else tracking exactly which podcasts I listen to and when", tags: ["Improve Privacy"] },
+            { text: "I'm tired of ads and pop-ups just to read my favorite blogs", tags: ["Save Time", "Reader"] },
+            { text: "I don't want to have to check so many blogs by hand anymore", tags: ["Save Time", "Busy"] },
+            { text: "I don't want to be locked into a single ecosystem that holds my digital library hostage", tags: ["Techie", "Improve Privacy"] },
+            { text: "I want to read a long article later when I have time (and maybe no Internet)", tags: ["Busy", "Reader"] },
+            { text: "I'm tired of algorithms deciding what news and articles I see", tags: ["Escape Algorithms", "Reader"] },
+            { text: "I want to have audiobooks in the cloud, but not Amazon's", tags: ["Reader", "Indie Supporter"] },
+            { text: "I'm on TikTok too much", tags: ["Escape Algorithms", "Save Time", "Busy"] },
+            { text: "I want Instagram without being on Instagram", tags: ["Escape Algorithms", "Improve Privacy"] },
+            { text: "I want to use more open source software", tags: ["Techie", "Indie Supporter"] },
+            { text: "I have too much content to keep up with", tags: ["Busy", "Save Time"] },
+            { text: "I don't like missing important posts because a social media algorithm decided not to show them to me", tags: ["Escape Algorithms", "Reader", "Creator"] },
+            { text: "I'm tired of emailing links to myself just to make sure I don't lose them", tags: ["Busy", "Techie"] },
+            { text: "I want to be on top of my research", tags: ["Researcher", "Save Time"] },
+            { text: "I want to listen to my podcasts on more than just my phone", tags: ["Techie"] },
+            { text: "I want to see new Reddit posts that have more than 500 upvotes", tags: ["Reddit", "Save Time"] },
+            { text: "I want to see new Hacker News posts that have more than 500 upvotes", tags: ["Techie", "Save Time"] },
+            { text: "I want to support my local newspaper", tags: ["Indie Supporter", "Reader"] },
+            { text: "I want to see just the article, no ads, no popovers, nothing but the content", tags: ["Reader", "Save Time"] },
+            { text: "I want to see how my service works under the hood", tags: ["Techie"] },
+            { text: "I have bookmarks going back decades", tags: ["Researcher", "Techie"] },
+            { text: "I self-host and I don't have time for it anymore", tags: ["Techie", "Save Time", "Busy"] },
+            { text: "I don't trust what this app is doing", tags: ["Improve Privacy"] },
+            { text: "What if I want to leave CloudBreak?", tags: ["Improve Privacy", "Techie"] },
+            { text: "I want to back up and share my photos without Google scanning all of them", tags: ["Improve Privacy", "Creator"] },
+            { text: "I want a smart home but I don't want someone else listening all the time", tags: ["Improve Privacy", "Techie"] },
+            { text: "I like my Roku but not all the subscriptions to watch my favorite shows and movies", tags: ["Save Money"] },
+            { text: "I want my notes organized but not to advertise to me", tags: ["Improve Privacy", "Researcher"] },
+            { text: "I want my files in the cloud but I want control over them", tags: ["Improve Privacy", "Techie"] },
+            { text: "I want maps without ads", tags: ["Improve Privacy", "Save Time"] },
+            { text: "I want email without ads or tracking", tags: ["Improve Privacy", "Busy"] },
+            { text: "I want a calendar that doesn't target ads based on exactly where I go every day", tags: ["Improve Privacy", "Busy"] },
+            { text: "I don't want to be locked into Apple devices forever", tags: ["Techie", "Save Money"] },
+            { text: "I don't want to be locked into Google devices forever", tags: ["Techie", "Save Money"] },
+            { text: "I don't want to be locked into Microsoft devices forever", tags: ["Techie", "Save Money"] },
+            { text: "I'm an RSS enthusiast and I want tips", tags: ["Techie", "Reader"] },
+            { text: "I want private AI that I can trust", tags: ["Improve Privacy", "Techie"] },
+            { text: "I want private AI that I can trust, but it needs to be high-quality", tags: ["Improve Privacy", "Techie"] },
+            { text: "I want to understand what you're actually hosting", tags: ["Techie"] },
+            { text: "I want to know how you compare to your competitors", tags: ["Shopper", "Techie"] },
+            { text: "I want my music in the cloud", tags: ["Techie", "Creator"] },
+            { text: "I want to keep up with the latest deals", tags: ["Shopper", "Save Money"] },
+            { text: "I have too much Substack in my email inbox", tags: ["Newsletters", "Busy", "Save Time"] }
+        ];
+
+        // Best 3 to show by default
+        const defaultCasesIndices = [24, 15, 25]; // enshittification, big tech alt, tech fun again
+        const defaultCaseTexts = defaultCasesIndices.map(index => useCases[index].text);
+
+        // State variables
+        let isExpanded = false;
+        let searchTerm = "";
+
+        // DOM Elements
+        const listContainer = document.getElementById("useCaseList");
+        const searchInput = document.getElementById("searchInput");
+        const seeAllBtn = document.getElementById("seeAllBtn");
+
+        // Render List Logic
+        function renderList() {
+            listContainer.innerHTML = "";
+            const searchLower = searchTerm.toLowerCase();
+
+            // Filter by search term matching text OR any associated tag
+            const filteredCases = useCases.filter(item => {
+                const textMatch = item.text.toLowerCase().includes(searchLower);
+                const tagMatch = item.tags.some(tag => tag.toLowerCase() === searchLower || tag.toLowerCase().includes(searchLower));
+                return textMatch || tagMatch;
+            });
+
+            // Determine how many to show
+            let itemsToShow = filteredCases.map(item => item.text);
+            if (searchTerm === "" && !isExpanded) {
+                itemsToShow = defaultCaseTexts;
+            }
+
+            // Append to DOM
+            itemsToShow.forEach(text => {
+                const li = document.createElement("li");
+                li.className = "use-case-item";
+                li.textContent = text;
+                listContainer.appendChild(li);
+            });
+
+            // Handle empty states
+            if (itemsToShow.length === 0) {
+                const li = document.createElement("li");
+                li.className = "use-case-item muted";
+                li.textContent = "No matches found. Try a different search or filter.";
+                listContainer.appendChild(li);
+            }
+
+            // Toggle "See all..." button visibility
+            if (searchTerm !== "" || isExpanded || filteredCases.length <= 3) {
+                seeAllBtn.style.display = "none";
+            } else {
+                seeAllBtn.style.display = "block";
+            }
+        }
+
+        // Search Input Listener
+        searchInput.addEventListener("input", (e) => {
+            searchTerm = e.target.value;
+            renderList();
+        });
+
+        // Filter Tag Click Helper
+        function setSearch(term) {
+            searchTerm = term;
+            searchInput.value = term;
+            renderList();
+        }
+
+        // See All Toggle
+        function toggleExpand() {
+            isExpanded = true;
+            renderList();
+        }
+
+        // Rotating Placeholder Logic using random statements (Slightly faster: 4000ms)
+        setInterval(() => {
+            // Only rotate if user isn't typing
+            if (document.activeElement !== searchInput && searchInput.value === "") {
+                const randomIndex = Math.floor(Math.random() * useCases.length);
+                searchInput.setAttribute("placeholder", "Search, e.g. " + useCases[randomIndex].text);
+            }
+        }, 4000);
+
+        // Initial Render
+        renderList();
+        const initialRandomIndex = Math.floor(Math.random() * useCases.length);
+        searchInput.setAttribute("placeholder", "Search, e.g. " + useCases[initialRandomIndex].text);
+
+    </script>
+</body>
+</html>

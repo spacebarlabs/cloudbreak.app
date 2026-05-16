@@ -1,0 +1,43 @@
+{%- comment -%}
+  This include generates the JSON-LD for a product.
+  It builds a Liquid hash object and then uses the `jsonify`
+  filter to ensure the output is always valid JSON.
+{%- endcomment -%}
+
+{%- assign path_parts = page.url | split: '/' -%}
+{%- assign product_key = path_parts[2] -%}
+{%- assign product = site.data.products | where: "key", product_key | first -%}
+
+{%- if product -%}
+  {%- assign price = product.sale_price | default: product.normal_price | to_float -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ product.name }} Hosting",
+    "description": {{ product.description | jsonify }},
+    "brand": {
+      "@type": "Brand",
+      "name": "CloudBreak",
+      "logo": "{{ site.url }}/logo.svg"
+    },
+    "category": "Software > {% if product.category == 'rss' %}RSS{% else %}{{ product.category | replace: '-', ' ' | capitalize }}{% endif %} > Hosting",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Annual Subscription",
+        "description": "{{ product.name }} hosting billed annually",
+        "priceCurrency": "USD",
+        "priceValidUntil": "{{ site.time | date: '%Y' }}-12-31",
+        "url": "{% if product.action == 'subscribe' %}{{ product.subscribe_url }}{% else %}{{ product.preorder_url }}{% endif %}",
+        "availability": "{% if product.action == 'subscribe' %}https://schema.org/InStock{% else %}https://schema.org/PreOrder{% endif %}",
+        "price": {{ price | format: '%0.2f' }}
+      }
+    ]
+    {%- if product.screenshot_url -%}
+    , "image": "{{ site.url }}{{ product.screenshot_url }}"
+    {%- endif -%}
+  }
+  </script>
+{%- endif -%}

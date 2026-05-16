@@ -1,0 +1,919 @@
+---
+layout: null
+distros:
+  - name: "Ubuntu Server"
+    color: "#E95420"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "25.10", label: "amd64" }
+      - { number: "24.04", label: "amd64 LTS" }
+      - { number: "22.04", label: "amd64 LTS" }
+      - { number: "20.04", label: "amd64 LTS" }
+      - { number: "18.04", label: "amd64 LTS" }
+      - { number: "18.04", label: "i386 LTS" }
+      - { number: "16.04", label: "amd64 LTS" }
+      - { number: "16.04", label: "i386 LTS" }
+      - { number: "14.04", label: "amd64 LTS" }
+      - { number: "14.04", label: "i386 LTS" }
+  - name: "Ubuntu"
+    color: "#E95420"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "25.10", label: "amd64" }
+      - { number: "24.04", label: "amd64 LTS" }
+      - { number: "22.04", label: "amd64 LTS" }
+      - { number: "20.04", label: "amd64 LTS" }
+      - { number: "18.04", label: "amd64 LTS" }
+      - { number: "18.04", label: "i386 LTS" }
+      - { number: "16.04", label: "amd64 LTS" }
+      - { number: "16.04", label: "i386 LTS" }
+  - name: "Kubuntu"
+    color: "#0079C1"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "25.10", label: "amd64" }
+      - { number: "24.04", label: "amd64 LTS" }
+      - { number: "22.04", label: "amd64 LTS" }
+  - name: "Xubuntu"
+    color: "#2D6791"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "24.04", label: "amd64 LTS" }
+  - name: "Lubuntu"
+    color: "#005A9E"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "24.04", label: "amd64 LTS" }
+  - name: "Ubuntu MATE"
+    color: "#87A556"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "24.04", label: "amd64 LTS" }
+  - name: "Ubuntu Budgie"
+    color: "#3A52A4"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.04", label: "amd64 LTS" }
+      - { number: "24.04", label: "amd64 LTS" }
+  - name: "Debian"
+    color: "#A80030"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "13.x", label: "amd64" }
+      - { number: "12.x", label: "amd64" }
+      - { number: "11.x", label: "amd64" }
+      - { number: "12.x", label: "i386" }
+      - { number: "11.x", label: "i386" }
+  - name: "Linux Mint Cinnamon"
+    color: "#87cf3e"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "22.x", label: "amd64" }
+      - { number: "21.x", label: "amd64" }
+  - name: "Linux Mint Mate"
+    color: "#87cf3e"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "22.x", label: "amd64" }
+      - { number: "21.x", label: "amd64" }
+  - name: "Linux Mint Xfce"
+    color: "#87cf3e"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "22.x", label: "amd64" }
+      - { number: "21.x", label: "amd64" }
+  - name: "Fedora"
+    color: "#294172"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "44", label: "amd64" }
+      - { number: "43", label: "amd64" }
+      - { number: "42", label: "amd64" }
+  - name: "Fedora KDE"
+    color: "#294172"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "44", label: "amd64" }
+      - { number: "43", label: "amd64" }
+  - name: "Fedora Xfce"
+    color: "#294172"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "44", label: "amd64" }
+  - name: "Fedora Cinnamon"
+    color: "#294172"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "44", label: "amd64" }
+  - name: "Fedora i3"
+    color: "#294172"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "44", label: "amd64" }
+  - name: "Fedora Budgie"
+    color: "#294172"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "44", label: "amd64" }
+  - name: "Pop!_OS"
+    color: "#48B9C7"
+    media: ["USB"]
+    versions:
+      - { number: "24.04", label: "amd64 LTS" }
+      - { number: "22.04", label: "amd64 LTS" }
+  - name: "Manjaro KDE Plasma"
+    color: "#35BF5B"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.x", label: "amd64" }
+      - { number: "25.x", label: "amd64" }
+  - name: "Manjaro Xfce"
+    color: "#35BF5B"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.x", label: "amd64" }
+      - { number: "25.x", label: "amd64" }
+  - name: "Manjaro GNOME"
+    color: "#35BF5B"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.x", label: "amd64" }
+      - { number: "25.x", label: "amd64" }
+  - name: "Manjaro Cinnamon"
+    color: "#35BF5B"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.x", label: "amd64" }
+      - { number: "25.x", label: "amd64" }
+  - name: "Manjaro i3"
+    color: "#35BF5B"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.x", label: "amd64" }
+      - { number: "25.x", label: "amd64" }
+  - name: "Manjaro Sway"
+    color: "#35BF5B"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "26.x", label: "amd64" }
+      - { number: "25.x", label: "amd64" }
+  - name: "Zorin OS"
+    color: "#00ADFF"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "18.x", label: "amd64 Core" }
+      - { number: "18.x", label: "amd64 Lite" }
+      - { number: "18.x", label: "amd64 Edu" }
+      - { number: "17.x", label: "amd64 Core" }
+      - { number: "17.x", label: "amd64 Lite" }
+      - { number: "17.x", label: "amd64 Edu" }
+  - name: "SystemRescue"
+    color: "#F37021"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "Latest", label: "amd64" }
+  - name: "Rescuezilla"
+    color: "#8BC34A"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "Latest", label: "amd64" }
+  - name: "MemTest86+"
+    color: "#0000AA"
+    media: ["USB"]
+    versions:
+      - { number: "UEFI", label: "amd64" }
+      - { number: "BIOS", label: "i386" }
+  # https://www.memtest86.com/tech_booting-cd-dvd.html
+  - name: "MemTest86+"
+    color: "#0000AA"
+    media: ["CD"]
+    versions:
+      - { number: "BIOS", label: "i386" }
+  - name: "Tails OS"
+    color: "#56347C"
+    media: ["USB"]
+    versions:
+      - { number: "Latest", label: "amd64" }
+  # TODO
+  # - name: "Bazzite"
+  #   color: "#1e1e2e"
+  #   media: ["USB"]
+  #   versions:
+  #     - { number: "43", label: "" }
+  - name: "Arch Linux"
+    color: "#1793D1"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "Rolling", label: "amd64" }
+  - name: "CachyOS"
+    color: "#0B8B67"
+    media: ["USB"]
+    versions:
+      - { number: "Rolling", label: "amd64" }
+  - name: "EndeavourOS"
+    color: "#7F64B2"
+    media: ["USB"]
+    versions:
+      - { number: "Rolling", label: "amd64" }
+  - name: "Rocky Linux"
+    color: "#10B981"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "10.x", label: "amd64 v3" }
+      - { number: "9.x", label: "amd64" }
+      - { number: "8.x", label: "amd64" }
+  - name: "AlmaLinux"
+    color: "#FFA400"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "10.x", label: "amd64 v3" }
+      - { number: "9.x", label: "amd64" }
+      - { number: "8.x", label: "amd64" }
+  - name: "openSUSE Leap"
+    color: "#73BA25"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "16.x", label: "amd64" }
+      - { number: "15.x", label: "amd64" }
+  - name: "Kali Linux"
+    color: "#557C94"
+    media: ["USB"]
+    versions:
+      - { number: "Rolling", label: "amd64" }
+      - { number: "Rolling", label: "i386" }
+  - name: "Proxmox VE"
+    color: "#E57000"
+    media: ["USB"]
+    versions:
+      - { number: "9.x", label: "amd64" }
+      - { number: "8.x", label: "amd64" }
+  - name: "TrueNAS SCALE"
+    color: "#0095D5"
+    media: ["USB"]
+    versions:
+      - { number: "25.10", label: "amd64" }
+  - name: "FreeBSD"
+    color: "#AB2B28"
+    media: ["DVD", "USB"]
+    versions:
+      - { number: "15.x", label: "amd64" }
+      - { number: "15.x", label: "i386" }
+      - { number: "14.x", label: "amd64" }
+      - { number: "14.x", label: "i386" }
+  - name: "GhostBSD"
+    color: "#780000"
+    media: ["USB"]
+    versions:
+      - { number: "Rolling", label: "amd64" }
+  - name: "OpenBSD"
+    color: "#F2CA30"
+    media: ["USB"]
+    versions:
+      - { number: "7.x", label: "amd64" }
+      - { number: "7.x", label: "i386" }
+  - name: "Haiku OS"
+    color: "#1B5899"
+    media: ["USB"]
+    versions:
+      - { number: "Latest", label: "32-bit Beta" }
+      - { number: "Latest", label: "64-bit Beta" }
+  - name: "ReactOS"
+    color: "#3875A6"
+    media: ["CD", "USB"]
+    versions:
+      - { number: "Latest", label: "i386 Alpha" }
+  - name: "FreeDOS"
+    color: "#A9A9A9"
+    media: ["USB"]
+    versions:
+      - { number: "1.x", label: "Full" }
+      - { number: "1.x", label: "Lite" }
+  - name: "FreeDOS"
+    color: "#A9A9A9"
+    media: ["CD"]
+    versions:
+      - { number: "1.x", label: "Live" }
+      - { number: "1.x", label: "Legacy" }
+      - { number: "1.x", label: "Bonus" }
+  - name: "FreeDOS"
+    color: "#A9A9A9"
+    media: ["1.44 MB Floppy"]
+    versions:
+      - { number: "1.x", label: "Classic" }
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CloudBreak Complete Installer Gallery</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 50px;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .distro-section {
+            width: 100%;
+            max-width: 1700px;
+            margin-bottom: 120px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            color: #1a1a1a;
+            border-bottom: 8px solid var(--distro-color);
+            display: inline-block;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 512px);
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .installer-card {
+            background: white;
+            width: 512px;
+            height: 512px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3.5rem 1.5rem 2rem;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-watermark {
+            position: absolute;
+            left: 50%;
+            color: #1a1a1a;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-dvd {
+            bottom: 0;
+            transform: translate(-50%, 50%);
+            font-size: 28rem;
+        }
+
+        .bg-usb {
+            bottom: 6.4rem;
+            transform: translate(-50%, 50%);
+            font-size: 22rem;
+        }
+
+        .brand-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-img {
+            height: 64px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 2rem;
+            margin-left: 1.2rem;
+            line-height: 1;
+            position: relative;
+            top: 2px;
+        }
+
+        .product-visual {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+            z-index: 1;
+            margin-top: -10px;
+        }
+
+        .os-name-text {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 6px;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .os-name-text.long-name {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+        }
+
+        .version-number-text {
+            font-size: 7.5rem;
+            font-weight: 900;
+            color: var(--distro-color);
+            letter-spacing: -4px;
+            line-height: 0.9;
+        }
+
+        .sub-label-text {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--distro-color);
+            letter-spacing: 14px;
+            line-height: 1;
+            margin-top: 5px;
+            padding-left: 14px;
+        }
+
+        .product-info {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .media-type-text {
+            font-weight: 900;
+            font-size: 4rem;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-label-text {
+            font-weight: 700;
+            font-size: 1.7rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            line-height: 1;
+        }
+
+        .table-container {
+          overflow-x: auto;
+          background: white;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+          border-radius: 8px;
+          margin-top: 2rem;
+        }
+
+        table {
+          border-collapse: collapse;
+          width: 100%;
+          font-size: 13px;
+        }
+
+        th {
+          background-color: #2d3436;
+          color: #ffffff;
+          font-weight: 700;
+          padding: 12px 15px;
+          position: sticky;
+          top: 0;
+          z-index: 10;
+        }
+
+        td {
+          border-bottom: 1px solid #eee;
+          padding: 10px 15px;
+          color: #4a4a4a;
+        }
+
+        tr:hover {
+          background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    {% for distro in page.distros %}
+    <div class="distro-section" style="--distro-color: {{ distro.color }};">
+
+        {% for type in distro.media %}
+        <h2 class="section-title">{{ distro.name }} {{ type }}s</h2>
+
+        <div class="gallery-grid">
+            {% for os in distro.versions %}
+            <div class="installer-card">
+
+                {% if type == "DVD" or type == "CD" %}
+                    <i class="fa-solid fa-compact-disc bg-watermark bg-dvd"></i>
+                {% elsif type == "1.44 MB Floppy" %}
+                    <i class="fa-solid fa-floppy-disk bg-watermark bg-dvd"></i>
+                {% elsif type == "USB" %}
+                    <i class="fa-brands fa-usb bg-watermark bg-usb"></i>
+                {% endif %}
+
+                <div class="brand-header">
+                    <img src="/logo.svg" alt="CB" class="logo-img" onerror="this.src='https://via.placeholder.com/64?text=CB'">
+                    <span class="logo-text">CloudBreak</span>
+                </div>
+
+                <div class="product-visual">
+                    <div class="os-name-text {% if distro.name.size > 14 %}long-name{% endif %}">
+                        {{ distro.name }}
+                    </div>
+
+                    <div class="version-number-text">{{ os.number }}</div>
+
+                    {% if os.label != "" %}
+                        <div class="sub-label-text">{{ os.label }}</div>
+                    {% else %}
+                        <div class="sub-label-text" style="visibility: hidden;">Spacer</div>
+                    {% endif %}
+                </div>
+
+                <div class="product-info">
+                    <div class="media-type-text">{{ type }}</div>
+                    {% if distro.name == "SystemRescue" or distro.name == "Rescuezilla" or distro.name == "MemTest86+" or distro.name == "Tails" %}
+                        <div class="media-label-text">Live OS</div>
+                    {% else %}
+                        <div class="media-label-text">Install Media</div>
+                    {% endif %}
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endfor %}
+
+    <div class="distro-section" style="text-align: right; margin-bottom: 20px;">
+      <button id="download-csv" class="button is-link is-large">
+        <i class="fa-solid fa-file-csv"></i> &nbsp; Download eBay CSV
+      </button>
+    </div>
+
+    <h2 class="section-title">eBay Seller Hub Upload Table</h2>
+
+    <div class="table-container">
+      <table id="ebay-table">
+        <thead>
+          <tr>
+            <th>*Action(SiteID=US|Country=US|Currency=USD|Version=1193|CC=UTF-8)</th>
+            <th>CustomLabel</th>
+            <th>*Category</th>
+            <th>StoreCategory</th>
+            <th>*Title</th>
+            <th>Subtitle</th>
+            <th>Relationship</th>
+            <th>RelationshipDetails</th>
+            <th>ScheduleTime</th>
+            <th>*ConditionID</th>
+            <th>*C:Brand</th>
+            <th>C:For Operating Systems</th>
+            <th>C:Number of Devices</th>
+            <th>C:Format</th>
+            <th>C:License Category</th>
+            <th>C:Type</th>
+            <th>C:Language</th>
+            <th>C:Minimum RAM</th>
+            <th>C:Minimum Hard Drive Space</th>
+            <th>C:Minimum Processor Speed</th>
+            <th>C:Model</th>
+            <th>C:MPN</th>
+            <th>C:Unit Quantity</th>
+            <th>C:Unit Type</th>
+            <th>C:Country of Origin</th>
+            <th>C:California Prop 65 Warning</th>
+            <th>C:Item Height</th>
+            <th>C:Item Length</th>
+            <th>C:Item Width</th>
+            <th>C:Manufacturer Warranty</th>
+            <th>PicURL</th>
+            <th>GalleryType</th>
+            <th>VideoID</th>
+            <th>*Description</th>
+            <th>*Format</th>
+            <th>*Duration</th>
+            <th>*StartPrice</th>
+            <th>BuyItNowPrice</th>
+            <th>BestOfferEnabled</th>
+            <th>BestOfferAutoAcceptPrice</th>
+            <th>MinimumBestOfferPrice</th>
+            <th>*Quantity</th>
+            <th>ImmediatePayRequired</th>
+            <th>*Location</th>
+            <th>ShippingType</th>
+            <th>ShippingService-1:Option</th>
+            <th>ShippingService-1:Cost</th>
+            <th>ShippingService-2:Option</th>
+            <th>ShippingService-2:Cost</th>
+            <th>*DispatchTimeMax</th>
+            <th>PromotionalShippingDiscount</th>
+            <th>ShippingDiscountProfileID</th>
+            <th>*ReturnsAcceptedOption</th>
+            <th>ReturnsWithinOption</th>
+            <th>RefundOption</th>
+            <th>ShippingCostPaidByOption</th>
+            <th>AdditionalDetails</th>
+            <th>ShippingProfileName</th>
+            <th>ReturnProfileName</th>
+            <th>PaymentProfileName</th>
+            <th>TakeBackPolicyID</th>
+            <th>Regional TakeBackPolicies</th>
+            <th>ProductCompliancePolicyID</th>
+            <th>Regional ProductCompliancePolicies</th>
+            <th>EcoParticipationFee</th>
+            <th>Product Safety Pictograms</th>
+            <th>Product Safety Statements</th>
+            <th>Product Safety Component</th>
+            <th>Regulatory Document Ids</th>
+            <th>Manufacturer Name</th>
+            <th>Manufacturer AddressLine1</th>
+            <th>Manufacturer AddressLine2</th>
+            <th>Manufacturer City</th>
+            <th>Manufacturer Country</th>
+            <th>Manufacturer PostalCode</th>
+            <th>Manufacturer StateOrProvince</th>
+            <th>Manufacturer Phone</th>
+            <th>Manufacturer Email</th>
+            <th>Manufacturer ContactURL</th>
+            <th>Responsible Person 1</th>
+            <th>Responsible Person 1 Type</th>
+            <th>Responsible Person 1 AddressLine1</th>
+            <th>Responsible Person 1 AddressLine2</th>
+            <th>Responsible Person 1 City</th>
+            <th>Responsible Person 1 Country</th>
+            <th>Responsible Person 1 PostalCode</th>
+            <th>Responsible Person 1 StateOrProvince</th>
+            <th>Responsible Person 1 Phone</th>
+            <th>Responsible Person 1 Email</th>
+            <th>Responsible Person 1 ContactURL</th>
+            <th>ShippingService-1:Priority</th>
+            <th>WeightMajor</th>
+            <th>WeightMinor</th>
+            <th>WeightUnit</th>
+            <th>PackageLength</th>
+            <th>PackageWidth</th>
+            <th>PackageDepth</th>
+            <th>PackageType</th>
+            <th>PostalCode</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for distro in page.distros %}
+          {% for type in distro.media %}
+          {% for os in distro.versions %}
+
+          {% assign startPrice = "7.99" %}
+          {% assign bestOfferAutoAcceptPrice = "5.99" %}
+          {% assign minimumBestOfferPrice = "4.99" %}
+          {% assign cFormat = "DVD" %}
+
+          {% if type == "USB" %}
+          {% assign startPrice = "10.99" %}
+          {% assign bestOfferAutoAcceptPrice = "7.99" %}
+          {% assign minimumBestOfferPrice = "6.99" %}
+          {% assign cFormat = "USB" %}
+          {% elsif type == "1.44 MB Floppy" %}
+          {% assign startPrice = "9.99" %}
+          {% assign bestOfferAutoAcceptPrice = "7.99" %}
+          {% assign minimumBestOfferPrice = "6.99" %}
+          {% assign cFormat = "Floppy 3.5&quot;" %}
+          {% elsif type == "CD" %}
+          {% assign cFormat = "CD" %}
+          {% endif %}
+
+          {% capture image_string %}{{ distro.name }} {{ type }} {{ os.number | remove: "." }} {{ os.label }}{% endcapture %}
+          {% assign image_slug = image_string | slugify %}
+
+          {% capture raw_full_title %}{{ distro.name }} {{ os.number }} {{ os.label }} Bootable/Live Install {{ type }} NEW{% endcapture %}
+          {% assign full_title = raw_full_title | split: ' ' | join: ' ' %}
+
+          {% if full_title.size > 80 %}
+          {% capture raw_short_title %}{{ distro.name }} {{ os.number }} {{ os.label }} Install {{ type }} NEW{% endcapture %}
+          {% assign ebay_title = raw_short_title | split: ' ' | join: ' ' %}
+          {% if ebay_title.size > 80 %}
+          {% assign ebay_title = ebay_title | slice: 0, 80 %}
+          {% endif %}
+          {% else %}
+          {% assign ebay_title = full_title %}
+          {% endif %}
+
+          <tr>
+            <td>Add</td>
+            <td></td>
+            <td>11226</td>
+            <td></td>
+            <td>{{ ebay_title }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>1000</td>
+            <td>{{ distro.name }}</td>
+            <td></td>
+            <td></td>
+            <td>{{ cFormat }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>https://cloudbreak.app/external/ebay/{{ image_slug }}.png</td>
+            <td></td>
+            <td></td>
+            <td>{{ ebay_title }}. On consumer-grade media, made to order. The latest version of the software in the release series will be shipped. For example, if you order the Debian 12.x series, you will receive Debian 12.5 (or the newest point release available at the time your order is processed). An order for Ubuntu 24.04 LTS will automatically include the latest 24.04.4 update (or newer). This media is proudly assembled and distributed by CloudBreak. Check out our other items for other versions and other software!</td>
+            <td>FixedPrice</td>
+            <td>GTC</td>
+            <td>{{ startPrice }}</td>
+            <td></td>
+            <td>1</td>
+            <td>{{ bestOfferAutoAcceptPrice }}</td>
+            <td>{{ minimumBestOfferPrice }}</td>
+            <td>100</td>
+            <td></td>
+            <td>52240</td>
+            <td>Calculated</td>
+            <td>USPSParcel</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>3</td>
+            <td></td>
+            <td></td>
+            <td>ReturnsAccepted</td>
+            <td>Days_30</td>
+            <td>MoneyBack</td>
+            <td>Buyer</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>1</td>
+            <td>0</td>
+            <td>4</td>
+            <td>lb</td>
+            <td>11</td>
+            <td>6</td>
+            <td>1</td>
+            <td>PackageThickEnvelope</td>
+            <td>52240</td>
+          </tr>
+          {% endfor %}
+          {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      document.getElementById('download-csv').addEventListener('click', function() {
+        const table = document.getElementById('ebay-table');
+        const rows = Array.from(table.querySelectorAll('tr'));
+
+        const csvContent = rows.map(row => {
+          const cells = Array.from(row.querySelectorAll('th, td'));
+          return cells.map(cell => {
+            // Remove multiple spaces and trim, but preserve commas for quoting
+            let data = cell.innerText.replace(/\s+/g, ' ').trim();
+
+            // Proper CSV escaping
+            if (data.includes(',') || data.includes('"') || data.includes('\n')) {
+              data = '"' + data.replace(/"/g, '""') + '"';
+            }
+            return data;
+          }).join(',');
+        }).join('\r\n'); // Use Windows-style line endings for eBay
+
+          const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+
+          const now = new Date();
+          const date = now.toISOString().slice(0, 10);
+          const time = now.toTimeString().slice(0, 8).replace(/:/g, '-');
+          const filename = `ebay-listings-${date}_${time}.csv`;
+
+          link.setAttribute('href', url);
+          link.setAttribute('download', filename);
+          link.style.visibility = 'hidden';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+    </script>
+    <script>
+      document.getElementById('download-csv').addEventListener('click', function() {
+        const table = document.getElementById('ebay-table');
+        const rows = Array.from(table.querySelectorAll('tr'));
+
+        const csvContent = rows.map(row => {
+          const cells = Array.from(row.querySelectorAll('th, td'));
+          return cells.map(cell => {
+            let data = cell.innerText.replace(/\s+/g, ' ').trim();
+
+            if (data.includes(',') || data.includes('"') || data.includes('\n')) {
+              data = '"' + data.replace(/"/g, '""') + '"';
+            }
+            return data;
+          }).join(',');
+        }).join('\n');
+
+          // Create the download link
+          const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+
+          // --- Updated Filename Logic ---
+          const now = new Date();
+
+          // Formats date to YYYY-MM-DD
+          const date = now.toISOString().slice(0, 10);
+
+          // Formats time to HH-MM-SS (replacing colons with hyphens for filename safety)
+          const time = now.toTimeString().slice(0, 8).replace(/:/g, '-');
+
+          const filename = `ebay-listings-${date}_${time}.csv`;
+          // ------------------------------
+
+          link.setAttribute('href', url);
+          link.setAttribute('download', filename);
+          link.style.visibility = 'hidden';
+
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>

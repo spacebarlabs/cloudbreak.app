@@ -1,0 +1,152 @@
+---
+permalink: /products/linkding/faq/
+layout: default
+title: "Linkding FAQ: Features, Mobile Apps & Setup | CloudBreak"
+description: "Everything you need to know about Linkding hosting. Learn about pricing, features, browser extensions, and how to get started with our privacy-focused bookmark manager."
+keywords: "Linkding FAQ, bookmark manager questions, Linkding browser extensions, Linkding hosting support"
+head_content: |
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ site.url }}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Linkding",
+        "item": "{{ site.url }}/products/linkding/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "FAQ",
+        "item": "{{ site.url }}/products/linkding/faq/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Linkding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Linkding is a self-hostable bookmark manager that lets you save and organize your favorite websites with tags. We host and maintain Linkding for you, so you don't have to worry about server management or updates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does it cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Please visit our main page for current pricing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What payment methods do you accept?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We primarily accept credit card payments through Stripe. PayPal is also available upon request - please contact us if you would like to pay via PayPal."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the key features?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Linkding offers a clean UI optimized for readability, tag-based organization, bulk editing, Markdown notes, read it later functionality, bookmark sharing, automatic archiving of websites, import/export in Netscape HTML format, and a REST API for developing third-party apps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there browser extensions available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Linkding has official extensions for Firefox and Chrome, as well as a bookmarklet for other browsers. These extensions make it easy to save bookmarks directly from your browser."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I access Linkding on mobile devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Linkding is installable as a Progressive Web App (PWA), which provides a native app-like experience on mobile devices. Additionally, there are community-developed mobile apps and extensions that work with Linkding's REST API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does account creation take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In most cases, your account will be created quickly after your subscription is processed. However, in some cases, it may take up to two business days to complete the account setup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What kind of support do you provide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We focus on providing a reliable, high-uptime Linkding hosting service. Our support is limited to the information provided in this FAQ. While we maintain and update the Linkding installation, we do not provide technical support or tutorials for using Linkding itself - for that, please refer to the official Linkding documentation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Visit our main page to subscribe and get started with Linkding today!"
+        }
+      }
+    ]
+  }
+  </script>
+---
+{% assign product = site.data.products | where:"key", "linkding" | first %}
+<section class="section">
+  <div class="container">
+    <h1 class="title has-text-centered">Frequently Asked Questions</h1>
+
+    <p><a class="button is-link" href="/products/{{ product.key }}/">&larr; Back to {{ product.name }}</a></p>
+
+    <div class="content mt-6">
+      <h2 class="subtitle mt-4" id="what-is-linkding"><a href="#what-is-linkding" class="has-text-dark">What is {{ product.name }}?</a></h2>
+      <p><a href="{{ product.scm_url }}">{{ product.name }}</a> is a self-hostable bookmark manager that lets you save and organize your favorite websites with tags. We host and maintain {{ product.name }} for you, so you don't have to worry about server management or updates.</p>
+
+      <h2 class="subtitle mt-4" id="how-much-does-it-cost"><a href="#how-much-does-it-cost" class="has-text-dark">How much does it cost?</a></h2>
+      <p>Please visit our <a href="/products/{{ product.key }}/">main page</a> for current pricing.</p>
+
+      <h2 class="subtitle mt-4" id="what-payment-methods-do-you-accept"><a href="#what-payment-methods-do-you-accept" class="has-text-dark">What payment methods do you accept?</a></h2>
+      <p>We primarily accept credit card payments through Stripe. PayPal is also available upon request - please <a href="mailto:support@spacebarlabs.com?subject=PayPal Payment Request for Linkding">contact us</a> if you would like to pay via PayPal.</p>
+
+      <h2 class="subtitle mt-4" id="what-are-the-key-features"><a href="#what-are-the-key-features" class="has-text-dark">What are the key features?</a></h2>
+      <p>{{ product.name }} offers a clean UI optimized for readability, tag-based organization, bulk editing, Markdown notes, read it later functionality, bookmark sharing, automatic archiving of websites, import/export in Netscape HTML format, and a REST API for developing third-party apps.</p>
+
+      <h2 class="subtitle mt-4" id="are-there-browser-extensions-available"><a href="#are-there-browser-extensions-available" class="has-text-dark">Are there browser extensions available?</a></h2>
+      <p>Yes! {{ product.name }} has official extensions for <a target="_blank" href="https://addons.mozilla.org/firefox/addon/linkding-extension/">Firefox</a> and <a target="_blank" href="https://chrome.google.com/webstore/detail/linkding-extension/beakmhbijpdhipnjhnclmhgjlddhidpe">Chrome</a>, as well as a bookmarklet for other browsers. These extensions make it easy to save bookmarks directly from your browser.</p>
+
+      <h2 class="subtitle mt-4" id="can-i-access-linkding-on-mobile"><a href="#can-i-access-linkding-on-mobile" class="has-text-dark">Can I access {{ product.name }} on mobile devices?</a></h2>
+      <p>Yes! {{ product.name }} is installable as a Progressive Web App (PWA), which provides a native app-like experience on mobile devices. Additionally, there are <a target="_blank" href="https://linkding.link/community">community-developed mobile apps and extensions</a> that work with {{ product.name }}'s REST API.</p>
+
+      <h2 class="subtitle mt-4" id="how-long-does-account-creation-take"><a href="#how-long-does-account-creation-take" class="has-text-dark">How long does account creation take?</a></h2>
+      <p>In most cases, your account will be created quickly after your subscription is processed. However, in some cases, it may take up to two business days to complete the account setup.</p>
+
+      <h2 class="subtitle mt-4" id="what-kind-of-support-do-you-provide"><a href="#what-kind-of-support-do-you-provide" class="has-text-dark">What kind of support do you provide?</a></h2>
+      <p>We focus on providing a reliable, high-uptime {{ product.name }} hosting service. Our support is limited to the information provided in this FAQ and our <a href="/support/">support page</a>. While we maintain and update the {{ product.name }} installation, we do not provide technical support or tutorials for using {{ product.name }} itself - for that, please refer to the <a target="_blank" href="https://linkding.link/">official {{ product.name }} documentation</a>.</p>
+
+      <h2 class="subtitle mt-4" id="how-do-i-get-started"><a href="#how-do-i-get-started" class="has-text-dark">How do I get started?</a></h2>
+      <p>Visit our <a href="/products/{{ product.key }}/">main page</a> to subscribe and get started with {{ product.name }} today!</p>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+---
+name: Scheduled Daily Rebuild
+
+on:
+  schedule:
+    # Runs daily at 5:05 AM Central Standard Time (11:05 AM UTC)
+    - cron: '5 11 * * *'
+  workflow_dispatch:  # Allows manual triggering for testing
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    if: github.repository == 'spacebarlabs/cloudbreak.app'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Trigger rebuild
+        run: |
+          set -e
+          # Create an empty commit to trigger a rebuild
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          TIMESTAMP=$(date -u +'%Y-%m-%d %H:%M:%S')
+          git commit --allow-empty -m "Site Update: ${TIMESTAMP}"
+          git push
